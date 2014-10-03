@@ -8,6 +8,8 @@ alias torified="ssh -D 127.0.0.1:1080 -L 3128:127.0.0.1:3128 -L 8123:127.0.0.1:8
 
 plugins=(git vi-mode history-substring-search autojump zsh-syntax-highlighting command-not-found docker)
 
+export EDITOR='vim'
+
 # Linux 
 
 # Mac
