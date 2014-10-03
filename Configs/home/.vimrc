@@ -39,5 +39,16 @@ filetype plugin indent on    " required
 " " see :h vundle for more details or wiki for FAQ
 " " Put your non-Plugin stuff after this line
 
-" Toggle Nerd Tree command
+" NerdTree setup
 map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+
+" Startup function 
+function! StartUp()
+    if 0 == argc()
+        NERDTree
+    end
+endfunction
+
+" Only start if not file arg given
+autocmd VimEnter * call StartUp()

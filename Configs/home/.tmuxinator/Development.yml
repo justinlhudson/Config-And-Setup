@@ -27,6 +27,10 @@ windows:
       layout: main-horizontal
       panes:
         - redis-cli
+  - terminal:
+      layout: main-horizontal
+      panes:
+        - zsh
 #  - ssh:
 #      layout: even-vertical
 #      panes:
