@@ -25,4 +25,9 @@ options {
 
   auth-nxdomain no;    # conform to RFC1035
   listen-on-v6 { any; };
+
+  max-cache-size 512m;      // maximum cache size (default unlimited)
+  cleaning-interval 2160;   // clean cache every X minutes (default 60 minutes)
+  //max-cache-ttl 60;         // limit cached record TTL (defual 7 days)
+  //max-ncache-ttl 60;        // limit cache neg. resp. TTL (default 3 hours)
 };
