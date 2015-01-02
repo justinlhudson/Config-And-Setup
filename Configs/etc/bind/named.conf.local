@@ -1,0 +1,23 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+// Logging
+//   Note: delete log to start logging again
+//   
+//   create log file: sudo touch /var/log/query.log && sudo chown bind /var/log/query.log
+//   edit: /etc/apparmor.d/usr.sbin.named
+//   add: /var/log/query.log rw,
+//   reload the profile: cat /etc/apparmor.d/usr.sbin.named | sudo apparmor_parser -r
+
+logging {
+    channel query.log {
+        file "/var/log/query.log" size 5m;
+        severity debug 3;
+    };
+    category queries { query.log; };
+};
