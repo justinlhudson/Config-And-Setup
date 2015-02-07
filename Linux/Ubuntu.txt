@@ -1,4 +1,4 @@
-// Laptop screen dim solution
+// Laptop screen dim backlight solution
 
 // add option
 
