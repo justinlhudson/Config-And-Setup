@@ -19,6 +19,7 @@
 // touch /var/log/named/query.log
 // chmod 775 /var/log/named/query.log
 // chown bind:root /var/log/named/query.log
+// Restart computer, bind was having issues resolving until computer reboot?!?
 
 logging {
     channel query.log {
