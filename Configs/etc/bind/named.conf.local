@@ -14,9 +14,15 @@
 //   add: /var/log/query.log rw,
 //   reload the profile: cat /etc/apparmor.d/usr.sbin.named | sudo apparmor_parser -r
 
+// *** Manual Steps ***
+// mkdir /var/log/named
+// touch /var/log/named/query.log
+// chmod 775 /var/log/named/query.log
+// chown bind:root /var/log/named/query.log
+
 logging {
     channel query.log {
-        file "/var/log/query.log" size 5m;
+        file "/var/log/named/query.log" size 5m;
         severity debug 3;
     };
     category queries { query.log; };
