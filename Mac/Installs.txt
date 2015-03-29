@@ -13,10 +13,17 @@ xamarin
 filezilla
 Microsoft Remote Desktop
 brew
-	mongodb
-        redis
-	nodejs
-	npm
+  mongodb
+  redis
+  nodejs
+  npm
+    phantomjs
+    ember-cli
+  watchman
+
 robomongo
 java
 moom
+alfred v2+
+
+
