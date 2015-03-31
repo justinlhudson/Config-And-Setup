@@ -13,6 +13,8 @@ xamarin
 filezilla
 Microsoft Remote Desktop
 brew
+  cask (ui programs)
+    - brew install caskroom/cask/brew-cask
   mongodb
   redis
   nodejs
