@@ -32,5 +32,6 @@ robomongo
 java
 moom
 alfred v2+
+vagrant
 
 
