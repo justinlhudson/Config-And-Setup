@@ -12,17 +12,22 @@ sourcetree
 xamarin
 filezilla
 Microsoft Remote Desktop
-brew
-  cask (ui programs)
-    - brew install caskroom/cask/brew-cask
-  mongodb
-  redis
-  nodejs
-  npm
-    phantomjs
-    ember-cli
-  watchman
-
+brew install
+  - cask (ui programs)
+      - brew cask install caskroom/cask/brew-cask
+      - brew cask alfred link
+      - virtualbox
+      - docker
+      - boot2docker
+      - google-chrome
+  - mongodb
+  - wget
+  - redis
+  - nodejs
+  - npm
+    - phantomjs
+    - ember-cli
+  - virtual
 robomongo
 java
 moom
