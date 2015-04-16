@@ -10,6 +10,7 @@ vundle
 silver-searcher
 sourcetree
 xamarin
+eagle (cadsoft)
 filezilla
 Microsoft Remote Desktop
 brew install
