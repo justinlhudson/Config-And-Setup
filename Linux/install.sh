@@ -16,4 +16,6 @@ apt-get install silversearcher-ag expect install gdisk htop ssh vsftpd samba vim
 # /etc/default/boinc-client
 # boinccmd
 
+#supervisor
+
 #nginx
