@@ -1,3 +1,4 @@
 #list all routes to address
 
 host -t A netflix.com
+traceroute
