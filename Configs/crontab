@@ -1,5 +1,7 @@
-@daily x=30; while [ $(/usr/bin/du -sm /home/security/Surveillance/ | /usr/bin/awk '{print $1}') -gt 1000 ] && [ "$x" -gt 0 ]; do /usr/bin/find /home/security/Surveillance/* -type f -mtime +$x -delete; let x-=1; done
+# keep files for 45 days from modified
+@daily @daily find /path/ -type f -mtime +45 -exec rm {} +
 
-@hourly /bin/rm /home/jlh/.xsession*
-@hourly /bin/rm /home/jlh/.zcompdump*
+# cleanup files
+@hourly /bin/rm /home/user/.xsession*
+@hourly /bin/rm /home/user/.zcompdump*
 
