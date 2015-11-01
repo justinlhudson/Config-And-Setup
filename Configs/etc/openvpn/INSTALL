@@ -7,8 +7,9 @@ sudo -i
 make-cadir /etc/openvpn/easy-rsa
 
 # edit
-# Change these lines at the bottom so that they reflect your new CA
+# reflect your new CA information
 vim /etc/openvpn/easy-rsa/vars
+
 source /etc/openvpn/easy-rsa/vars
 
 # create server cert
@@ -55,6 +56,3 @@ rename
 client.ovpn
 
 # note:  match server with client config options!
-
-sudo crontab -e
-@reboot @reboot /etc/init.d/pptpd restart

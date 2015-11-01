@@ -5,9 +5,9 @@ if [ `whoami` != root ]; then
     exit
 fi
 
-apt-get install silversearcher-ag expect install gdisk htop ssh vsftpd samba vim filezilla nautilus-dropbox bind9 
-# apt-get install jump 
+silversearcher-ag expect gdisk htop ssh vsftpd samba vim filezilla nautilus-dropbox bind9 jump supervisor vim vnc4server vncpasswd nginx
 
+### Boinc ###
 # seti/boinc cliet
 # apt-get install python-software-properties
 # add-apt-repository ppa:costamagnagianfranco/boinc
@@ -15,8 +15,4 @@ apt-get install silversearcher-ag expect install gdisk htop ssh vsftpd samba vim
 # apt-get install boinc-client
 # /etc/default/boinc-client
 # boinccmd
-# vnc4server
-#   vncpasswd
-#supervisor
 
-#nginx
