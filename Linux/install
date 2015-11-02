@@ -5,7 +5,13 @@ if [ `whoami` != root ]; then
     exit
 fi
 
-silversearcher-ag expect git gdisk htop ssh vsftpd samba vim filezilla nautilus-dropbox bind9 jump supervisor vim vnc4server vncpasswd nginx
+# apt-get Ubuntu distro version
+silversearcher-ag expect git gdisk htop ssh vsftpd samba vim filezilla nautilus-dropbox bind9 jump supervisor vim vnc4server vncpasswd nodejs nginx
+
+# latest per website instructions
+mongodb
+docker (docker-engine)
+mono (mono-devel, mono-complete)
 
 ### Boinc ###
 # seti/boinc cliet
