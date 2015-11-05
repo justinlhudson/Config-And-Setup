@@ -12,6 +12,7 @@ silversearcher-ag expect git gdisk htop ssh vsftpd samba vim filezilla nautilus-
 mongodb
 docker (docker-engine)
 mono (mono-devel, mono-complete)
+oh-my-zsh
 
 ### Boinc ###
 # seti/boinc cliet
