@@ -18,9 +18,7 @@ oh-my-zsh
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 sudo npm install bower -g
-
-# mongodb
-sudo mkdir -p /data/db
+sudo npm install gulp -g
 
 ### Boinc ###
 # seti/boinc cliet
