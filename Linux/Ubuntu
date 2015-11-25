@@ -16,3 +16,5 @@ If you've installed forever and Node.js system-wide (so that they are located so
 
 start on startup
 exec forever start /full/path/to/test.js
+
+// store applications in /opt
