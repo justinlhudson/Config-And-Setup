@@ -9,7 +9,7 @@
 _mail="$4"
 _check="$3"
 _file="/tmp/ISP-Checker-$_check"
-_result=$(traceroute $1 -m $2 -F)
+_result=$(traceroute $1 -m $2 -w 30 -F)
 
 echo $_result
 echo
