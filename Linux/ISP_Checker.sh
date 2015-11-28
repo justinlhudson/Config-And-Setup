@@ -14,9 +14,9 @@ _result=$(traceroute $1 -m $2 -w 30 -F)
 echo $_result
 echo
 
-if [[ ! $_result = *$_check* ]]; then
+if [[ ! $_result == *$_check* ]]; then
   echo "ISP-Down: $_check"
-  if [ ! -f $_file ]; then  
+  if [ ! -f $_file ]; then
     echo "alert!"
     touch $_file
     echo $_check | mail -s "ISP-Down: $_check" $_mail < /dev/null
