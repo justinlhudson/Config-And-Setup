@@ -9,12 +9,17 @@
 _mail="$4"
 _check="$3"
 _file="/tmp/ISP-Checker-$_check"
-_result=$(traceroute $1 -m $2 -w 30 -F)
+_result=$(traceroute $1 -m $2)
 
 echo $_result
 echo
 
-if [[ ! $_result == *$_check* ]]; then
+if [[ "$_result" == *"* * *"* ]]; then
+  echo "error!"
+  exit
+fi
+
+if [[ ! "$_result" == *"$_check"* ]]; then
   echo "ISP-Down: $_check"
   if [ ! -f $_file ]; then
     echo "alert!"
