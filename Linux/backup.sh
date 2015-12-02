@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # backup location
-directory=/external/backup
-mkdir -p $directory
+_directory=/external/backup
+mkdir -p $_directory
 cd $directory
 
 # generate private/public key-pair
@@ -16,9 +16,13 @@ cd $directory
 # archive
 cd /
 mark=`date '+%Y_%m_%d-%H_%M_%S'`;
-tar --exclude='./external' -czf - / | gpg --encrypt --quiet --recipient 'USER-ID' > $directory/"$mark".tar.gz.gpg
+tar --exclude='./external' -czf - / | gpg --encrypt --quiet --recipient 'USER-ID' > $_directory/"$mark".tar.gz.gpg
 
 # extract
 #   import key
 #gpg --import backup.key
 #gpg --no-use-agent --passphrase= --output temp.tar.gz --decrypt "$mark".tar.gz.gpg
+
+# keep current and prevous
+cd $_directory
+ls -1tr | head -n -2 | xargs -d '\n' rm -f
