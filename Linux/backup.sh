@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# Configure
+_directory="/path/to/storage/directory"
+_user="USER-ID"
+
 # backup location
-_directory=/external/backup
 mkdir -p $_directory
 cd $directory
 
@@ -10,18 +13,19 @@ cd $directory
 #gpg --gen-key
 
 # copy public keyfile with value used for "USER-ID"
-#gpg --export -a "USER-ID" > public.key
+#gpg --export -a "$_user" > public.key
 #gpg --import public.key
 
 # archive
-cd /
-mark=`date '+%Y_%m_%d-%H_%M_%S'`;
-tar --exclude='./external' -czf - / | gpg --encrypt --quiet --recipient 'USER-ID' > $_directory/"$mark".tar.gz.gpg
+_mark=`date '+%Y_%m_%d-%H_%M_%S'`;
+# https://help.ubuntu.com/community/BackupYourSystem/TAR
+# Note: -h to follow smbolic lnks
+tar --exclude='$_directory/..' --exclude='/ram' --exclude='/tmp' --exclude='/proc' --exclude='/sys' --exclude='/mnt' --exclude='/media' --exclude='/run' --exclude='/dev' --exclude='/proc' --exclude='/sys' -czf - / | gpg --encrypt --quiet --recipient $_user > $_directory/"$_mark".tar.gz.gpg
 
 # extract
 #   import key
 #gpg --import backup.key
-#gpg --no-use-agent --passphrase= --output temp.tar.gz --decrypt "$mark".tar.gz.gpg
+#gpg --no-use-agent --passphrase= --output temp.tar.gz --decrypt "$_mark".tar.gz.gpg
 
 # keep current and prevous
 cd $_directory
