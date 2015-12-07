@@ -48,3 +48,15 @@ sudo swapon -s
 /etc/fstab:
 /swapfile   none    swap    sw    0   0
 
+# dated folders for files
+_path=/path/to/directory/
+for _d in $(find $_path  -mindepth 1 -maxdepth 1 -type d) ; do
+  echo $_d
+  cd $_d
+  for _f in *.* ; do
+    _structure=$(date -r "$_f" +%Y-%m-%d)/$(date -r "$_f" +%H)
+    mkdir -p "$_structure"
+    echo $_structure/$_f
+    mv -- "$_f" "$_structure/"
+  done
+done
