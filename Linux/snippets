@@ -27,7 +27,7 @@ DatedFileFolder()
 find /path/to/files/* -mtime +5 -exec rm {} \;
 
 #backup crontab
-crontab -l > $(date +%Y%m%d).crontab
+crontab -l > ~/$(date +%Y%m%d).crontab
 
 #ram disk
 mkdir -p /mnt/ramdisk
