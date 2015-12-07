@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #ISP_Checker.sh <trace address> <hops> <check> <mail address>
-
 # Notes:
   #apt-get install -f mailutils
   #mail -s "Test Text" "test@SomeDomain.com,#@messaging.sprintpcs.com"
