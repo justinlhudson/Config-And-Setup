@@ -23,8 +23,8 @@ DatedFileFolder()
 #DatedFileFolder
 #cd ..
 
-# remove files older then 5 days old
-find /path/to/files/* -mtime +5 -exec rm {} \;
+# remove files older then 5 days old recusively
+find /path/to/files/* -depth -mtime +5 -exec rm {} \;
 
 #backup crontab
 crontab -l > ~/$(date +%Y%m%d).crontab
