@@ -1,12 +1,14 @@
 #!/bin/bash
 
 # Configure
-_directory="/path/to/storage/directory"
-_user="USER-ID"
+_directory="/external/backup"
+_user="<USER-ID>"
+
+_base="/"$(echo "$_directory" | awk -F "/" '{print $2}')
 
 # backup location
 mkdir -p $_directory
-cd $directory
+cd $_directory
 
 # generate private/public key-pair
 #   important: remember passphrase
@@ -19,8 +21,8 @@ cd $directory
 # archive
 _mark=`date '+%Y_%m_%d-%H_%M_%S'`;
 # https://help.ubuntu.com/community/BackupYourSystem/TAR
-# Note: -h to follow smbolic lnks
-tar --exclude='$_directory/..' --exclude='*.ecryptfs/*' --exclude='/ram' --exclude='/tmp' --exclude='/proc' --exclude='/sys' --exclude='/mnt' --exclude='/media' --exclude='/run' --exclude='/dev' --exclude='/proc' --exclude='/sys' -czf - / | gpg --encrypt --quiet --recipient $_user > $_directory/"$_mark".tar.gz.gpg
+# Note: -h to follow symbolic links
+tar --exclude="$_base" --exclude='*.ecryptfs/*' --exclude='/ram' --exclude='/tmp' --exclude='/proc' --exclude='/sys' --exclude='/mnt' --exclude='/media' --exclude='/run' --exclude='/dev' --exclude='/proc' --exclude='/sys' -czvf - / | gpg --encrypt --quiet --recipient $_user > "$_mark".tar.gz.gpg
 
 # extract
 #   import key
@@ -29,4 +31,7 @@ tar --exclude='$_directory/..' --exclude='*.ecryptfs/*' --exclude='/ram' --exclu
 
 # keep current and prevous
 cd $_directory
-ls -1tr | head -n -2 | xargs -d '\n' rm -f
+if [[ $(pwd) == $_directory ]]; then
+  ls -1tr | head -n -2 | xargs -d '\n' rm -f
+fi
+

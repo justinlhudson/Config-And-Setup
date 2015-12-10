@@ -60,3 +60,13 @@ for _d in $(find $_path  -mindepth 1 -maxdepth 1 -type d) ; do
     mv -- "$_f" "$_structure/"
   done
 done
+
+#reload fstab 
+sudo mount -a
+
+# list drives 
+sudo blkid
+
+# edit gnome settings
+# Disable automount -> org.gnome.desktop.media-handling
+dconf-editor
