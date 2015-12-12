@@ -70,3 +70,9 @@ sudo blkid
 # edit gnome settings
 # Disable automount -> org.gnome.desktop.media-handling
 dconf-editor
+
+# change cpu power strategy
+apt-get install Cpufregutils
+vim /etc/init.d/cpufrequtils
+service cpufrequtils restart
+cpufreq-info
