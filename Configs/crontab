@@ -1,5 +1,5 @@
 # keep files for 45 days from modified
-@daily @daily find /path/ -type f -mtime +45 -exec rm {} +
+@daily find /path/ -type f -mtime +45 -exec rm {} +
 
 # cleanup files
 @hourly /bin/rm /home/user/.xsession*

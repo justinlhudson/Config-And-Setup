@@ -6,7 +6,7 @@ if [ `whoami` != root ]; then
 fi
 
 # apt-get Ubuntu distro version
-silversearcher-ag expect git gparted gdisk htop ssh vsftpd samba vim filezilla nautilus-dropbox bind9 jump supervisor vim vnc4server vncpasswd nodejs npm nginx
+silversearcher-ag expect git tmux gparted gdisk htop ssh vsftpd samba vim filezilla nautilus-dropbox bind9 jump supervisor vim vnc4server vncpasswd nodejs npm nginx
 redis-server
 
 # latest per website instructions
@@ -20,6 +20,9 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 sudo npm install bower -g
 sudo npm install gulp -g
+
+#tmux session profile (windows and auto start apps/locations)
+gem install tmuxinator
 
 ### Boinc ###
 # seti/boinc cliet
