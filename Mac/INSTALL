@@ -21,6 +21,7 @@ brew install
       - docker
       - boot2docker
       - google-chrome
+      - tmux
   - mongodb
   - wget
   - redis
@@ -34,5 +35,7 @@ java
 moom
 alfred v2+
 vagrant
+gem
+  - tmuxinator
 
 
