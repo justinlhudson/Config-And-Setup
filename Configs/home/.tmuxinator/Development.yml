@@ -1,6 +1,14 @@
 # Use/Setup: tmuxinator
 # ~/.tmuxinator/Development.yml
 
+# OSX starting error
+# /Library/Ruby/Gems/2.0.0/gems/tmuxinator-0.7.1/lib/tmuxinator
+# window.rb
+# after  
+#   @panes = []
+# add
+#   @commands = []
+
 name: Development
 root: ~/Development
 pre:
