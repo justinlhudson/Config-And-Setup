@@ -1,7 +1,6 @@
 alias ohmyzsh="mate ~/.oh-my-zsh"
 alias god="sudo"
 alias c="clear"
-alias docker="sudo docker.io"
 alias ktmux="tmux kill-session -t"
 
 # port forwarding thru SSH

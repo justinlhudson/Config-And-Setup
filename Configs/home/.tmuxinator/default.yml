@@ -1,0 +1,23 @@
+windows:
+  - main:
+      layout: main-horizontal
+      panes:
+        - #default
+  - stock:
+      layout: even-vertical
+      panes:
+        - vim /tmp/file
+        - cd /opt/directory
+  - status:
+      layout: main-horizontal
+      panes:
+        - htop
+  - test:
+      layout: tiled
+      pre:
+        - echo 'test 1'
+        - echo 'test 2'
+      panes:
+        -
+        -
+        -
