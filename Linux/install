@@ -7,7 +7,7 @@ fi
 
 # apt-get Ubuntu distro version
 silversearcher-ag expect git tmux gparted gdisk htop ssh vsftpd samba vim filezilla nautilus-dropbox bind9 jump supervisor vim vnc4server vncpasswd nodejs npm nginx
-redis-server
+redis-server cpulimit
 
 # latest per website instructions
 mongodb
