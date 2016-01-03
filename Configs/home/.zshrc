@@ -36,7 +36,7 @@ shopt -s histappend
 # add commands immediatley to history, not wait for log out
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
-export EDITOR="vnc"
+export EDITOR="vim"
 
 alias ohmyzsh="mate ~/.oh-my-zsh"
 alias god="sudo"
