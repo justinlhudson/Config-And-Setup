@@ -15,7 +15,7 @@ phrase()
   'yes')
     afplay ~/.sounds/enthusiasm.mp3
     ;;
-  'answer')
+  'question')
     afplay ~/.sounds/2001.mp3
     ;;
   'what')
@@ -30,6 +30,8 @@ phrase()
   'error')
     afplay ~/.sounds/humanerr.mp3
     ;;
-  *) ;;
+  *)
+    echo can, cannot, yes, no, question, what, goodbye, calm, error
+    ;;
   esac
 }
