@@ -32,7 +32,8 @@ echo $OS
 HISTSIZE=5000
 HISTFILESIZE=10000
 # append history from each session, not the last to log out
-shopt -s histappend
+#shopt -s histappend
+setopt INC_APPEND_HISTORY
 # add commands immediatley to history, not wait for log out
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
