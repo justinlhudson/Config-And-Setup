@@ -9,6 +9,12 @@ phrase()
   'cannot')
     afplay ~/.sounds/icant.mp3
     ;;
+  'no')
+    afplay ~/.sounds/icant.mp3
+    ;;
+  'yes')
+    afplay ~/.sounds/enthusiasm.mp3
+    ;;
   'answer')
     afplay ~/.sounds/2001.mp3
     ;;
@@ -20,6 +26,9 @@ phrase()
     ;;
   'calm')
     afplay ~/.sounds/stress.mp3
+    ;;
+  'error')
+    afplay ~/.sounds/humanerr.mp3
     ;;
   *) ;;
   esac
