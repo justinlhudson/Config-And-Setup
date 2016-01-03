@@ -1,0 +1,26 @@
+# For Fun
+# plays sound files from terminal to bother people
+phrase()
+{
+  case $1 in
+  'can')
+    afplay ~/.sounds/enthusiasm.mp3
+    ;;
+  'cannot')
+    afplay ~/.sounds/icant.mp3
+    ;;
+  'answer')
+    afplay ~/.sounds/2001.mp3
+    ;;
+  'what')
+    afplay ~/.sounds/justwhat.mp3
+    ;;
+  'goodbye')
+    afplay ~/.sounds/halbye.mp3
+    ;;
+  'calm')
+    afplay ~/.sounds/stress.mp3
+    ;;
+  *) ;;
+  esac
+}

@@ -1,8 +1,3 @@
-alias ohmyzsh="mate ~/.oh-my-zsh"
-alias god="sudo"
-alias c="clear"
-alias ktmux="tmux kill-session -t"
-
 # port forwarding thru SSH
 alias torified="ssh -D 127.0.0.1:1080 -L 3128:127.0.0.1:3128 -L 8123:127.0.0.1:8123 -L 8118:127.0.0.1:8118 -L 9050:127.0.0.1:9050 <username>@<ip> -p <port>"
 
@@ -13,16 +8,14 @@ OS="`uname`"
 case $OS in
   'Linux')
     OS='Linux'
-    alias ls='ls --color=auto'
     ;;
   'FreeBSD')
     OS='FreeBSD'
-    alias ls='ls -G'
     ;;
   'WindowsNT')
     OS='Windows'
     ;;
-  'Darwin') 
+  'Darwin')
     OS='Mac'
     ;;
   'SunOS')
@@ -35,9 +28,24 @@ esac
 ## OS dependent commands/operations
 echo $OS
 
+# All
+export EDITOR="vnc"
+
+alias ohmyzsh="mate ~/.oh-my-zsh"
+alias god="sudo"
+alias c="clear"
+alias ktmux="tmux kill-session -t"
+alias ..='cd ..'
+alias ...='cd ../../..'
+alias ....='cd ../../../..'
+alias ls='ls --color=auto'
+alias ll='ls -la'
+alias l.='ls -d .* --color=auto'
+alias mkdir='mkdir -pv'
+
 # Linux
 if [[ $OS == Linux ]]; then
-  echo ""
+  alias apt-get='sudo apt-get'
 fi
 
 # Mac
@@ -45,7 +53,8 @@ if [[ $OS == Mac ]]; then
   if type archey > /dev/null 2>&1; then
     archey
   fi
-fi
 
-# All
-export EDITOR="vnc"
+  alias afplay='afplay -q 1'
+  # For Fun
+  source "$( dirname "${BASH_SOURCE[0]}" )/.phrase"
+fi
