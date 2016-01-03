@@ -30,6 +30,7 @@ brew install
     - phantomjs
     - ember-cli
   - virtual
+  - archey
 robomongo
 java
 moom
