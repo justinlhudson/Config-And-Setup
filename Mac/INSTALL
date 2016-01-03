@@ -22,6 +22,7 @@ brew install
       - boot2docker
       - google-chrome
       - tmux
+      - the_silver_searcher
   - mongodb
   - wget
   - redis
