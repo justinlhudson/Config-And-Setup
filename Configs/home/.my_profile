@@ -30,6 +30,7 @@ elif [[ $MY_SHELL == *bash* ]]; then
   MY_SHELL=bash
 fi
 
+# verify in terminal
 echo $MY_OS $MY_SHELL
 
 ### Terminal History ###
