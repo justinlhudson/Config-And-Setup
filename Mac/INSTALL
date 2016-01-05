@@ -39,5 +39,6 @@ alfred v2+
 vagrant
 gem
   - tmuxinator
+launchcontrol (How To http://launchd.info/)
 
 

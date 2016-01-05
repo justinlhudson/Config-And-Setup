@@ -62,9 +62,8 @@ alias ktmux="tmux kill-session -t"
 alias ..='cd ..'
 alias ...='cd ../../..'
 alias ....='cd ../../../..'
-alias ls='ls --color=auto'
 alias ll='ls -la'
-alias l.='ls -d .* --color=auto'
+alias l.='ls -d .*'
 alias mkdir='mkdir -pv'
 
 # Port forwarding thru SSH
