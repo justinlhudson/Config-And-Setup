@@ -5,8 +5,7 @@ if [ `whoami` != root ]; then
     exit
 fi
 
-# apt-get Ubuntu distro version
-silversearcher-ag expect git tmux gparted gdisk htop ssh vsftpd samba vim filezilla nautilus-dropbox bind9 jump supervisor vim vnc4server vncpasswd nodejs npm nginx
+apt-get install -f silversearcher-ag expect git tmux gparted gdisk htop ssh vsftpd samba vim filezilla nautilus-dropbox bind9 jump supervisor vim vnc4server vncpasswd nodejs npm nginx
 redis-server cpulimit
 
 # latest per website instructions
@@ -33,3 +32,14 @@ gem install tmuxinator
 # /etc/default/boinc-client
 # boinccmd
 
+# http://rvm.io/
+curl -sSL https://get.rvm.io | bash -s stable
+
+# https://github.com/tmuxinator/tmuxinator
+gem install tmuxinator
+
+# https://github.com/gmarik/Vundle.vim
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+# terminal landscape systeminformation
+apt-get install landscape-client

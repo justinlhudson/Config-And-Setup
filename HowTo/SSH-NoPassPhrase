@@ -1,6 +1,0 @@
-
-
-ssh-keygen
-
-ssh-copy-id “<username>@<address> -p 2222"
-

@@ -1,2 +1,2 @@
-# To disable autosave in TextEdit.app, run the following command in Terminal:
+### To disable autosave in TextEdit.app, run the following command in Terminal:
 defaults write com.apple.TextEdit ApplePersistence -bool no

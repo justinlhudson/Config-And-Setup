@@ -1,35 +1,18 @@
-# give sudo to user or apps
+### sudo (without passwd) to user or apps ###
 
 sudo visudo
-
 <usr> ALL=NOPASSWD: /usr/bin/application
 
-# logging system operations
-
+### Logging system operations ###
 tail -f /var/log/syslog
 
-
-# move files into dated folders
-DatedFileFolder()
-{
-  for x in *.jpg; do
-    d=$(date -r "$x" +%Y-%m-%d)
-    mkdir -p "$d"
-    mv -- "$x" "$d/"
-  done
-}
-
-#cd Temp
-#DatedFileFolder
-#cd ..
-
-# remove files older then 5 days old recusively
+#### Remove files older then 5 days old recusively ###
 find /path/to/files/* -depth -mtime +5 -exec rm {} \;
 
-#backup crontab
+### Backup crontab ###
 crontab -l > ~/$(date +%Y%m%d).crontab
 
-#ram disk
+### Create RAM disk ###
 mkdir -p /mnt/ramdisk
 chmod 777 -R /mnet/ramdisk
 ln -s /mnt/ramdisk/ /ram
@@ -38,7 +21,7 @@ mount -t tmpfs -o size=1024m tmpfs /mnt/ramdisk
 tmpfs  /mnt/ramdisk tmpfs  nodev,nosuid,noexec,nodiratime,size=1024M  0 0
 mount -a # update fstab without reboot
 
-#create swap file after the fact
+### Create SWAP file after the fact or rather then a partition ###
 sudo fallocate -l 8G /swapfile
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
@@ -48,7 +31,10 @@ sudo swapon -s
 /etc/fstab:
 /swapfile   none    swap    sw    0   0
 
-# dated folders for files
+# reload fstab (w/o reboot)
+sudo mount -a
+
+### Dated folders for files  ###
 _path=/path/to/directory/
 for _d in $(find $_path  -mindepth 1 -maxdepth 1 -type d) ; do
   echo $_d
@@ -61,18 +47,20 @@ for _d in $(find $_path  -mindepth 1 -maxdepth 1 -type d) ; do
   done
 done
 
-#reload fstab 
-sudo mount -a
-
-# list drives 
+### List drives ###
 sudo blkid
 
-# edit gnome settings
-# Disable automount -> org.gnome.desktop.media-handling
+### Disable automount ###
+# Edit gnome settings (to not auto mount external drive, if configured in fstab)
+# goto -> org.gnome.desktop.media-handling
 dconf-editor
 
-# change cpu power strategy
+### Change cpu power strategy ###
 apt-get install Cpufregutils
 vim /etc/init.d/cpufrequtils
 service cpufrequtils restart
 cpufreq-info
+
+### SSH save password ###
+ssh-keygen
+ssh-copy-id “<username>@<address> -p 22"

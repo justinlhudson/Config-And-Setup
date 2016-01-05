@@ -1,4 +1,4 @@
 Config-And-Setup
 ================
 
-configuration files, setup and operation information
+configuration files, setup, and operation information
