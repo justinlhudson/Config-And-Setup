@@ -83,8 +83,8 @@ if [[ $MY_OS == mac ]]; then
 
   # For fun...
   if [[ $MY_SHELL == zsh ]]; then
-    source "$( dirname "${(%):-%N}" )/.phrase" > /dev/null 2>&1
+    source "$( dirname "${(%):-%N}" )/.sound/.sound" > /dev/null 2>&1
   elif [[ $MY_SHELL == bash ]]; then
-    source "$( dirname "${BASH_SOURCE[0]}" )/.phrase"
+    source "$( dirname "${BASH_SOURCE[0]}" )/.sound/.sound"
   fi
 fi
