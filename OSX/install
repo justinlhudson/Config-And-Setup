@@ -1,4 +1,4 @@
-Mac Installs
+### OSX Installs ###
 oh my zsh
 homebrew
 iterm2
@@ -40,5 +40,3 @@ vagrant
 gem
   - tmuxinator
 launchcontrol (How To http://launchd.info/)
-
-

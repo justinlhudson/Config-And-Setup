@@ -5,32 +5,23 @@ if [ `whoami` != root ]; then
     exit
 fi
 
-apt-get install -f silversearcher-ag expect git tmux gparted gdisk htop ssh vsftpd samba vim filezilla nautilus-dropbox bind9 jump supervisor vim vnc4server vncpasswd nodejs npm nginx
+# apt-get install -f
+
+silversearcher-ag expect git tmux gparted gdisk htop ssh vsftpd samba vim filezilla nautilus-dropbox bind9 jump supervisor vim vnc4server vncpasswd nodejs npm nginx
 redis-server cpulimit
 
-# latest per website instructions
+### Latest per website instructions ###
 mongodb
 docker (docker-engine)
 mono (mono-devel, mono-complete)
 oh-my-zsh
 
-#node verse nodjs
-sudo ln -s /usr/bin/nodejs /usr/bin/node
+# node verse nodjs
+ln -s /usr/bin/nodejs /usr/bin/node
 
-sudo npm install bower -g
-sudo npm install gulp -g
-
-#tmux session profile (windows and auto start apps/locations)
-gem install tmuxinator
-
-### Boinc ###
-# seti/boinc cliet
-# apt-get install python-software-properties
-# add-apt-repository ppa:costamagnagianfranco/boinc
-# apt-get update
-# apt-get install boinc-client
-# /etc/default/boinc-client
-# boinccmd
+### NPM installs ###
+npm install bower -g
+npm install gulp -g
 
 # http://rvm.io/
 curl -sSL https://get.rvm.io | bash -s stable
