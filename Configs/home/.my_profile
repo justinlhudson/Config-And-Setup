@@ -2,7 +2,7 @@
 # .zshrc or .bashrc or ...
 # Ex:  source ~/.my_profile
 
-echo "https://github.com/justinlhudson/Config-And-Setup/blob/master/Configs/home/.my_profile"
+echo "Using: https://github.com/justinlhudson/Config-And-Setup/blob/master/Configs/home/.my_profile"
 
 ### Determine OS being used ###
 
@@ -44,7 +44,7 @@ if [[ $MY_TERM == *xterm* ]]; then
 fi
 
 # verify in terminal
-echo $MY_OS $MY_TERM $MY_SHELL
+echo "Under: $MY_OS $MY_TERM $MY_SHELL"
 
 ### Terminal History ###
 
@@ -110,3 +110,5 @@ if [[ $MY_OS == mac ]]; then
     source "$( dirname "${BASH_SOURCE[0]}" )/.sounds/.sound"  > /dev/null 2>&1
   fi
 fi
+
+echo ""
