@@ -2,8 +2,6 @@
 # .zshrc or .bashrc or ...
 # Ex:  source ~/.my_profile
 
-echo "Using: https://github.com/justinlhudson/Config-And-Setup/blob/master/Configs/home/.my_profile"
-
 ### Determine OS being used ###
 
 MY_OS="`uname`"
@@ -44,7 +42,9 @@ if [[ $MY_TERM == *xterm* ]]; then
 fi
 
 # verify in terminal
-echo "Under: $MY_OS $MY_TERM $MY_SHELL"
+if [ -n $1 ] && [[ $1 == "-v" ]]; then
+  echo "Under: $MY_OS $MY_TERM $MY_SHELL"
+fi
 
 ### Terminal History ###
 
