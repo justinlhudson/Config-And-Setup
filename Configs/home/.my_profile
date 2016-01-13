@@ -61,7 +61,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 export SUCCESS=0
 export FAIL=1
-# Editor default selection
+# editor default
 export EDITOR="vim"
 
 ### Aliases ###
@@ -78,6 +78,7 @@ if [[ $MY_SHELL == zsh ]]; then
   alias ll='ls -hal'
   alias l.='ls -d .*'
 else
+  alias ls='ls --color=auto'
   alias ll='ls -hal --color=auto'
   alias l.='ls -d  --color=auto .*'
 fi
