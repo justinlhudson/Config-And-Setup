@@ -103,6 +103,15 @@ cd() {
   fi
 }
 
+# make space in terminal for scrolling
+space() {
+  for i in {1..25}
+  do
+   echo ""
+  done
+  clear
+}
+
 ### Term Specifics ###
 
 if [[ $MY_TERM == xterm ]]; then
