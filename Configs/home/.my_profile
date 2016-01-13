@@ -38,7 +38,7 @@ fi
 
 ### Determine TERM being used ###
 # Note: what terminal a shell is running it (i.e. parent of the shell)
-MY_TERM=$(ps -p$PPID)
+MY_TERM=$TERM
 if [[ $MY_TERM == *xterm* ]]; then
   MY_TERM=xterm
 fi
