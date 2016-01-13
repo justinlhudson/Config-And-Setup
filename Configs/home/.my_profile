@@ -1,6 +1,7 @@
 #### Installation ####
-# .zshrc or .bashrc or ...
-# Ex:  source ~/.my_profile
+# File: .zshrc or .bashrc or ...
+# Add:  source ~/.my_profile
+# Done...
 
 ### Determine OS being used ###
 
@@ -9,19 +10,12 @@ case $MY_OS in
   'Linux')
     MY_OS='linux'
     ;;
-  'FreeBSD')
-    MY_OS='bsd'
-    ;;
   'WindowsNT')
     MY_OS='windows'
     ;;
   'Darwin')
     MY_OS='mac'
     ;;
-  'SunOS')
-    MY_OS='solaris'
-    ;;
-  'AIX') ;;
   *) ;;
 esac
  
@@ -35,6 +29,7 @@ elif [[ $MY_SHELL == *bash* ]]; then
 fi
 
 ### Determine TERM being used ###
+
 # Note: what terminal a shell is running it (i.e. parent of the shell)
 MY_TERM=$TERM
 if [[ $MY_TERM == *xterm* ]]; then
@@ -64,24 +59,48 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 ### Variables ###
 
+export SUCCESS=0
+export FAIL=1
 # Editor default selection
 export EDITOR="vim"
 
 ### Aliases ###
 
-alias ohmyzsh="mate ~/.oh-my-zsh"
-alias god="sudo"
-alias c="clear"
-alias ktmux="tmux kill-session -t"
+alias ohmyzsh='mate ~/.oh-my-zsh'
+alias ktmux='tmux kill-session -t'
+alias god='sudo'
+alias c='clear'
+alias q='exit'
 alias ..='cd ..'
-alias ...='cd ../../..'
-alias ....='cd ../../../..'
-alias ll='ls -la'
-alias l.='ls -d .*'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+if [[ $MY_SHELL == zsh ]]; then
+  alias ll='ls -hal'
+  alias l.='ls -d .*'
+else
+  alias ll='ls -hal --color=auto'
+  alias l.='ls -d  --color=auto .*'
+fi
 alias mkdir='mkdir -pv'
+alias df="df -h"
+alias du="du -sh"
+if [[ $MY_OS == linux ]]; then
+  alias apt-get='sudo apt-get'
+fi
 
 # Port forwarding thru SSH
-alias torified="ssh -D 127.0.0.1:1080 -L 3128:127.0.0.1:3128 -L 8123:127.0.0.1:8123 -L 8118:127.0.0.1:8118 -L 9050:127.0.0.1:9050 <username>@<ip> -p <port>"
+#alias torified="ssh -D 127.0.0.1:1080 -L 3128:127.0.0.1:3128 -L 8123:127.0.0.1:8123 -L 8118:127.0.0.1:8118 -L 9050:127.0.0.1:9050 <username>@<ip> -p <port>"
+
+### Functions ###
+
+# list after each cd
+cd() {
+  if [ -n "$1" ]; then
+    builtin cd "$@" && ls
+  else
+    builtin cd ~ && ls
+  fi
+}
 
 ### Term Specifics ###
 
@@ -90,11 +109,7 @@ if [[ $MY_TERM == xterm ]]; then
   stty erase '^?'
 fi
 
-### OS Specifics ###
-
-if [[ $MY_OS == linux ]]; then
-  alias apt-get='sudo apt-get'
-fi
+### Other ###
 
 if [[ $MY_OS == mac ]]; then
   if type archey > /dev/null 2>&1; then
