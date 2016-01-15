@@ -34,7 +34,7 @@ i*86)
     ;;
 esac
 
-### Determine DISTRO beign used ###
+### Determine DISTRO being used ###
 
 # by type
 case `uname` in
@@ -56,7 +56,6 @@ case `uname` in
      MY_DISTRO=$DISTRO
      ;;
 esac
-
  
 ### Determine SHELL being used ###
 
@@ -77,7 +76,7 @@ fi
 
 # verify in terminal
 if [ -n $1 ] && [[ $1 == "-v" ]]; then
-  echo "Under: $MY_OS $MY_DISTRO $MY_ARCH $MY_TERM $MY_SHELL"
+  echo "$MY_OS $MY_DISTRO $MY_ARCH $MY_TERM $MY_SHELL"
 fi
 
 ### Terminal History ###
@@ -119,7 +118,7 @@ alias mkdir='mkdir -pv'
 alias df='df -Tha --total'
 alias du='du -ach | sort -h'
 alias free='free -mt'
-# show alias if found
+# show alias also if found
 alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 # who just uses vi anymore
 alias vi='vim'
@@ -171,7 +170,7 @@ cd() {
   fi
 }
 
-# history info "-i" added
+# history info "-i [depth]" added
 history() {
   if [ -n "$1" ] && [[ "$1" == "-i" ]]; then
     local _depth=10
