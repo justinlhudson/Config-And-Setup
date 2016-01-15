@@ -25,6 +25,7 @@ brew install
       - the_silver_searcher
   - mongodb
   - wget
+  - coreutils
   - redis
   - nodejs
   - npm
