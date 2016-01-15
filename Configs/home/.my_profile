@@ -127,7 +127,8 @@ alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-ti
 # who just uses vi anymore
 alias vi='vim'
 alias here='find . -name'
-alias now='date +"%T"'
+# w/ millisecond
+alias now='date +"%m-%d-%Y %T.%3N"'
 ## Safety
 alias rm='rm -i'
 alias cp='cp -i'
