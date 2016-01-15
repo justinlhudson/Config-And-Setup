@@ -142,7 +142,7 @@ else
   alias ll='ls -hal --color=auto'
   alias l.='ls -d  --color=auto .*'
 fi
-if [[ ! $MY_OS == osx ]];; then
+if [[ ! $MY_OS == osx ]]; then
   alias ps='ps auxf'
   # search
   alias psf='ps aux | grep -v grep | grep -i -e VSZ -e'
