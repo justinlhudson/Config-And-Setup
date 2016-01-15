@@ -119,7 +119,7 @@ alias mkdir='mkdir -pv'
 alias df='df -Tha --total'
 alias du='du -ach | sort -h'
 alias free='free -mt'
-alias ps='ps auxf'
+alias ps='ps aux'
 # search process by name
 alias psf='ps aux | grep -v grep | grep -i -e VSZ -e'
 # show alias if found
