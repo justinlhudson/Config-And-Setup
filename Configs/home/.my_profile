@@ -130,6 +130,8 @@ alias now='date +"%m-%d-%Y %T.%3N"'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+alias restart='sudo shutdown restart now'
+alias shutdown='sudo shutdown now'
 
 if [[ $MY_SHELL == zsh ]]; then
   alias ohmyzsh='mate ~/.oh-my-zsh'
