@@ -119,9 +119,6 @@ alias mkdir='mkdir -pv'
 alias df='df -Tha --total'
 alias du='du -ach | sort -h'
 alias free='free -mt'
-alias ps='ps aux'
-# search process by name
-alias psf='ps aux | grep -v grep | grep -i -e VSZ -e'
 # show alias if found
 alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 # who just uses vi anymore
@@ -144,6 +141,13 @@ else
   alias ls='ls -CF --color=auto'
   alias ll='ls -hal --color=auto'
   alias l.='ls -d  --color=auto .*'
+fi
+if [[ $MY_OS == osx ]];; then
+  alias psf='ps | grep -v grep | grep -i -e VSZ -e'
+elif [[ $MY_DISTRO == osx ]]; then
+  alias ps='ps auxf'
+  # search
+  alias psf='ps aux | grep -v grep | grep -i -e VSZ -e'
 fi
 if [[ $MY_DISTRO == debian ]]; then
   alias apt-get='sudo apt-get -f -y'
