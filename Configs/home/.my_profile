@@ -133,9 +133,6 @@ alias now='date +"%m-%d-%Y %T.%3N"'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias chown='chown --preserve-root'
-alias chmod='chmod --preserve-root'
-alias chgrp='chgrp --preserve-root'
 
 if [[ $MY_SHELL == zsh ]]; then
   alias ohmyzsh='mate ~/.oh-my-zsh'
