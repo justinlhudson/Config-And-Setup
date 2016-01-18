@@ -59,10 +59,12 @@ esac
  
 ### Determine SHELL being used ###
 
-MY_SHELL=$SHELL
+MY_SHELL=$(echo $0)
 if [[ $MY_SHELL == *zsh* ]]; then
+  #!/bin/zsh
   MY_SHELL=zsh
 elif [[ $MY_SHELL == *bash* ]]; then
+  #!/bin/bash
   MY_SHELL=bash
 fi
 
@@ -88,11 +90,9 @@ HISTFILESIZE=10000
 
 # Append history from each session, not the last to log out
 if [[ $MY_SHELL == bash ]]; then
-  #!/bin/bash
-  shopt -s histappend
+  shopt -s histappend > /dev/null 2>&1
 elif [[ $MY_SHELL == zsh ]]; then
-  #!/bin/zsh
-  setopt INC_APPEND_HISTORY
+  setopt INC_APPEND_HISTORY > /dev/null 2>&1
 fi
 
 # Add commands immediatley to history, not wait for log out
@@ -152,7 +152,7 @@ if [[ ! $MY_OS == osx ]]; then
   alias psf='ps aux | grep -v grep | grep -i -e VSZ -e'
 fi
 if [[ $MY_DISTRO == debian ]]; then
-  alias apt-get='sudo apt-get -f -y'
+  alias apt-get='sudo apt-get -y'
   alias upgrade='apt-get update && apt-get upgrade && apt-get autoclean && apt-get autoremove'
 fi
 if [[ $MY_DISTRO == darwin ]]; then
