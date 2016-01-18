@@ -88,9 +88,11 @@ HISTFILESIZE=10000
 
 # Append history from each session, not the last to log out
 if [[ $MY_SHELL == bash ]]; then
+  #!/bin/bash
   shopt -s histappend
 elif [[ $MY_SHELL == zsh ]]; then
-  setopt INC_APPEND_HISTORY > /dev/null 2>&1
+  #!/bin/zsh
+  setopt INC_APPEND_HISTORY
 fi
 
 # Add commands immediatley to history, not wait for log out
