@@ -23,6 +23,8 @@ brew install
       - google-chrome
       - tmux
       - the_silver_searcher
+      - mono
+  - xamarin studio
   - mongodb
   - wget
   - coreutils

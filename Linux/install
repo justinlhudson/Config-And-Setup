@@ -14,6 +14,7 @@ redis-server cpulimit
 mongodb
 docker (docker-engine)
 mono (mono-devel, mono-complete)
+monodevelop
 oh-my-zsh
 
 # node verse nodjs
