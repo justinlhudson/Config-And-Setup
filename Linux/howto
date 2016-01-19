@@ -1,0 +1,4 @@
+# osx remote viewer to ubuntu remote desktop
+install: gconf-tools
+run: dconf-Editor
+change: dconf -> org -> gnome -> desktop -> remote-access -> require-encription - uncheck
