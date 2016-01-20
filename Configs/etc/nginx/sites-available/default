@@ -21,13 +21,20 @@ server {
   listen 80 default_server;
   listen [::]:80 default_server ipv6only=on;
 
-  root /usr/share/nginx/www/site-name/;
+  #listen 443 ssl;
+  listen 444 ssl;
+
+  root /usr/share/nginx/www/comp-ds/;
   index index.html index.htm;
 
   # Make site accessible from http://localhost/
   server_name localhost;
 
+  ssl_certificate /etc/nginx/ssl/nginx.crt;
+  ssl_certificate_key /etc/nginx/ssl/nginx.key;
+
   location / {
+    #allow all;
     try_files $uri $uri/ /index.html?/$request_uri;
   }
 
