@@ -2,3 +2,15 @@
 install: gconf-tools
 run: dconf-Editor
 change: dconf -> org -> gnome -> desktop -> remote-access -> require-encription - uncheck
+
+# invert mouse like mac
+sudo vim /usr/share/X11/xorg.conf.d/20-natural-scrolling.conf
+Section "InputClass"
+        Identifier "natural scrolling for mouse wheel"
+        MatchIsPointer "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "mouse"
+        Option "Device" "/dev/input/mice"
+        Option "Protocol" "Auto"
+        Option "ZAxisMapping" "5 4"
+EndSection
