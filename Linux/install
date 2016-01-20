@@ -7,8 +7,8 @@ fi
 
 # apt-get install -f
 
-silversearcher-ag expect git tmux gparted gdisk htop ssh vsftpd samba vim filezilla nautilus-dropbox bind9 jump supervisor vim vnc4server vncpasswd nodejs npm nginx
-redis-server cpulimit
+silversearcher-ag expect git tmux gparted gdisk htop ssh vsftpd samba vim filezilla nautilus-dropbox bind9 supervisor vim vnc4server vncpasswd nodejs npm nginx
+redis-server cpulimit autojump
 
 ### Latest per website instructions ###
 mongodb
