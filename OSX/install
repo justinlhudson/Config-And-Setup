@@ -7,7 +7,6 @@ chrome
 docker.io
 vim
 vundle
-silver-searcher
 sourcetree
 xamarin
 eagle (cadsoft)
@@ -24,7 +23,8 @@ brew install
       - tmux
       - the_silver_searcher
       - mono
-      - autojump
+  - autojump
+  - the_silver_searcher
   - xamarin studio
   - mongodb
   - wget
