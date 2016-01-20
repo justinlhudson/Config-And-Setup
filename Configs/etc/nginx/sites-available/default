@@ -21,8 +21,8 @@ server {
   listen 80 default_server;
   listen [::]:80 default_server ipv6only=on;
 
-  #listen 443 ssl;
-  listen 444 ssl;
+  listen 443 ssl;
+  #listen 444 ssl;
 
   root /usr/share/nginx/www/comp-ds/;
   index index.html index.htm;
