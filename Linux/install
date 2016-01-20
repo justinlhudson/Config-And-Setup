@@ -17,6 +17,10 @@ mono (mono-devel, mono-complete)
 monodevelop
 oh-my-zsh
 
+# stop ssh and other attacks
+apt-get install fail2ban
+# apt-get install denyhosts
+
 # node verse nodjs
 ln -s /usr/bin/nodejs /usr/bin/node
 
