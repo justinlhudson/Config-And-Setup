@@ -19,6 +19,9 @@ oh-my-zsh
 
 # stop ssh and other attacks
 apt-get install fail2ban
+# optional helpers
+sudo apt-get install nginx sendmail iptables-persistent
+
 # apt-get install denyhosts
 
 # node verse nodjs
