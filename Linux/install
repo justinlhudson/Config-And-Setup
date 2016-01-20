@@ -21,6 +21,8 @@ oh-my-zsh
 apt-get install fail2ban
 # optional helpers
 sudo apt-get install nginx sendmail iptables-persistent
+# check rules with
+ sudo iptables -S
 
 # apt-get install denyhosts
 
