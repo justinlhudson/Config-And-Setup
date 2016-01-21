@@ -195,11 +195,6 @@ history() {
   fi
 }
 
-# create default vnc window
-cvnc() {
-  vncserver -geometry 1920x1080 -depth 32 "$@"
-}
-
 # kill vnc window(s)
 kvnc()
 {
