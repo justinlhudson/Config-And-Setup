@@ -195,6 +195,21 @@ history() {
   fi
 }
 
+# kill vnc window(s)
+kvnc()
+{
+  if [ -n "$1" ]; then
+    vncserver -kill :$1
+  else
+    for v in ~/.vnc/*.pid
+    do
+      _window=$(basename "$v" .pid)
+      echo "VNC kill $_window"
+      vncserver -kill $_window
+    done
+  fi
+}
+
 # make space in terminal for scrolling
 space() {
   for i in {1..50}
@@ -207,8 +222,14 @@ space() {
 ### Term Specifics ###
 
 if [[ $MY_TERM == xterm ]]; then
-  # Make backspace work instead of delete ^H
+  # backspace work instead of delete ^H
   stty erase '^?'
+
+  # home and end keys
+  bindkey '\e[H'    beginning-of-line
+  bindkey '\e[F'    end-of-line
+  #bindkey '\e[2~'   overwrite-mode
+  #bindkey '\e[3~'   delete-char
 fi
 
 ### Other ###
