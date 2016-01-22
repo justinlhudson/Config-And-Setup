@@ -137,13 +137,11 @@ alias plogout='sudo pkill -KILL -u'
 
 if [[ $MY_OS == osx ]]; then
   alias ls='ls -GpF'
-  # not want -F option on ll
-  ll() { builtin ls  -Glap }
+  alias ll='ls -la'
   alias l.='ls -d .*'
 else
   alias ls='ls -pF --color=auto'
-  # not want -F option on ll
-  ll() { builtin ls -la --color=auto }
+  alias ll='ls -la'
   alias l.='ls -d .*'
 fi
 
