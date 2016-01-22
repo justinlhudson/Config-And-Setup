@@ -135,17 +135,18 @@ alias restart='sudo shutdown -r now'
 alias shutdown='sudo shutdown now'
 alias plogout='sudo pkill -KILL -u'
 
-if [[ $MY_SHELL == zsh ]]; then
-  alias ohmyzsh='mate ~/.oh-my-zsh'
-  # oh-my-zsh adds its own colors
-  alias ls='ls -CF'
-  alias ll='ls  -hal'
+if [[ $MY_OS == osx ]]; then
+  alias ls='ls -GpF'
+  # not want -F option on ll
+  ll() { builtin ls  -Glap }
   alias l.='ls -d .*'
 else
-  alias ls='ls -CF --color=auto'
-  alias ll='ls -hal --color=auto'
-  alias l.='ls -d  --color=auto .*'
+  alias ls='ls -pF --color=auto'
+  # not want -F option on ll
+  ll() { builtin ls -la --color=auto }
+  alias l.='ls -d .*'
 fi
+
 if [[ ! $MY_OS == osx ]]; then
   alias ps='ps auxf'
   # search
