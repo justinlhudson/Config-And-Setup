@@ -106,13 +106,15 @@ export FAIL=1
 export EDITOR="vim"
 
 ### Aliases ###
-
+alias vi='vim'
 alias ktmux='tmux kill-session -t'
 # not the real God, hence lowercase.
 alias god='sudo'
+alias please='god'
 alias c='clear'
 alias h='history'
 alias quit='exit'
+alias q='quit'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -122,8 +124,6 @@ alias du='du -ach'
 alias free='free -mt'
 # show alias also if found
 alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
-# who just uses vi anymore
-alias vi='vim'
 alias here='find . -name'
 # w/ millisecond
 alias now='date +"%m-%d-%Y %T.%3N"'
@@ -136,20 +136,21 @@ alias shutdown='sudo shutdown now'
 alias plogout='sudo pkill -KILL -u'
 
 if [[ $MY_OS == osx ]]; then
-  alias ls='ls -GpF'
-  alias ll='ls -la'
-  alias l.='ls -d .*'
+  alias ls='ls -GpFA'
 else
-  alias ls='ls -pF --color=auto'
-  alias ll='ls -la'
-  alias l.='ls -d .*'
+  alias ls='ls -pFA --color=auto'
 fi
+alias l='ls'
+alias ll='ls -lAh'
+alias l.='ls -d .*'
+alias la='ls -lah'
 
 if [[ ! $MY_OS == osx ]]; then
   alias ps='ps auxf'
   # search
   alias psf='ps aux | grep -v grep | grep -i -e VSZ -e'
 fi
+
 if [[ $MY_DISTRO == debian ]]; then
   alias apt-get='sudo apt-get -y'
   alias upgrade='apt-get update && apt-get upgrade && apt-get autoclean && apt-get autoremove'
