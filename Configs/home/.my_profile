@@ -136,9 +136,9 @@ alias shutdown='sudo shutdown now'
 alias plogout='sudo pkill -KILL -u'
 
 if [[ $MY_OS == osx ]]; then
-  alias ls='ls -GpFA'
+  alias ls='ls -GpF'
 else
-  alias ls='ls -pFA --color=auto'
+  alias ls='ls -pF --color=auto'
 fi
 alias l='ls'
 alias ll='ls -lAh'
