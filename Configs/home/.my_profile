@@ -106,6 +106,7 @@ export FAIL=1
 export EDITOR="vim"
 
 ### Aliases ###
+
 alias vi='vim'
 alias ktmux='tmux kill-session -t'
 # not the real God, hence lowercase.
