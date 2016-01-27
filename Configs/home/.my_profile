@@ -165,10 +165,6 @@ fi
 if type autojump > /dev/null 2>&1; then
   alias j='autojump'
 fi
-# terminal screen saver (matrix)
-if type cmatrix >/dev/null 2>&1; then
-  alias tss='cmatrix'
-fi
 # Port forwarding thru SSH
 #alias torified="ssh -D 127.0.0.1:1080 -L 3128:127.0.0.1:3128 -L 8123:127.0.0.1:8123 -L 8118:127.0.0.1:8118 -L 9050:127.0.0.1:9050 <username>@<ip> -p <port>"
 
@@ -216,6 +212,13 @@ space() {
   done
   clear
 }
+# terminal screen saver (matrix)
+if type cmatrix > /dev/null 2>&1; then
+  tss() {
+    cmatrix
+    clear
+  }
+fi
 
 ### Term Specifics ###
 
@@ -224,8 +227,8 @@ if [[ $MY_TERM == xterm ]]; then
   stty erase '^?'
 
   # home and end keys
-  bindkey '\e[H'    beginning-of-line
-  bindkey '\e[F'    end-of-line
+  #bindkey '\e[H'    beginning-of-line
+  #bindkey '\e[F'    end-of-line
   #bindkey '\e[2~'   overwrite-mode
   #bindkey '\e[3~'   delete-char
 fi
@@ -237,7 +240,7 @@ if [[ $MY_OS == osx ]]; then
     archey
   fi
 
-  alias afplay='afplay -q 1'
+  alias afplay='afplay -q 1'.
 
   # For fun...
   # play funny sounds from terminal
@@ -245,6 +248,6 @@ if [[ $MY_OS == osx ]]; then
   
   # start screen saver at start
   if type tss >/dev/null 2>&1; then
-    timeout --foreground 5 tss
+    tss
   fi
 fi
