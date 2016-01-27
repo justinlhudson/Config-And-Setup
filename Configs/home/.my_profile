@@ -148,7 +148,7 @@ else
   alias ps='ps auxf'
 fi
 # search
-alias psf='ps aux | grep -v grep | grep -i -e VSZ -e'
+alias psf='ps | grep -v grep | grep -i -e VSZ -e'
 if [[ $MY_DISTRO == debian ]]; then
   alias apt-get='sudo apt-get -y'
   alias upgrade='apt-get update && apt-get upgrade && apt-get autoclean && apt-get autoremove'
