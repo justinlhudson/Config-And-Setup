@@ -36,6 +36,8 @@ brew install
     - ember-cli
   - virtual
   - archey
+  - cmatrix # funny
+  
 robomongo
 java
 moom
