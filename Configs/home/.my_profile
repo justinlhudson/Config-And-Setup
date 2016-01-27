@@ -246,8 +246,4 @@ if [[ $MY_OS == osx ]]; then
   # play funny sounds from terminal
   source ~/.sounds/.sound > /dev/null 2>&1
   
-  # start screen saver at start
-  if type tss >/dev/null 2>&1; then
-    tss
-  fi
 fi
