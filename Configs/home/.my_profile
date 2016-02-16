@@ -190,6 +190,14 @@ history() {
   fi
 }
 
+screen() {
+  if [ ! -n "$1" ]; then
+    command screen -DR default
+  else
+    command screen "$@"
+  fi
+}
+
 mux()
 {
   if [ -n "$1" ] && [[ "$1" == "-k" ]] && [ -n "$2" ]; then
@@ -256,5 +264,4 @@ if [[ $MY_OS == osx ]]; then
   # For fun...
   # play funny sounds from terminal
   source ~/.sounds/.sound > /dev/null 2>&1
-  
 fi
