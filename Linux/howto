@@ -2,6 +2,8 @@
 install: gconf-tools
 run: dconf-Editor
 change: dconf -> org -> gnome -> desktop -> remote-access -> require-encription - uncheck
+terminal:
+gsettings set org.gnome.Vino require-encryption false
 
 # invert mouse like mac
 sudo vim /usr/share/X11/xorg.conf.d/20-natural-scrolling.conf
