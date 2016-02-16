@@ -1,1 +1,8 @@
+# scroll back
+defscrollback 5000
+
+# ability to detach the terminal emulator from the running programs
+autodetach on
+
+# startup shell
 shell "/usr/bin/zsh"
