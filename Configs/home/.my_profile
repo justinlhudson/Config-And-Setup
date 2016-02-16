@@ -106,7 +106,6 @@ export EDITOR="vim"
 ### Aliases ###
 
 alias vi='vim'
-alias ktmux='tmux kill-session -t'
 # not the real God, hence lowercase.
 alias god='sudo'
 alias please='god'
@@ -190,6 +189,19 @@ history() {
     builtin history "$@"
   fi
 }
+
+mux()
+{
+  if [ -n "$1" ] && [[ "$1" == "-k" ]] && [ -n "$2" ]; then
+    for v in ~/.vnc/*.pid
+    do
+      command tmux kill-session -t "$2"
+    done
+  else
+    command mux "$@"
+  fi
+}
+
 # kill vnc window(s)
 vncserver()
 {
