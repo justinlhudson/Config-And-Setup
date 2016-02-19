@@ -152,7 +152,7 @@ else
 fi
 if [[ $MY_DISTRO == debian ]]; then
   alias apt-get='sudo apt-get -y'
-  alias upgrade='apt-get update && apt-get upgrade && apt-get autoclean && apt-get autoremove'
+  alias upgrade='apt-get update && apt-get dist-upgrade && apt-get upgrade && apt-get autoclean && apt-get autoremove'
 fi
 if [[ $MY_DISTRO == darwin ]]; then
   alias upgrade='brew update && brew upgrade && brew cleanup && brew cask cleanup'
