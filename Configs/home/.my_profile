@@ -200,8 +200,12 @@ screen() {
 
 mux()
 {
-  if [ -n "$1" ] && [[ "$1" == "-k" ]] && [ -n "$2" ]; then
-    command tmux kill-session -t "$2"
+  if [ -n "$1" ] && [[ "$1" == "-k" ]]; then
+    if [ -n "$2" ]; then
+      command tmux kill-session -t $2
+    else
+      command tmux kill-session
+    fi
   else
     command mux "$@"
   fi
