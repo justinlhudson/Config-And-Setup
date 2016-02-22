@@ -19,8 +19,9 @@ set-option -g repeat-time 10000
 
 bind r source-file ~/.tmux.conf \; display "Reloaded!"
 
-bind | split-window -h
-bind - split-window -v
+bind - split-window -h
+bind | split-window -v
+bind + split-window -v
 
 # switch pan with arrow keys (vim style)
 bind h select-pane -L
