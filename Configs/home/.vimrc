@@ -64,7 +64,7 @@ map <c-space> /
 " open explore
 map e :Explore<cr>
 " close explore
-map <c-e> :bd<cr>
+map <c-c> :bd<cr>
 
 " add tab/space in Explore tree (cleaner)
 let mapleader=" "
