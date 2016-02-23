@@ -5,7 +5,7 @@
 
 ### Determine OS being used ###
 
-MY_OS="`uname`"
+MY_OS= $(uname)
 case $MY_OS in
   'Linux')
     MY_OS='linux'
@@ -37,7 +37,7 @@ esac
 ### Determine DISTRO being used ###
 
 # by type
-case `uname` in
+case $(uname) in
   Linux )
     # test for distro by command
     MY_DISTRO=$(cat /proc/version)
@@ -51,8 +51,7 @@ case `uname` in
      MY_DISTRO=darwin
      ;;
   * )
-     # more if needed
-     # keep same
+     # keep default
      MY_DISTRO=$DISTRO
      ;;
 esac
@@ -70,13 +69,12 @@ fi
 
 ### Determine TERM being used ###
 
-# Note: what terminal a shell is running it (i.e. parent of the shell)
 MY_TERM=$TERM
 if [[ $MY_TERM == *xterm* ]]; then
   MY_TERM=xterm
 fi
 
-# verify in terminal
+# Verify in terminal
 if [ -n $1 ] && [[ $1 == "-v" ]]; then
   echo "$MY_OS $MY_DISTRO $MY_ARCH $MY_TERM $MY_SHELL"
   echo ""
@@ -87,7 +85,7 @@ fi
 # Saving HISTFILESIZE lines to disk and loading the last HISTSIZE lines into memory
 HISTSIZE=5000
 HISTFILESIZE=10000
-# Append history from each session, not the last to log out
+# Append history from each session, not the last terminal to log out
 if [[ $MY_SHELL == bash ]]; then
   shopt -s histappend > /dev/null 2>&1
 elif [[ $MY_SHELL == zsh ]]; then
@@ -125,7 +123,7 @@ alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-ti
 alias here='find . -name'
 # w/ millisecond
 alias now='date +"%m-%d-%Y %T.%3N"'
-## Safety
+## safety
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -224,6 +222,7 @@ vncserver()
     command vncserver "$@"
   fi
 }
+
 # make space in terminal for scrolling
 space() {
   for i in {1..50}
@@ -232,6 +231,7 @@ space() {
   done
   clear
 }
+
 # terminal screen saver (matrix)
 if type cmatrix > /dev/null 2>&1; then
   tss() {
@@ -240,17 +240,22 @@ if type cmatrix > /dev/null 2>&1; then
   }
 fi
 
-### Term Specifics ###
+### Key Bindings ###
 
 if [[ $MY_TERM == xterm ]]; then
   # backspace work instead of delete ^H
   stty erase '^?'
+fi
 
-  # home and end keys
-  #bindkey '\e[H'    beginning-of-line
-  #bindkey '\e[F'    end-of-line
-  #bindkey '\e[2~'   overwrite-mode
-  #bindkey '\e[3~'   delete-char
+# bind keys per shell and terminal
+if [[ $MY_SHELL == *zsh* ]]; then
+  case $MY_TERM in
+    screen*|xterm*|putty*)
+      # home and end keys
+      bindkey '\e[1~' beginning-of-line
+      bindkey '\e[4~' end-of-line  
+      ;;
+  esac
 fi
 
 ### Other ###
