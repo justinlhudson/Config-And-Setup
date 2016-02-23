@@ -55,12 +55,14 @@ endif
 map <space> :
 map <c-space> /
 
+" open explore
 map e :Explore<cr>
+" close explore
+map <c-e> :bd<cr>
+
 " add tab/space in Explore tree (cleaner)
 let mapleader=" "
 let g:netrw_liststyle=3
-
-map c :bd<cr>                                           " close current buffer
 
 map <leader>ss :setlocal spell!<cr>                     " ss will toggle and untoggle spell checking
 
@@ -77,6 +79,7 @@ set splitright                                          " open vertical splits b
 
 syntax on                                               " turn sytanx highlighting enabled
 
+set cmdheight=2                                         " message height in command window
 set expandtab                                           " Use spaces instead of tabs
 set smarttab                                            " Be smart when using tabs
 set softtabstop=2                                       " soft tabs, ie. number of spaces for tab
