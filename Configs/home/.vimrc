@@ -21,7 +21,7 @@ if filereadable(vundleReadme)
 
   "*** Plugin(s) ***"
 
-  Plugin 'taglist.vim'
+  "Plugin 'taglist.vim'
   Plugin 'surround.vim'
   Plugin 'scrooloose/syntastic'
   Plugin 'kien/ctrlp.vim'
