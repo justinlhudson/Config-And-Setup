@@ -1,5 +1,5 @@
 
-" Install & Setup Vundle
+""" Install & Setup Vundle (if have internet access)
 let initVundle=0
 let vundleReadme=expand('~/.vim/bundle/Vundle.vim/README.md')
 if !filereadable(vundleReadme)
@@ -19,6 +19,8 @@ if filereadable(vundleReadme)
 
   Plugin 'VundleVim/Vundle.vim'                           " let Vundle manage Vundle, required
 
+  "*** Plugin(s) ***"
+
   Plugin 'taglist.vim'
   Plugin 'surround.vim'
   Plugin 'scrooloose/syntastic'
@@ -35,7 +37,7 @@ if filereadable(vundleReadme)
     :PluginInstall
   endif
 
-  "" Plug-in Specific ""
+  "** Plugin(s) Configuration **"
 
   " Syntastic
   set statusline+=%#warningmsg#
@@ -47,6 +49,8 @@ if filereadable(vundleReadme)
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq = 0
 endif
+
+""" Configuration(s)
 
 map <space> :
 map <c-space> /
@@ -100,7 +104,7 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
-" Configure backspace so it acts as it should act
+" Configure backspace so it acts as it should (in my mind)
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
