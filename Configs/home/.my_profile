@@ -60,7 +60,8 @@ esac
  
 ### Determine SHELL being used ###
 
-MY_SHELL=$(echo $0)
+#MY_SHELL=$(echo $0)
+MY_SHELL=$SHELL
 if [[ $MY_SHELL == *zsh* ]]; then
   #!/bin/zsh
   MY_SHELL=zsh
@@ -250,14 +251,10 @@ if [[ $MY_TERM == xterm ]]; then
 fi
 
 # bind keys per shell and terminal
-if [[ $MY_SHELL == *zsh* ]]; then
-  case $MY_TERM in
-    screen*|xterm*|putty*)
-      # home and end keys
-      bindkey '\e[1~' beginning-of-line
-      bindkey '\e[4~' end-of-line  
-      ;;
-  esac
+if [[ $MY_SHELL == zsh ]]; then
+  # home and end keys
+    bindkey '\e[1~' beginning-of-line
+    bindkey '\e[4~' end-of-line  
 fi
 
 ### Other ###
