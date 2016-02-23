@@ -1,22 +1,52 @@
 
-set nocompatible                                        " be iMproved, required
-filetype off                                            " required
+" Install & Setup Vundle
+let initVundle=0
+let vundleReadme=expand('~/.vim/bundle/Vundle.vim/README.md')
+if !filereadable(vundleReadme)
+  echo "Installing Vundle.."
+  echo ""
+  silent !mkdir -p ~/.vim/bundle/Vundle.vim
+  silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  let initVundle=1
+endif
 
-set rtp+=~/.vim/bundle/Vundle.vim                       " set the runtime path to include Vundle and initialize
-call vundle#begin()
+if filereadable(vundleReadme)
+  set nocompatible                                        " be iMproved, required
+  filetype off                                            " required
 
-Plugin 'gmarik/Vundle.vim'                              " let Vundle manage Vundle, required
+  set rtp+=~/.vim/bundle/Vundle.vim                       " set the runtime path to include Vundle and initialize
+  call vundle#begin()
 
-Plugin 'taglist.vim'
-Plugin 'surround.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'kien/ctrlp.vim'
-Plugin 'rking/ag.vim'
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'Lokaltog/vim-easymotion'
+  Plugin 'VundleVim/Vundle.vim'                           " let Vundle manage Vundle, required
 
-call vundle#end()                                       " required " All of your Plugins must be added before the following line
-filetype plugin indent on                               " required
+  Plugin 'taglist.vim'
+  Plugin 'surround.vim'
+  Plugin 'scrooloose/syntastic'
+  Plugin 'kien/ctrlp.vim'
+  Plugin 'rking/ag.vim'
+  "Plugin 'Valloric/YouCompleteMe'
+  Plugin 'Lokaltog/vim-easymotion'
+
+  call vundle#end()                                       " required - All of your Plugins must be added before the following line
+  filetype plugin indent on                               " required
+
+  if initVundle == 1
+    echo "Installing Plugins"
+    :PluginInstall
+  endif
+
+  "" Plug-in Specific ""
+
+  " Syntastic
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+endif
 
 map <space> :
 map <c-space> /
@@ -41,7 +71,7 @@ nnoremap - <C-w>s
 set splitbelow                                          " open horizontal splits on the right
 set splitright                                          " open vertical splits below
 
-syntax enable                                           " turn sytanx highlighting one
+syntax on                                               " turn sytanx highlighting enabled
 
 set expandtab                                           " Use spaces instead of tabs
 set smarttab                                            " Be smart when using tabs
