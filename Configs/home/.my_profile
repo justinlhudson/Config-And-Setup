@@ -5,7 +5,7 @@
 
 ### Determine OS being used ###
 
-MY_OS= $(uname)
+MY_OS=$(uname)
 case $MY_OS in
   'Linux')
     MY_OS='linux'
@@ -21,7 +21,8 @@ esac
 
 ### Determine ARCH being used ###
 
-case $(uname -m) in
+MY_ARCH=$(uname -m)
+case $MY_ARCH in
   x86_64)
     MY_ARCH=x64  # or AMD64 or Intel64 or whatever
     ;;
@@ -37,7 +38,8 @@ esac
 ### Determine DISTRO being used ###
 
 # by type
-case $(uname) in
+MY_DISTRO=$(uname)
+case $MY_DISTRO in
   Linux )
     # test for distro by command
     MY_DISTRO=$(cat /proc/version)
