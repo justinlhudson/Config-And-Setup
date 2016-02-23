@@ -41,6 +41,8 @@ nnoremap - <C-w>s
 set splitbelow                                          " open horizontal splits on the right
 set splitright                                          " open vertical splits below
 
+syntax enable                                           " turn sytanx highlighting one
+
 set expandtab                                           " Use spaces instead of tabs
 set smarttab                                            " Be smart when using tabs
 set softtabstop=2                                       " soft tabs, ie. number of spaces for tab
