@@ -53,9 +53,9 @@
       "let g:ctrlp_cmd = 'CtrlP'
       let g:ctrlp_cmd = 'CtrlPMixed'
       let g:ctrlp_switch_buffer = 0
-      let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:100' 
+      let g:ctrlp_match_window = 'bottom,order:ttb,min:5,max:25,results:100' 
       let g:ctrlp_custom_ignore = {  
-        \ 'dir':  '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$',
+        \ 'dir':  '\.git$\|\.hg$\|\.svn$\|bower_components$\|node_modules$',
         \ 'file': '\.exe$\|\.o$\|\.dll$\|\.lst$' }
     
       " The Silver Searcher
