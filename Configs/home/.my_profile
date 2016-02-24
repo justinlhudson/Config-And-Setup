@@ -30,8 +30,6 @@ case $MY_ARCH in
     MY_ARCH=x86  # or IA32 or Intel32 or whatever
     ;;
   *)
-    # ARCH as-is
-    MY_ARCH=$ARCH
     ;;
 esac
 
@@ -53,15 +51,13 @@ case $MY_DISTRO in
      MY_DISTRO=darwin
      ;;
   * )
-     # keep default
-     MY_DISTRO=$DISTRO
      ;;
 esac
  
 ### Determine SHELL being used ###
 
-#MY_SHELL=$(echo $0)
-MY_SHELL=$SHELL
+MY_SHELL=$(echo $0)
+#MY_SHELL=$SHELL
 if [[ $MY_SHELL == *zsh* ]]; then
   #!/bin/zsh
   MY_SHELL=zsh
@@ -77,7 +73,7 @@ if [[ $MY_TERM == *xterm* ]]; then
   MY_TERM=xterm
 fi
 
-# Verify in terminal
+# Display env. in terminal
 if [ -n $1 ] && [[ $1 == "-v" ]]; then
   echo "$MY_OS $MY_DISTRO $MY_ARCH $MY_TERM $MY_SHELL"
   echo ""
@@ -178,6 +174,7 @@ cd() {
     builtin cd ~ && ls
   fi
 }
+
 # history info "-i [depth]" added
 history() {
   if [ -n "$1" ] && [[ "$1" == "-i" ]]; then
