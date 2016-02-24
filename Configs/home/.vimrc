@@ -86,7 +86,7 @@ syntax on                                                  " turn sytanx highlig
   "nnoremap <c-space> /
   
   " open explore
-  map e :Explore<cr>
+  nnoremap <c-e> :Explore<cr>
   
   " close buffer
   map <c-c> :bd<cr>
