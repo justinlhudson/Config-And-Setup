@@ -77,11 +77,12 @@ syntax on                                               " turn sytanx highlighti
 "" Key mapping
 
   map <space> :
-  map <c-space> /
+  "nnoremap <c-space> /
   
   " open explore
   map e :Explore<cr>
-  " close explore
+  
+  " close buffer
   map <c-c> :bd<cr>
   
   " add tab/space in Explore tree (cleaner)
