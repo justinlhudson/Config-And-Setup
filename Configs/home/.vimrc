@@ -52,9 +52,8 @@
       let g:ctrlp_map = '<c-p>'
       "let g:ctrlp_cmd = 'CtrlP'
       let g:ctrlp_cmd = 'CtrlPMixed'
-      let g:ctrlp_match_window = 'results:100'          " overcome limit imposed by max height
       let g:ctrlp_switch_buffer = 0
-      let g:ctrlp_match_window = 'bottom,order:ttb' 
+      let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:100' 
       let g:ctrlp_custom_ignore = {  
         \ 'dir':  '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$',
         \ 'file': '\.exe$\|\.o$\|\.dll$\|\.lst$' }
