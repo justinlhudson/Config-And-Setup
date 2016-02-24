@@ -1,3 +1,6 @@
+# tmux list-windows
+#    layout: b147,208x73,0,0[208x62,0,0,208x10,0,63{104x10,0,63,103x10,105,63}]
+
 windows:
   - main:
       layout: main-horizontal
