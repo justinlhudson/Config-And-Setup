@@ -53,6 +53,7 @@
       "let g:ctrlp_cmd = 'CtrlP'
       let g:ctrlp_cmd = 'CtrlPMixed'
       let g:ctrlp_switch_buffer = 0
+      let g:ctrlp_match_window = 'bottom,order:ttb' 
       let g:ctrlp_custom_ignore = {  
         \ 'dir':  '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$',
         \ 'file': '\.exe$\|\.o$\|\.dll$\|\.lst$' }
@@ -99,7 +100,8 @@ syntax on                                               " turn sytanx highlighti
   nnoremap - <C-w>s
 
 "" Settings
-
+  set autoread                                            " reload changed files
+  set lazyredraw                                          " faster response
   set splitbelow                                          " open horizontal splits on the right
   set splitright                                          " open vertical splits below
   set cmdheight=2                                         " message height in command window
