@@ -37,6 +37,10 @@
       :PluginInstall
     endif
 
+  else 
+    "*** Manual Install of Plugins ***""
+
+    set runtimepath^=~/.vim/bundle/ctrlp.vim
   endif
 
 """ Configuration """
