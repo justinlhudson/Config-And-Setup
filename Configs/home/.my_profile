@@ -224,6 +224,9 @@ vncserver()
 }
 
 # make space in terminal for scrolling
+s() {
+  space
+}
 space() {
   for i in {1..50}
   do
