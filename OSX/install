@@ -23,6 +23,8 @@ brew install
       - tmux
       - the_silver_searcher
       - mono
+  - ruby-build
+  - rbenv
   - autojump
   - the_silver_searcher
   - xamarin studio
