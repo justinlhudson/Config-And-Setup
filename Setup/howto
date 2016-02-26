@@ -2,6 +2,8 @@
 
 sudo visudo
 <usr> ALL=NOPASSWD: /usr/bin/application
+# not password for admins running sudo
+%admin ALL=(ALL) NOPASSWD: ALL
 
 ### Logging system operations ###
 tail -f /var/log/syslog
