@@ -166,7 +166,7 @@ fi
 
 # show alias also if found
 which() {
-  command which --tty-only --read-alias --show-dot --show-tilde "$@"
+  command which --all --tty-only --read-alias --read-functions --show-tilde --show-dot "$@"
 }
 
 # list after each cd
