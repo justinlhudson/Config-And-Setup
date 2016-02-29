@@ -147,10 +147,10 @@ else
 fi
 if [[ $MY_DISTRO == debian ]]; then
   alias apt-get='sudo apt-get -y'
-  alias upgrade='apt-get update && apt-get dist-upgrade && apt-get upgrade && apt-get autoclean && apt-get autoremove && gem update && gem install && gem cleanup'
+  alias upgrade='apt-get update && apt-get dist-upgrade && apt-get upgrade && apt-get autoclean && apt-get autoremove && gem update && gem cleanup'
 fi
 if [[ $MY_DISTRO == darwin ]]; then
-  alias upgrade='brew update && brew upgrade && brew cleanup && brew cask cleanup && gem update && gem install && gem cleanup'
+  alias upgrade='brew update && brew upgrade && brew cleanup && brew cask cleanup && gem update && gem cleanup'
 fi
 # replace awk with ag if found
 if type ag > /dev/null 2>&1; then
