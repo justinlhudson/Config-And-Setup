@@ -165,7 +165,7 @@ fi
 ### Functions ###
 
 # show alias also if found
-unalias which
+unalias which > /dev/null 2>&1
 which() {
   command which --all --tty-only --read-alias --read-functions --show-tilde --show-dot "$@"
 }
