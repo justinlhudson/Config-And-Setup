@@ -118,6 +118,7 @@ alias df='df -Tha'
 alias du='du -ach'
 alias free='free -mt'
 alias here='find . -name'
+alias echor='>&2 echo'
 # w/ millisecond
 alias now='date +"%m-%d-%Y %T.%3N"'
 ## safety
