@@ -11,6 +11,9 @@ if type ruby >/dev/null && type gem >/dev/null; then
   PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
+if [ -f ~/.zshrc-user ]; then
+  source ~/.zshrc-user
+fi
 
 ### Open My Profile Configuration ###
 source ~/.my_profile 2> /dev/null
