@@ -16,4 +16,6 @@ if [ -f ~/.zshrc-user ]; then
 fi
 
 ### Open My Profile Configuration ###
-source ~/.my_profile 2> /dev/null
+if [ -f ~/.my_profile ]; then
+  source ~/.my_profile 2> /dev/null
+fi
