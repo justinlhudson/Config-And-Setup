@@ -4,7 +4,7 @@ ZSH_THEME="robbyrussell"
 
 source $ZSH/oh-my-zsh.sh
 
-plugins=(git bundler osx vi-mode history-substring-search autojump zsh-syntax-highlighting command-not-found docker) 
+plugins=(git brew bower cake bundler coffee gem npm node python redis-cli screen sublime supervisor svn tmux tmuxinator vagrant bundler osx vi-mode history-substring-search autojump zsh-syntax-highlighting command-not-found docker) 
 
 # installing gems local need to add to path
 if type ruby >/dev/null && type gem >/dev/null; then
