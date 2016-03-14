@@ -172,6 +172,11 @@ if [[ ! $(type which) == *aliase* ]]; then
   alias which=_which
 fi
 
+# like dos
+pause(){
+  read -rsp $'Press any key to continue...\n' -n 1 key
+}
+
 # list after each cd
 cd() {
   if [ -n "$1" ]; then
