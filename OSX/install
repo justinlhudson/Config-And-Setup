@@ -23,6 +23,7 @@ brew install
       - tmux
       - the_silver_searcher
       - mono
+      - argon/mas/mas
   - ruby-build
   - rbenv
   - autojump
