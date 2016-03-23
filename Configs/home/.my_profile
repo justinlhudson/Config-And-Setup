@@ -117,7 +117,7 @@ alias mkdir='mkdir -pv'
 alias df='df -Tha'
 alias du='du -ach'
 alias free='free -mt'
-alias where='find / ! -readable -prune -name'
+alias where='find -P / ! -readable -prune -name'
 alias whereami='uname -a'
 alias echor='>&2 echo'
 # w/ millisecond
