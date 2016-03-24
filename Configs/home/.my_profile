@@ -118,6 +118,7 @@ alias df='df -Tha'
 alias du='du -ach'
 alias free='free -mt'
 alias here='find . ! -readable -prune -name'
+alias herein='grep -rnl . -e'
 alias whereami='uname -a'
 alias echor='>&2 echo'
 # w/ millisecond
