@@ -23,6 +23,8 @@ brew install
       - tmux
       - the_silver_searcher
       - mono
+      - htop
+      - iftop
   - ruby-build
   - rbenv
   - autojump
@@ -39,11 +41,15 @@ brew install
   - virtual
   - archey
   - cmatrix # funny
-  
 robomongo
 java
 moom
-alfred v2+
+witch
+tunnelbrick
+daisydisk
+alfred
+dash
+bartender
 vagrant
 gem
   - tmuxinator

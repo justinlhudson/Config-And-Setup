@@ -9,3 +9,10 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "
 
 # quit finder just like any other app
 sudo defaults write com.apple.finder QuitMenuItem -bool YES; killall Finder
+
+# remove spotlight from menu bar
+reboot into safe mode holding command R
+terminal -> csrutil disable
+... 
+reboot into safe mode holding command R
+terminal -> csrutil enable
