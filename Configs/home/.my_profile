@@ -114,7 +114,11 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias mkdir='mkdir -pv'
-alias df='df -Tha'
+if [[ $MY_OS == osx ]]; then
+  alias df='df -ha'
+else
+  alias df='df -Tha'
+fi
 alias du='du -ach'
 alias free='free -mt'
 alias here='find . ! -readable -prune -name'
