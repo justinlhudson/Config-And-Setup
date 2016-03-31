@@ -14,34 +14,34 @@ eagle (cadsoft)
 filezilla
 Microsoft Remote Desktop
 brew install
-  - cask (ui programs)
-      - brew cask install caskroom/cask/brew-cask
-      - brew cask alfred link
-      - virtualbox
-      - docker
-      - boot2docker
-      - google-chrome
-  - tmux
-  - mono
-  - autojump
-  - htop
-  - iftop
-  - ruby-build
-  - rbenv
-  - autojump
-  - the_silver_searcher
-  - xamarin studio
-  - mongodb
-  - wget
-  - coreutils
-  - redis
-  - nodejs
-  - npm
-    - phantomjs
-    - ember-cli
-  - virtual
-  - archey
-  - cmatrix # funny
+  cask (ui programs)
+      brew cask install caskroom/cask/brew-cask
+      brew cask alfred link
+      virtualbox
+      docker
+      boot2docker
+      google-chrome
+  tmux
+  mono
+  autojump
+  htop
+  iftop
+  ruby-build
+  rbenv
+  autojump
+  the_silver_searcher
+  xamarin studio
+  mongodb
+  wget
+  coreutils
+  redis
+  nodejs
+  npm
+    phantomjs
+    ember-cli
+  virtual
+  archey
+  cmatrix # funny
 robomongo
 java
 moom
@@ -53,5 +53,5 @@ dash
 bartender
 vagrant
 gem
-  - tmuxinator
+  tmuxinator
 launchcontrol (How To http://launchd.info/)
