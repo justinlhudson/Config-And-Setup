@@ -2,7 +2,10 @@
 XTerm*Background: black
 XTerm*Foreground: green
 XTerm*faceName: Bitstream Vera Serif Mono
-xterm*faceSize: 10
+xterm*faceSize: 11
 xterm*saveLines: 16384
 xterm*termName: xterm-color
 xterm*vt100*geometry: 120x20
+XTerm*selectToClipboard:true
+XTerm*rightScrollBar: true
+XTerm*ScrollBar: true

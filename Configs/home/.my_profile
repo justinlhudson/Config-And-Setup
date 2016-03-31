@@ -117,7 +117,10 @@ alias mkdir='mkdir -pv'
 alias df='df -Tha'
 alias du='du -ach'
 alias free='free -mt'
-alias here='find . -name'
+alias here='find . ! -readable -prune -name'
+alias herein='grep -rnl . -e'
+alias whereami='uname -a'
+alias echor='>&2 echo'
 # w/ millisecond
 alias now='date +"%m-%d-%Y %T.%3N"'
 ## safety
@@ -147,10 +150,10 @@ else
 fi
 if [[ $MY_DISTRO == debian ]]; then
   alias apt-get='sudo apt-get -y'
-  alias upgrade='apt-get update && apt-get dist-upgrade && apt-get upgrade && apt-get autoclean && apt-get autoremove && gem update && gem install && gem cleanup'
+  alias upgrade='apt-get update && apt-get dist-upgrade && apt-get upgrade && apt-get autoclean && apt-get autoremove && gem update && gem cleanup'
 fi
 if [[ $MY_DISTRO == darwin ]]; then
-  alias upgrade='brew update && brew upgrade && brew cleanup && brew cask cleanup && gem update && gem install && gem cleanup'
+  alias upgrade='brew update && brew upgrade && brew cleanup && brew cask cleanup && gem update && gem cleanup && mas upgrade'
 fi
 # replace awk with ag if found
 if type ag > /dev/null 2>&1; then
@@ -164,9 +167,16 @@ fi
 
 ### Functions ###
 
-# show alias also if found
-which() {
+_which() {
   command which --all --tty-only --read-alias --read-functions --show-tilde --show-dot "$@"
+}
+if [[ ! $(type which) == *aliase* ]]; then
+  alias which=_which
+fi
+
+# like dos
+pause(){
+  read -rsp $'Press any key to continue...\n' -n 1 key
 }
 
 # list after each cd
@@ -207,7 +217,7 @@ mux()
     else
       command tmux kill-session
     fi
-  else
+  elsef
     command mux "$@"
   fi
 }
@@ -230,6 +240,7 @@ vncserver()
 s() {
   space
 }
+
 space() {
   for i in {1..50}
   do
