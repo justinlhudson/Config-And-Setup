@@ -123,7 +123,7 @@ else
 fi
 alias du='du -ach'
 alias free='free -mt'
-alias here='find . ! -perm /a+r -prune -name'
+alias here='find . ! -perm -g+r,u+r,o+r -prune -name'
 alias herein='grep -rnl . -e'
 alias whereami='uname -a'
 alias echor='>&2 echo'
