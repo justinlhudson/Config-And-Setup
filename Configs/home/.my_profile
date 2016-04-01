@@ -171,12 +171,9 @@ fi
 
 ### Functions ###
 
-_which() {
-  command which --all --tty-only --read-alias --read-functions --show-tilde --show-dot "$@"
-}
-if [[ ! $(type which) == *aliase* ]]; then
-  alias which=_which
-fi
+#if [[ ! $(type which) == *aliase* ]]; then
+alias which="/usr/bin/which --all --tty-only --read-alias --read-functions --show-tilde --show-dot"
+#fi
 
 # like dos
 pause(){
