@@ -11,10 +11,10 @@ case $MY_OS in
     MY_OS='linux'
     ;;
   'WindowsNT')
-    MY_OS='windows'
+    MY_OS='dos'
     ;;
   'Darwin')
-    MY_OS='osx'
+    MY_OS='darwin'
     ;;
   *) ;;
 esac
@@ -74,7 +74,7 @@ if [[ $MY_TERM == *xterm* ]]; then
 fi
 
 # Display env. in terminal
-if [ -n $1 ] && [[ $1 == "-v" ]]; then
+if [ -n $1 ] && [[ $1 == -v ]]; then
   echo "$MY_OS $MY_DISTRO $MY_ARCH $MY_TERM $MY_SHELL"
   echo ""
 fi
@@ -98,10 +98,12 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 export SUCCESS=0
 export FAIL=1
 # editor default
-export EDITOR="vim"
+export EDITOR='vim'
 
 ### Aliases ###
-
+if [ type htop > /dev/null 2>&1 ] then
+  alias top='htop'
+fi
 alias vi='vim'
 # not the real God, hence lowercase.
 alias god='sudo'
@@ -114,14 +116,14 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias mkdir='mkdir -pv'
-if [[ $MY_OS == osx ]]; then
+if [[ $MY_OS == darwin ]]; then
   alias df='df -ha'
 else
   alias df='df -Tha'
 fi
 alias du='du -ach'
 alias free='free -mt'
-alias here='find . ! -readable -prune -name'
+alias here='find . ! -perm /a+r -prune -name'
 alias herein='grep -rnl . -e'
 alias whereami='uname -a'
 alias echor='>&2 echo'
@@ -136,17 +138,18 @@ alias shutdown='sudo shutdown now'
 alias plogout='sudo pkill -KILL -u'
 # search
 alias psf='ps | grep -v grep | grep -i -e VSZ -e'
-if [[ $MY_OS == osx ]]; then
+if [[ $MY_OS == darwin ]]; then
   alias ls='ls -GpF'
 else
   alias ls='ls -pF --color=auto'
 fi
+alias which='/usr/bin/which --all --tty-only --read-alias --read-functions --show-tilde --show-dot'
 alias l='ls'
 alias ll='ls -lAh'
 alias l.='ls -d .*'
 alias la='ls -lah'
-if [[ $MY_OS == osx ]]; then
-  # gnu util for osx
+if [[ $MY_OS == darwin ]]; then
+  # gnu util for darwin
   alias timeout='gtimeout'
   alias ps='ps aux'
 else 
@@ -170,10 +173,6 @@ fi
 #alias torified="ssh -D 127.0.0.1:1080 -L 3128:127.0.0.1:3128 -L 8123:127.0.0.1:8123 -L 8118:127.0.0.1:8118 -L 9050:127.0.0.1:9050 <username>@<ip> -p <port>"
 
 ### Functions ###
-
-#if [[ ! $(type which) == *aliase* ]]; then
-alias which="/usr/bin/which --all --tty-only --read-alias --read-functions --show-tilde --show-dot"
-#fi
 
 # like dos
 pause(){
@@ -268,13 +267,13 @@ fi
 # bind keys per shell and terminal
 if [[ $MY_SHELL == zsh ]]; then
   # home and end keys
-    bindkey '\e[1~' beginning-of-line
-    bindkey '\e[4~' end-of-line  
+  bindkey '\e[1~' beginning-of-line
+  bindkey '\e[4~' end-of-line  
 fi
 
 ### Other ###
 
-if [[ $MY_OS == osx ]]; then
+if [[ $MY_OS == darwin ]]; then
   if type archey > /dev/null 2>&1; then
     archey
   fi
