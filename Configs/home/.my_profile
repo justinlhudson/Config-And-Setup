@@ -101,7 +101,7 @@ export FAIL=1
 export EDITOR='vim'
 
 ### Aliases ###
-if [ type htop > /dev/null 2>&1 ]; then
+if type htop > /dev/null 2>&1; then
   alias top='htop'
 fi
 alias vi='vim'
