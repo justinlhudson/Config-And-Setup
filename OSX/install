@@ -5,12 +5,13 @@ iterm2
 sublime
 chrome
 docker.io
-vim
 vundle
 silver-searcher
 sourcetree
 xamarin
+the unarchiver
 eagle (cadsoft)
+skitch
 filezilla
 Microsoft Remote Desktop
 brew install
@@ -21,8 +22,11 @@ brew install
       docker
       boot2docker
       google-chrome
+      vlc
   tmux
   mono
+  vim
+  macvim
   autojump
   htop
   iftop
