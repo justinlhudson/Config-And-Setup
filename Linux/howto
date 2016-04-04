@@ -16,3 +16,10 @@ Section "InputClass"
         Option "Protocol" "Auto"
         Option "ZAxisMapping" "5 4"
 EndSection
+
+# isntall .deb packages
+sudo dpkg -i filename.deb
+if errors,
+apt-get install -f
+repeat,
+sudo dpkg -i filename.deb

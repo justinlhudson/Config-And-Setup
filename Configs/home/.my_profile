@@ -225,7 +225,7 @@ mux()
 # kill vnc window(s)
 vncserver()
 {
-  if [ -n "$1" ] && [[ "$1" == "-kill" ]] && [ -n "$2" ] && [[ "$2" == ":-1" ]]; then
+  if [ -n "$1" ] && [[ "$1" == "--kill" ]] && [ -n "$2" ] && [[ "$2" == ":-1" ]]; then
     for v in ~/.vnc/*.pid
     do
       local _window=$(basename "$v" .pid)

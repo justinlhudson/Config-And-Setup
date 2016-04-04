@@ -12,9 +12,10 @@ vncconfig -iconic &
 
 xterm -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
 
+## Uncomment for Ubuntu Gnome Desktop ##
 # apt-get install gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
 #gnome-panel &
 #gnome-settings-daemon &
 #metacity &
-#nautilus &
+#nautilus -n &
 #gnome-terminal &
