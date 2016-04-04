@@ -16,3 +16,9 @@ terminal -> csrutil disable
 ... 
 reboot into safe mode holding command R
 terminal -> csrutil enable
+use bartneder to remove now!
+
+# homebrew default location
+/usr/local/Cellar
+# cask default location
+/opt/homebrew-cask/Caskroom

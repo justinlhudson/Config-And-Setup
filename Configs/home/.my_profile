@@ -136,6 +136,7 @@ alias mv='mv -i'
 alias reboot='sudo shutdown -r now'
 alias shutdown='sudo shutdown now'
 alias plogout='sudo pkill -KILL -u'
+alias apt-get='sudo apt-get'
 # search
 alias psf='ps | grep -v grep | grep -i -e VSZ -e'
 if [[ $MY_OS == darwin ]]; then

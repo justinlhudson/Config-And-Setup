@@ -24,9 +24,14 @@ apt-get install fail2ban
 # optional helpers
 sudo apt-get install nginx sendmail iptables-persistent
 # check rules with
- sudo iptables -S
+sudo iptables -S
 
 # apt-get install denyhosts
+
+# torrent client
+add-apt-repository ppa:transmissionbt/ppa
+apt-get update
+sudo apt-get install transmission-cli transmission-common transmission-daemon
 
 # node verse nodjs
 ln -s /usr/bin/nodejs /usr/bin/node

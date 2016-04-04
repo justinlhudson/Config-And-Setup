@@ -23,7 +23,7 @@ brew install
       boot2docker
       google-chrome
       vlc
-      deluge (torrent client)
+      transmission(torrent client)
   tmux
   mono
   vim
