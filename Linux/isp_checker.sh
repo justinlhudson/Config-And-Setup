@@ -5,6 +5,7 @@
   #apt-get install -f mailutils
   #mail -s "Test Text" "test@SomeDomain.com,#@messaging.sprintpcs.com"
 
+_directory=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 _mail="$4"
 _check="$3"
 _file="/tmp/ISP-Checker-$_check"
@@ -22,6 +23,9 @@ if [[ ! "$_result" == *"$_check"* ]]; then
   echo "ISP-Down: $_check"
   if [ ! -f $_file ]; then
     touch $_file
+    if [ -f $_directory/shutdown.sh ]; then
+      $_directory/shutdown.sh
+    fi
     echo "alert!"
     echo $_check | mail -s "ISP-Down: $_check" $_mail < /dev/null
   fi
@@ -29,6 +33,9 @@ else
   echo "ISP-UP: $_check"
   if [ -f $_file ]; then
     rm -f $_file
+    if [ -f $_directory/startup.sh ]; then
+      $_directory/startup.sh
+    fi
     echo "alert!"
     echo $_check | xmail -s "ISP-Up: $_check" $_mail < /dev/null
   fi
