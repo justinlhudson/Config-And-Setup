@@ -144,7 +144,6 @@ if [[ $MY_OS == darwin ]]; then
 else
   alias ls='ls -pF --color=auto'
 fi
-alias which='/usr/bin/which --all --tty-only --read-alias --read-functions --show-tilde --show-dot'
 alias l='ls'
 alias ll='ls -lAh'
 alias l.='ls -d .*'
@@ -189,6 +188,10 @@ cd() {
   fi
 }
 
+which() {
+  command which --all --tty-only --read-alias --read-functions --show-tilde --show-dot'
+}
+
 # history info "-i [depth]" added
 history() {
   if [ -n "$1" ] && [[ "$1" == "-i" ]]; then
@@ -226,7 +229,7 @@ mux()
 # kill vnc window(s)
 vncserver()
 {
-  if [ -n "$1" ] && [[ "$1" == "--kill" ]] && [ -n "$2" ] && [[ "$2" == ":-1" ]]; then
+  if [ -n "$1" ] && [[ "$1" == "-kill" ]] && [ -n "$2" ] && [[ "$2" == ":-1" ]]; then
     for v in ~/.vnc/*.pid
     do
       local _window=$(basename "$v" .pid)

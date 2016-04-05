@@ -10,6 +10,8 @@ _check="$3"
 _file="/tmp/ISP-Checker-$_check"
 _result=$(traceroute $1 -m $2)
 
+_status=$ISP_Checker
+
 echo $_result
 echo
 
@@ -20,16 +22,18 @@ fi
 
 if [[ ! "$_result" == *"$_check"* ]]; then
   echo "ISP-Down: $_check"
-  if [ ! -f $_file ]; then
+  if [[ $_status == "UP" ]]; then
+    _status="DOWN"
     echo "alert!"
-    touch $_file
     echo $_check | mail -s "ISP-Down: $_check" $_mail < /dev/null
   fi
 else
   echo "ISP-UP: $_check"
-  if [ -f $_file ]; then
+  if [[ $_status == "DOWN" ]]; then
+    _status="UP"
     echo "alert!"
-    rm -f $_file
     echo $_check | mail -s "ISP-Up: $_check" $_mail < /dev/null
   fi
 fi
+
+export ISP_Checker=$_status
