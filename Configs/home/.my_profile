@@ -189,7 +189,7 @@ cd() {
 }
 
 which() {
-  command which --all --tty-only --read-alias --read-functions --show-tilde --show-dot'
+  command which --all --tty-only --read-alias --read-functions --show-tilde --show-dot $@
 }
 
 # history info "-i [depth]" added
