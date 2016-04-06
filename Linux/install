@@ -17,7 +17,7 @@ mono (mono-devel, mono-complete)
 monodevelop
 oh-my-zsh
 
-# xmail client (send mail)
+# mailx client (send mail)
 sudo apt-get install bsd-mailx
 
 # dns (dyndns)
