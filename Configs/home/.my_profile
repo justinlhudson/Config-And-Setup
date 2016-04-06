@@ -188,9 +188,9 @@ cd() {
   fi
 }
 
-which() {
-  command which --all --tty-only --read-alias --read-functions --show-tilde --show-dot $@
-}
+#which() {
+#  command which --all --tty-only --read-alias --read-functions --show-tilde --show-dot $@
+#}
 
 # history info "-i [depth]" added
 history() {
