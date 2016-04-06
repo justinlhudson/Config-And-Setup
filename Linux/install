@@ -17,7 +17,8 @@ mono (mono-devel, mono-complete)
 monodevelop
 oh-my-zsh
 
-dyndns updater client
+# dns (dyndns)
+ddclient
 
 # stop ssh and other attacks
 apt-get install fail2ban
