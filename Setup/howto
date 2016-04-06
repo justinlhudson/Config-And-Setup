@@ -1,5 +1,4 @@
 ### sudo (without passwd) to user or apps ###
-
 sudo visudo
 <usr> ALL=NOPASSWD: /usr/bin/application
 # not password for admins running sudo
@@ -29,7 +28,6 @@ sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
 sudo swapon -s
-
 /etc/fstab:
 /swapfile   none    swap    sw    0   0
 
