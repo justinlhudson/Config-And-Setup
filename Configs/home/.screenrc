@@ -15,14 +15,15 @@ bind c screen 1
 bind ^c 1
 bind 0 select 10
 
-# prev and next window keys
-bindkey -k , prev
-bindkey -k . next
+# prev and next window keys (alt L R arrow)
+#bindkey -k prev
+#bindkey-k next
 
 # status
-caption always "screen [%n: %t]: "
+#caption always "screen [%n: %t]: "
 hardstatus on
-hardstatus alwayslastline "[%n: %t]: %{= kc}%H (%l)%-21=%{= .m}%D %d.%m.%Y %0c"
+hardstatus alwayslastline "[%n: %t]: %H (%l)%-21=%D %Y:%m:%d %c"
 
 # Start at initial window
-screen 1
+screen -t 1
+select 1
