@@ -1,8 +1,29 @@
-# scroll back
-defscrollback 5000
-
 # ability to detach the terminal emulator from the running programs
 autodetach on
 
+# do not  display the copyright page
+startup_message off
+
 # startup shell
-shell "/usr/bin/zsh"
+shell ${SHELL}
+
+# scroll back
+defscrollback 5000
+
+# Get rid of screen 0
+bind c screen 1
+bind ^c 1
+bind 0 select 10
+
+# prev and next window keys (alt L R arrow)
+#bindkey -k prev
+#bindkey-k next
+
+# status
+#caption always "screen [%n: %t]: "
+hardstatus on
+hardstatus alwayslastline "[%n: %t]: %H (%l)%-21=%D %Y:%m:%d %c"
+
+# Start at initial window
+screen 1
+#select 1

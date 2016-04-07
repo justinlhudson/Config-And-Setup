@@ -105,6 +105,7 @@ if type htop > /dev/null 2>&1; then
   alias top='htop'
 fi
 alias vi='vim'
+alias curl='noglob curl'
 # not the real God, hence lowercase.
 alias god='sudo'
 alias please='god'
@@ -126,7 +127,7 @@ alias free='free -mt'
 alias here='find . ! -perm -g+r,u+r,o+r -prune -name'
 alias herein='grep -rnl . -e'
 alias whereami='uname -a'
-alias echor='>&2 echo'
+alias echoerr='>&2 echo'
 # w/ millisecond
 alias now='date +"%m-%d-%Y %T.%3N"'
 ## safety
@@ -212,10 +213,16 @@ history() {
 }
 
 screen() {
-  if [ -z "$1" ]; then
-    command screen -DR default
-  else
-    command screen "$@"
+  # do not allow a screen inside a screen
+  if [ -n $STY ]; then
+    if [ -z "$1" ]; then
+     command screen -D -R default
+    elif [[ $1 == --check ]]; then
+      #command screen -S default -X stuff 'echo $STY'$(echo -ne '\015')
+      echo $STY
+    else
+      command screen "$@"
+    fi
   fi
 }
 
@@ -235,7 +242,7 @@ mux()
 # kill vnc window(s)
 vncserver()
 {
-  if [ -n "$1" ] && [[ "$1" == "-kill" ]] && [ -n "$2" ] && [[ "$2" == ":-1" ]]; then
+  if [ -n "$1" ] && [[ "$1" == "-kill" ]] && [ -n "$2" ] && [[ "$2" == "all" ]]; then
     for v in ~/.vnc/*.pid
     do
       local _window=$(basename "$v" .pid)

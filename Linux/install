@@ -17,7 +17,11 @@ mono (mono-devel, mono-complete)
 monodevelop
 oh-my-zsh
 
-dyndns updater client
+# mailx client (send mail)
+sudo apt-get install bsd-mailx
+
+# dns (dyndns)
+ddclient
 
 # stop ssh and other attacks
 apt-get install fail2ban
