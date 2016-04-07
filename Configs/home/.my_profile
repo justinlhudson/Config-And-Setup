@@ -209,7 +209,9 @@ history() {
 screen() {
   if [ -z "$1" ]; then
     command screen -d -r default
-    screen -S default -X stuff 'echo $STY'$(echo -ne '\015')
+  elif [[ $1 == --check ]]; then
+    #command screen -S default -X stuff 'echo $STY'$(echo -ne '\015')
+    echo $STY
   else
     command screen "$@"
   fi
