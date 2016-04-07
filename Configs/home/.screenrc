@@ -1,3 +1,6 @@
+ # do not  display the copyright page
+startup_message off
+
 # scroll back
 defscrollback 5000
 
