@@ -208,9 +208,8 @@ history() {
 
 screen() {
   if [ -z "$1" ]; then
-    command screen -DR default
-    # press enter
-    screen -S default -X stuff 'echo in screen'$(echo -ne '\015')
+    command screen -d -r default
+    screen -S default -X stuff 'echo $STY'$(echo -ne '\015')
   else
     command screen "$@"
   fi
