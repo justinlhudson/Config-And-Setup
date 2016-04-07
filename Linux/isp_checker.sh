@@ -30,7 +30,7 @@ if [[ ! "$_result" == *"$_check"* ]]; then
       $_directory/reboot_loadbalancer.sh <ip> <user> <pass>
     fi
     echo "alert!"
-    echo $_check | mail -s "ISP-Down: $_check" $_mail < /dev/null
+    echo $_check | mailx -s "ISP-Down: $_check" $_mail < /dev/null
   fi
 else
   echo "ISP-UP: $_check"
@@ -40,6 +40,6 @@ else
       $_directory/isp_up.sh
     fi
     echo "alert!"
-    echo $_check | xmail -s "ISP-Up: $_check" $_mail < /dev/null
+    echo $_check | mailx -s "ISP-Up: $_check" $_mail < /dev/null
   fi
 fi
