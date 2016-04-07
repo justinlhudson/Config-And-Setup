@@ -105,6 +105,7 @@ if type htop > /dev/null 2>&1; then
   alias top='htop'
 fi
 alias vi='vim'
+alias curl='noglob curl'
 # not the real God, hence lowercase.
 alias god='sudo'
 alias please='god'
