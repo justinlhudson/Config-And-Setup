@@ -26,8 +26,8 @@ if [[ ! "$_result" == *"$_check"* ]]; then
     if [ -f $_directory/isp_down.sh ]; then
       $_directory/isp_down.sh
     fi
-    if [-f $_directory/reboot_loadbalancer.sh ]; then
-      $_directory/reboot_loadbalancer.sh <ip> <user> <pass>
+    if [-f $_directory/loadbalancer.sh ]; then
+      $_directory/loadbalancer.sh -r <ip> <user> <pass>
     fi
     echo "alert!"
     echo $_check | mailx -s "ISP-Down: $_check" $_mail < /dev/null
