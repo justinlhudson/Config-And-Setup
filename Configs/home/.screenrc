@@ -25,5 +25,5 @@ hardstatus on
 hardstatus alwayslastline "[%n: %t]: %H (%l)%-21=%D %Y:%m:%d %c"
 
 # Start at initial window
-screen -t 1
-select 1
+screen 1
+#select 1
