@@ -29,6 +29,7 @@ brew install
   vim
   macvim
   autojump
+  screen
   htop
   iftop
   ruby-build
