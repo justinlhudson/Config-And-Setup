@@ -127,7 +127,7 @@ alias free='free -mt'
 alias here='find . ! -perm -g+r,u+r,o+r -prune -name'
 alias herein='grep -rnl . -e'
 alias whereami='uname -a'
-alias echor='>&2 echo'
+alias echoerr='>&2 echo'
 # w/ millisecond
 alias now='date +"%m-%d-%Y %T.%3N"'
 ## safety
