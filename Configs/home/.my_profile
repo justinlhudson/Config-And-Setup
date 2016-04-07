@@ -207,13 +207,16 @@ history() {
 }
 
 screen() {
-  if [ -z "$1" ]; then
-    command screen -d -r default
-  elif [[ $1 == --check ]]; then
-    #command screen -S default -X stuff 'echo $STY'$(echo -ne '\015')
-    echo $STY
-  else
-    command screen "$@"
+  # do not allow a screen inside a screen
+  if [ -n $STY ]; then
+    if [ -z "$1" ]; then
+     command screen -d -r default
+    elif [[ $1 == --check ]]; then
+      #command screen -S default -X stuff 'echo $STY'$(echo -ne '\015')
+      echo $STY
+    else
+      command screen "$@"
+    fi
   fi
 }
 
