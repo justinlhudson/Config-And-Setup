@@ -33,7 +33,6 @@ bindkey -k F2 next      # F12 = next
 hardstatus on
 hardstatus alwayslastline "[%n: %t]: %H (%l)%-23=%D %Y:%m:%d %c:%s"
 
-
 # Start windows at initial window
 screen 1
 screen 2
@@ -48,4 +47,3 @@ screen 10
 #screen -t <name> $_screen <command>
 
 select 1
-
