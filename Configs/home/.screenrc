@@ -24,6 +24,19 @@ bind 0 select 10
 hardstatus on
 hardstatus alwayslastline "[%n: %t]: %H (%l)%-23=%D %Y:%m:%d %c:%s"
 
-# Start at initial window
+
+# Start windows at initial window
 screen 1
-#select 1
+screen 2
+screen 3
+screen 4
+screen 5
+screen 6
+screen 7
+screen 8
+screen 9
+screen 10
+#screen -t <name> $_screen <command>
+
+select 1
+
