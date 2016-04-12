@@ -189,15 +189,14 @@ cd() {
   fi
 }
 
-if [[ $MY_SHELL == *zsh* ]]; then
-  which()
-  {
-    (alias; declare -f) | command which --tty-only --read-alias --read-functions --show-tilde --show-dot $@
-  }
-elif [[ $MY_SHELL == *bash* ]]; then
-  alias which 'alias | command which --tty-only --read-alias -read-functions --show-dot --show-tilde'
-  export -f which
-fi
+#if [[ $MY_SHELL == *zsh* ]]; then
+#  which() {
+#    (alias; declare -f) | command which --tty-only --read-alias --read-functions --show-tilde --show-dot $@
+#  }
+#elif [[ $MY_SHELL == *bash* ]]; then
+#  alias which 'alias | command which --tty-only --read-alias -read-functions --show-dot --show-tilde'
+#  export -f which
+#fi
 
 # history info "-i [depth]" added
 history() {
