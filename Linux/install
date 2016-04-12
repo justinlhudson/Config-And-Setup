@@ -31,8 +31,10 @@ apt-get install fail2ban
 sudo apt-get install nginx sendmail iptables-persistent
 # check rules with
 sudo iptables -S
-
 # apt-get install denyhosts
+
+# terminal screen saver
+apt-get install cmatrix
 
 # torrent client
 add-apt-repository ppa:transmissionbt/ppa
