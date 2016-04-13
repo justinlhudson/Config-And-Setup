@@ -93,6 +93,10 @@ fi
 # Add commands immediatley to history, not wait for log out
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
+### Configuration ###
+
+umask 744
+
 ### Variables ###
 
 export SUCCESS=0
