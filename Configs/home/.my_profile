@@ -95,7 +95,8 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 ### Configuration ###
 
-umask 744
+# in octal (777 - 750 = 027)
+umask 0027
 
 ### Variables ###
 
