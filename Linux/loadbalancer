@@ -7,31 +7,25 @@ _host=$2
 _port=23
 _username=$3
 _password=$4
+###
+_sleep=3
 
 if [[ $_command == -r ]]; then
   ( echo open ${_host} ${_port}
-    sleep 1
+    sleep ${_sleep}
     echo ${_username}
-    sleep 1
     echo -e "\r"
-    sleep 1
+    sleep ${_sleep}
     echo ${_password}
-    sleep 1
     echo -e "\r"
-    sleep 3
-    echo "enable"
-    sleep 1
-    echo -e "\r"
-    sleep 1
-    echo "admin"
-    sleep 1
-    echo -e "\r"
-    sleep 3
-    echo "sys reboot"
-    sleep 1
-    echo -e "\r"
-    sleep 1
+    sleep ${_sleep}
+    echo -e "enable\r"
+    sleep ${_sleep}
+    echo -e "admin\r"
+    sleep ${_sleep}
+    echo -e "sys reboot\r"
+    sleep ${_sleep}
     echo -e "y\r"
-    sleep 1
-    echo exit ) | telnet
+    sleep ${_sleep}
+    echo "exit\r" ) | telnet
 fi
