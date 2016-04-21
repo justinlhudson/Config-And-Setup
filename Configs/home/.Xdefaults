@@ -1,7 +1,7 @@
 # Used on older systems without better terminal
 XTerm*Background: black
 XTerm*Foreground: green
-XTerm*faceName: Bitstream Vera Serif Mono
+XTerm*faceName: Nimbus Mono
 xterm*faceSize: 11
 xterm*saveLines: 16384
 xterm*termName: xterm-color
