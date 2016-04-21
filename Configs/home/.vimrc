@@ -6,7 +6,9 @@
     echo "Installing Vundle.."
     echo ""
     silent !mkdir -p ~/.vim/bundle/Vundle.vim
-    silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    if executable("git")
+      silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    endif
     let initVundle=1
   endif
   
