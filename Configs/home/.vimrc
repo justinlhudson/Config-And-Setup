@@ -3,11 +3,13 @@
   let initVundle=0
   let vundleReadme=expand('~/.vim/bundle/Vundle.vim/README.md')
   if !filereadable(vundleReadme)
-    echo "Installing Vundle.."
+    echo "Installing Vundle..."
     echo ""
     silent !mkdir -p ~/.vim/bundle/Vundle.vim
     if executable("git")
       silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    else
+      echo "Vundle not installed!"
     endif
     let initVundle=1
   endif
