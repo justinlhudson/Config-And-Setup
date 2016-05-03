@@ -167,6 +167,7 @@ if [[ $MY_DISTRO == debian ]]; then
 fi
 if [[ $MY_DISTRO == darwin ]]; then
   alias upgrade='brew update && brew upgrade && brew cleanup && brew cask cleanup && gem update && sudo sh -c 'GEM_HOME=/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/gems/2.0.0 gem cleanup' && mas upgrade'
+  alias mdtool='/Applications/Xamarin\ Studio.app/Contents/MacOS/mdtool'
 fi
 # replace awk with ag if found
 if type ag > /dev/null 2>&1; then
