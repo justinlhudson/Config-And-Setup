@@ -143,7 +143,7 @@ alias reboot='sudo shutdown -r now'
 alias shutdown='sudo shutdown now'
 alias plogout='sudo pkill -KILL -u'
 alias apt-get='sudo apt-get'
-# search
+# search process match (e.g. psf name)
 alias psf='ps | grep -v grep | grep -i -e VSZ -e'
 if [[ $MY_OS == darwin ]]; then
   alias ls='ls -GpF'
@@ -182,7 +182,7 @@ fi
 
 ### Functions ###
 
-#public ip
+# public ip
 ipPub() {
     curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
 }
@@ -250,7 +250,7 @@ mux()
   fi
 }
 
-# kill vnc window(s)
+# kill vnc window(s) option added
 vncserver()
 {
   if [ -n "$1" ] && [[ "$1" == "-kill" ]] && [ -n "$2" ] && [[ "$2" == "all" ]]; then
