@@ -187,6 +187,11 @@ ipPub() {
     curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
 }
 
+# speed test
+speedtest() {
+  curl -o /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip
+}
+
 # like dos
 pause(){
   read -rsp $'Press any key to continue...\n' -n 1 key
