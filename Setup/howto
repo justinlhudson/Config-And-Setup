@@ -63,4 +63,4 @@ cpufreq-info
 
 ### SSH save password ###
 ssh-keygen
-ssh-copy-id “<username>@<address> -p 22"
+ssh-copy-id <username>@<address> -p 22
