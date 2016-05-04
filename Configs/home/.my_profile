@@ -190,7 +190,7 @@ ipPub() {
 
 # speed test
 speedtest() {
-  ipPub()
+  ipPub
   curl -o /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip
 }
 
