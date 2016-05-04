@@ -95,6 +95,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 ### Configuration ###
 
+# create permissions
 # in octal (777 - 750 = 027)
 umask 0027
 
@@ -102,7 +103,6 @@ umask 0027
 
 export SUCCESS=0
 export FAIL=1
-# editor default
 export EDITOR='vim'
 
 ### Aliases ###
@@ -181,9 +181,6 @@ if type autojump > /dev/null 2>&1; then
   alias j='autojump'
 fi
 
-# Port forwarding thru SSH
-#alias torified="ssh -D 127.0.0.1:1080 -L 3128:127.0.0.1:3128 -L 8123:127.0.0.1:8123 -L 8118:127.0.0.1:8118 -L 9050:127.0.0.1:9050 <username>@<ip> -p <port>"
-
 ### Functions ###
 
 # public ip
@@ -193,6 +190,7 @@ ipPub() {
 
 # speed test
 speedtest() {
+  ipPub()
   curl -o /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip
 }
 
