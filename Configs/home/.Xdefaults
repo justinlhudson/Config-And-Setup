@@ -1,11 +1,13 @@
 # Used on older systems without better terminal
-XTerm*Background: black
-XTerm*Foreground: green
-XTerm*faceName: Nimbus Mono
+xterm*Background: black
+xterm*Foreground: green
+XTerm*locale: true
+xterm*faceName: Nimbus Mono
 xterm*faceSize: 11
 xterm*saveLines: 16384
 xterm*termName: xterm-color
 xterm*vt100*geometry: 120x20
-XTerm*selectToClipboard:true
-XTerm*rightScrollBar: true
-XTerm*ScrollBar: true
+xterm*selectToClipboard:true
+xterm*rightScrollBar: true
+xterm*ScrollBar: true
+xterm*bellIsUrgent: true
