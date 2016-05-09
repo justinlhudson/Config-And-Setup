@@ -1,7 +1,7 @@
 # Used on older systems without better terminal
 xterm*Background: black
 xterm*Foreground: green
-XTerm*locale: true
+xterm*locale: true
 xterm*faceName: Nimbus Mono
 xterm*faceSize: 11
 xterm*saveLines: 16384
