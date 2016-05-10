@@ -184,6 +184,7 @@ fi
 if type autojump > /dev/null 2>&1; then
   alias j='autojump'
 fi
+alias twitter='sudo rainbowstream'
 
 ### Functions ###
 
