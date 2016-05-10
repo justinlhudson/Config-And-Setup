@@ -8,7 +8,7 @@ fi
 # apt-get install -f
 
 silversearcher-ag expect git tmux gparted gdisk htop ssh vsftpd samba vim filezilla nautilus-dropbox bind9 supervisor vim vnc4server vncpasswd nodejs npm nginx
-redis-server cpulimit autojump screen dstat
+redis-server cpulimit autojump screen dstat 
 
 ### Latest per website instructions ###
 mongodb
@@ -16,6 +16,17 @@ docker (docker-engine)
 mono (mono-devel, mono-complete)
 monodevelop
 oh-my-zsh
+
+# python package manager
+sudo apt-get intsall python-pip
+sudo pip install --upgrade pip
+
+# twitter in terminal
+# https://github.com/DTVD/rainbowstream
+pip install rainbowstream
+
+# irc terminal client
+apt-get install weechat
 
 # mailx client (send mail)
 sudo apt-get install bsd-mailx
