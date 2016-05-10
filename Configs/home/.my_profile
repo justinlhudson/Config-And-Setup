@@ -87,7 +87,7 @@ if [[ $MY_TERM == *xterm* ]]; then
 fi
 
 # Display env. in terminal
-if [ -n $_debug ] && [[ $_debug ]]; then
+if [ -n $_debug ] && ( $_debug ); then
   echo "$MY_OS $MY_DISTRO $MY_ARCH $MY_TERM $MY_SHELL"
   echo ""
 fi
@@ -108,7 +108,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 ### Configuration ###
 
-if [ -n $_work ] && [[ ! $_work ]]; then
+if [ -n $_work ] && ( ! $_work ); then
   # create permissions
   # in octal (777 - 750 = 027)
   umask 0027
