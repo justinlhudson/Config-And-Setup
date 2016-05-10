@@ -5,17 +5,6 @@
 
 ### Options ###
 
-_debug=0
-_work=0
-for _arg in "$@"; do
-  if [[ $_arg == -v* ]]; then
-    _debug=1
-  elif [[ $_arg == -w ]]; then
-    _work=1
-  fi
-  
-done
-
 ### Determine OS being used ###
 
 MY_OS=$(uname)
@@ -87,7 +76,7 @@ if [[ $MY_TERM == *xterm* ]]; then
 fi
 
 # Display env. in terminal
-if [ -n $_debug ] && ( $_debug ); then
+if [[ "$@" == *"-v"* ]]; then
   echo "$MY_OS $MY_DISTRO $MY_ARCH $MY_TERM $MY_SHELL"
   echo ""
 fi
@@ -108,7 +97,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 ### Configuration ###
 
-if [ -n $_work ] && ( ! $_work ); then
+if [[ ! "$@" == *"-w"* ]]; then
   # create permissions
   # in octal (777 - 750 = 027)
   umask 0027
