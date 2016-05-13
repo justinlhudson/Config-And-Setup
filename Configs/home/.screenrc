@@ -29,7 +29,7 @@ bindkey -k k7 select 7
 bindkey -k k8 select 8
 bindkey -k k9 prev
 bindkey -k k; next
-bindkey -k F1 title
+bindkey -k F1 command
 bindkey -k F2 detach
 
 # status
