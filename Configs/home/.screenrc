@@ -34,7 +34,7 @@ bindkey -k F2 next      # F12 = next
 # status
 #caption always "screen [%n: %t]: "
 hardstatus on
-hardstatus alwayslastline "[%n: %t]: %H (%l)%-23=%D %Y-%m-%d %c:%s"
+hardstatus alwayslastline "[%n: %t]: %H (%l)%-23=%D %Y/%m/%d %c:%s"
 
 # Start windows at initial window
 screen 1
