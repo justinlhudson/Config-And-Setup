@@ -237,23 +237,25 @@ history() {
 }
 
 screen() {
-  # if no options, run default
+  local _session="default"
+  # if no option(s), run default
   if [ -z "$1" ]; then
     # do not allow a screen inside a screen
     if [ -z "$STY" ]; then
       # if default screen not already running
-      if [[ $(screen -list) != *.default* ]]; then
-        # create or re-attache
-        command screen -d -RR default
+      if [[ $(screen -list) != *$_session* ]]; then
+        # create and attach
+        command screen -D -R $_session
       else
-        # re-attach if session started elsewhere (i.e. shared)
-        command screen -x default
+        # re-attach if session started elsewhere (i.e. shared) or is detached
+        command screen -xr $_session
       fi
     fi
   else
-      command screen "$@"
+     command screen "$@"
   fi
 }
+
 
 mux()
 {
