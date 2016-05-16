@@ -12,7 +12,11 @@ redis-server cpulimit autojump screen dstat
 
 ### Latest per website instructions ###
 mongodb
+
+# Goto docker website for latest install instructions
 docker (docker-engine)
+docker-compose (docker service)
+
 mono (mono-devel, mono-complete)
 monodevelop
 oh-my-zsh
@@ -20,7 +24,6 @@ oh-my-zsh
 # python package manager
 sudo apt-get intsall python-pip
 sudo pip install --upgrade pip
-
 # twitter in terminal
 # https://github.com/DTVD/rainbowstream
 pip install rainbowstream
