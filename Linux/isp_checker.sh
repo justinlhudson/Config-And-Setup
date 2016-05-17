@@ -1,12 +1,8 @@
 #!/bin/bash
 
-#ISP_Checker.sh <trace address> <hops> <check> <mail address>
-# Notes:
-  #apt-get install -f mailutils
-  #mail -s "Test Text" "test@SomeDomain.com,#@messaging.sprintpcs.com"
+#ISP_Checker.sh <trace address> <hops> <check>
 
 _directory=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-_mail="$4"
 _check="$3"
 _file="/tmp/ISP-Checker-$_check"
 _result=$(traceroute $1 -m $2)
@@ -21,16 +17,17 @@ fi
 
 if [[ ! "$_result" == *"$_check"* ]]; then
   echo "ISP-Down: $_check"
-  if [ ! -f $_file ]; then
+  if [ ! -f $_file ] || [[ $@ == *-f* ]] ; then
     touch $_file
     if [ -f $_directory/isp_down.sh ]; then
       $_directory/isp_down.sh
     fi
-    if [-f $_directory/loadbalancer.sh ]; then
-      $_directory/loadbalancer.sh -r <ip> <user> <pass>
+
+    if [ -f $_directory/loadbalancer.sh ]; then
+      $_directory/loadbalancer.sh -r <ip> <username> <password>
     fi
-    echo "alert!"
-    echo $_check | mailx -s "ISP-Down: $_check" $_mail < /dev/null
+
+    echo "-  $(Date) \a" >> /tmp/isp_status
   fi
 else
   echo "ISP-UP: $_check"
@@ -39,7 +36,7 @@ else
     if [ -f $_directory/isp_up.sh ]; then
       $_directory/isp_up.sh
     fi
-    echo "alert!"
-    echo $_check | mailx -s "ISP-Up: $_check" $_mail < /dev/null
+
+    echo "+  $(Date) " >> /tmp/isp_status
   fi
 fi
