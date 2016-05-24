@@ -4,7 +4,7 @@
 
 _directory=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 _check="$3"
-_file="/tmp/ISP-Checker-$_check"
+_file=/tmp/$(basename $0)-$_check
 _result=$(traceroute $1 -m $2)
 
 echo $_result
@@ -27,7 +27,7 @@ if [[ ! "$_result" == *"$_check"* ]]; then
       $_directory/loadbalancer.sh -r <ip> <username> <password>
     fi
 
-    echo "-  $(Date) \a" >> /tmp/isp_status
+    echo "-  $(date) \a" >> /tmp/isp_status
   fi
 else
   echo "ISP-UP: $_check"
@@ -37,6 +37,6 @@ else
       $_directory/isp_up.sh
     fi
 
-    echo "+  $(Date) " >> /tmp/isp_status
+    echo "+  $(date) " >> /tmp/isp_status
   fi
 fi
