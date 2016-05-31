@@ -178,9 +178,9 @@ if [[ $MY_DISTRO == darwin ]]; then
   alias mdtool='/Applications/Xamarin\ Studio.app/Contents/MacOS/mdtool'
 fi
 # replace awk with ag if found
-#if type ag > /dev/null 2>&1; then
-#  alias awk='ag'
-#fi
+if type ag > /dev/null 2>&1; then
+  alias ack='ag'
+fi
 if type autojump > /dev/null 2>&1; then
   alias j='autojump'
 fi
