@@ -109,6 +109,12 @@ export SUCCESS=0
 export FAIL=1
 export EDITOR='vim'
 
+# GO's environment 
+if [[ $MY_OS == darwin ]]; then
+  export PATH=$PATH:/usr/local/opt/go/libexec/bin
+  export GOPATH=/usr/local/opt/go/bin
+fi
+
 ### Aliases ###
 if type htop > /dev/null 2>&1; then
   alias top='htop'
