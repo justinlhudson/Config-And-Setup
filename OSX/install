@@ -48,7 +48,6 @@ brew install
   virtual
   archey
   cmatrix # funny
-  https://raw.githubusercontent.com/michaeldv/mop/master/homebrew/mop.rb  # console stock ticker
 robomongo
 java
 moom
