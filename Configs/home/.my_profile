@@ -144,7 +144,7 @@ if [[ $MY_OS == darwin ]]; then
 else
   alias here='find . -perm /444 -name'
 fi
-alias herein='grep -rnl . -e'
+alias herein='grep -rnli . -e'
 alias whereami='uname -a'
 alias echoerr='>&2 echo'
 # w/ millisecond
