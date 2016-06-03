@@ -144,7 +144,6 @@ if [[ $MY_OS == darwin ]]; then
 else
   alias here='find . -perm /444 -name'
 fi
-alias herein='grep -rnli . -e'
 alias whereami='uname -a'
 alias echoerr='>&2 echo'
 # w/ millisecond
@@ -209,6 +208,16 @@ speedtest() {
 # like dos
 pause(){
   read -rsp $'Press any key to continue...\n' -n 1 key
+}
+
+# show or not to show contents
+herein() {
+  if [ -n "$1" ] && [[ "$1" == "-s" ]]; then
+    shift
+    grep -rni -A 1 -B 1 . -e "$@"
+  else
+    grep -rnli . -e "$@"
+  fi
 }
 
 # list after each cd
