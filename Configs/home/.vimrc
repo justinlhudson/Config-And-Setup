@@ -26,7 +26,7 @@
     "*** Plugin(s) ***"
   
       Plugin 'surround.vim'
-      Plugin 'scrooloose/syntastic'
+      "Plugin 'scrooloose/syntastic'
       Plugin 'kien/ctrlp.vim'
       Plugin 'rking/ag.vim'      
       Plugin 'Lokaltog/vim-easymotion'
