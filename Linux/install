@@ -21,6 +21,10 @@ mono (mono-devel, mono-complete)
 monodevelop
 oh-my-zsh
 
+virtual box
+# For USB support
+# sudo adduser $USER vboxusers
+
 # python package manager
 sudo apt-get intsall python-pip
 sudo pip install --upgrade pip
