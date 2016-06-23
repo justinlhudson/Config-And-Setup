@@ -12,6 +12,8 @@ echo
 
 if [[ "$_result" == *"* * *"* ]]; then
   echo "error!"
+  sleep 30
+  ./$0 $*
   exit
 fi
 
