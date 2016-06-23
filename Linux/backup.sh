@@ -1,6 +1,12 @@
 #!/bin/bash
 
-# Configure
+## Pre ##
+
+# shutdown VMs first
+vboxmanage list runningvms | sed -r 's/.*\{(.*)\}/\1/' | xargs -L1 -I {} VBoxManage controlvm {} poweroff soft
+
+## Configure ##
+
 _directory="/external/backup"
 _user="<USER-ID>"
 
@@ -9,6 +15,8 @@ _base="/"$(echo "$_directory" | awk -F "/" '{print $2}')
 # backup location
 mkdir -p $_directory
 cd $_directory
+
+## Backup ##
 
 # generate private/public key-pair
 #   important: remember passphrase
@@ -29,9 +37,12 @@ tar --exclude="$_base" --exclude='*.ecryptfs/*' --exclude='/ram' --exclude='/tmp
 #gpg --import backup.key
 #gpg --no-use-agent --passphrase= --output temp.tar.gz --decrypt "$_mark".tar.gz.gpg
 
+## Post ##
+
 # keep current and prevous
 cd $_directory
 if [[ $(pwd) == $_directory ]]; then
   ls -1tr | head -n -2 | xargs -d '\n' rm -f
 fi
 
+sudo shutdown -r +1 "Backup Complete..."
