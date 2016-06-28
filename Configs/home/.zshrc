@@ -3,8 +3,6 @@ export ZSH=~/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 DISABLE_AUTO_UPDATE="true"
 
-# update failing, so we do it.
-git -C $ZSH pull
 source $ZSH/oh-my-zsh.sh
 
 plugins=(git brew bower cake bundler coffee gem npm node python redis-cli screen sublime supervisor svn tmux tmuxinator vagrant bundler osx vi-mode history-substring-search autojump zsh-syntax-highlighting command-not-found docker) 
