@@ -175,7 +175,7 @@ else
   alias ps='ps auxf'
 fi
 if [[ $MY_DISTRO == debian ]]; then
-  alias apt-get='sudo apt-get -y'
+  alias apt-get='sudo apt-get --force-yes -y'
   alias upgrade='apt-get update && apt-get dist-upgrade && apt-get upgrade && apt-get autoclean && apt-get autoremove && gem update && gem cleanup && git -C $ZSH pull'
 fi
 if [[ $MY_DISTRO == darwin ]]; then
