@@ -140,7 +140,7 @@ fi
 alias du='du -ach'
 alias free='free -mt'
 if [[ $MY_OS == darwin ]]; then
-  alias here='find . -iname -name'
+  alias here='find . -iname'
 else
   alias here='find . -iname -perm /444 -name'
 fi
