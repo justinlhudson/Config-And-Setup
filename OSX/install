@@ -27,6 +27,8 @@ brew install
       firefox
   tmux
   mono
+  python
+  python3
   vim
   macvim
   autojump
