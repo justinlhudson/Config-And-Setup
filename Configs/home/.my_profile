@@ -193,8 +193,8 @@ alias irc='weechat'
 ### Functions ###
 
 if [[ $MY_OS == darwin ]]; then
-  find() {
-    find . -name $1  2>&1 | grep -v "Permission denied"
+  here() {
+    find . -iname "$1"  2>&1 | grep -v "Permission denied"
   }
 fi
 
