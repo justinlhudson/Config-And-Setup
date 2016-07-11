@@ -139,9 +139,7 @@ else
 fi
 alias du='du -ach'
 alias free='free -mt'
-if [[ $MY_OS == darwin ]]; then
-  alias here='find . -iname'
-else
+if [[ ! $MY_OS == darwin ]]; then
   alias here='find . -iname -perm /444 -name'
 fi
 alias whereami='uname -a'
@@ -193,6 +191,12 @@ alias twitter='sudo rainbowstream -iot'
 alias irc='weechat'
 
 ### Functions ###
+
+if [[ $MY_OS == darwin ]]; then
+  find() {
+    find . -name $1  2>&1 | grep -v "Permission denied"
+  }
+fi
 
 # public ip
 ipPub() {
