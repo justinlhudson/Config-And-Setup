@@ -198,6 +198,12 @@ if [[ $MY_OS == darwin ]]; then
   }
 fi
 
+# retry command 
+# usage: retry <command> sleep
+retry(){
+  while ; do $1 && break || sleep $2; done
+}
+
 # public ip
 ipPub() {
     curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
