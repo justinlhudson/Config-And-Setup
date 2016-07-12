@@ -177,7 +177,7 @@ if [[ $MY_DISTRO == debian ]]; then
   alias upgrade='apt-get update && apt-get dist-upgrade && apt-get upgrade && apt-get autoclean && apt-get autoremove && gem update && gem cleanup && git -C $ZSH pull'
 fi
 if [[ $MY_DISTRO == darwin ]]; then
-  alias upgrade='brew update && brew upgrade && brew cleanup && brew cask cleanup && gem update && sudo sh -c 'GEM_HOME=/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/gems/2.0.0 gem cleanup' && git -C $ZSH pull && mas upgrade'
+  alias upgrade='brew update && brew upgrade && brew cleanup && brew cask cleanup && brew link ruby && gem update && sudo sh -c 'GEM_HOME=/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/gems/2.0.0 gem cleanup' && git -C $ZSH pull && mas upgrade'
   alias mdtool='/Applications/Xamarin\ Studio.app/Contents/MacOS/mdtool'
 fi
 # replace awk with ag if found
