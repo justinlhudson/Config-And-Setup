@@ -121,14 +121,14 @@ syntax on                                                  " turn sytanx highlig
   set splitbelow                                           " open horizontal splits on the right
   set splitright                                           " open vertical splits below
   set cmdheight=2                                          " message height in command window
-  set expandtab                                            " Use spaces instead of tabs
+  "set expandtab                                            " Use spaces instead of tabs
   set smarttab                                             " Be smart when using tabs
   set softtabstop=2                                        " soft tabs, ie. number of spaces for tab
   set tabstop=2                                            " global tab width
   set hidden                                               " handle multiple buffers better
   set laststatus=2                                         " Always show the status line
   set wildmenu                                             " Turn on the WiLd menu
-  set number                                               " show line numbers
+  "set number                                               " show line numbers
   set ruler                                                " Always show current position
   set smartcase                                            " When searching try to be smart about cases
   set ignorecase                                           " case-insensitive searching
