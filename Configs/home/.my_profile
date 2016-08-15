@@ -193,15 +193,18 @@ alias irc='weechat'
 ### Functions ###
 
 if [[ $MY_OS == darwin ]]; then
-here() {
-  find . -iname "$1"  2>&1 | grep -v "Permission denied"
-}
+  here() {
+    find . -iname $1 2>&1 | grep -v "Permission denied"
+  }
 fi
 
 # retry command 
 # usage: retry <command> sleep
-retry(){
-  while ; do $1 && break || sleep $2; done
+retry() {
+  while 1 ; do 
+    $1 && break 
+    sleep $2
+  done
 }
 
 # public ip
@@ -280,7 +283,6 @@ screen() {
      command screen "$@"
   fi
 }
-
 
 mux()
 {
