@@ -210,7 +210,7 @@ retry() {
   done
 }
 
-repeat() {
+run() {
   while 1 ; do 
     $1 || true
     sleep $2
