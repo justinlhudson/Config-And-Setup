@@ -210,6 +210,13 @@ retry() {
   done
 }
 
+repeat() {
+  while 1 ; do 
+    $1 
+    sleep $2
+  done
+}
+
 # public ip
 ipPub() {
     curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
