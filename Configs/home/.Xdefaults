@@ -9,5 +9,5 @@ xterm*termName: xterm-color
 xterm*vt100*geometry: 120x20
 xterm*selectToClipboard:true
 xterm*rightScrollBar: true
-xterm*ScrollBar: true
+#xterm*ScrollBar: true
 xterm*bellIsUrgent: true
