@@ -115,7 +115,7 @@ if [[ $MY_OS == darwin ]]; then
   export GOPATH=/usr/local/opt/go/bin
 fi
 
-### Aliases ###
+### The Magic ###
 if type htop > /dev/null 2>&1; then
   alias top='htop'
 fi
@@ -177,10 +177,32 @@ pip_all() {
 }
 if [[ $MY_DISTRO == debian ]]; then
   alias apt-get='sudo apt-get --force-yes -y'
-  alias upgrade='apt-get update && apt-get dist-upgrade && apt-get upgrade && apt-get autoclean && apt-get autoremove && gem update && gem cleanup && pip_all && git -C $ZSH pull'
+  upgrade() {
+    apt-get update
+    apt-get dist-upgrade
+    apt-get upgrade
+    apt-get autoclean
+    apt-get autoremove
+    sudo /sbin/rcvboxdrv setup
+    gem update 
+    gem cleanup 
+    pip_all 
+    git -C $ZSH pull'
+  }
 fi
 if [[ $MY_DISTRO == darwin ]]; then
-  alias upgrade='brew update && brew upgrade && brew cleanup && brew cask cleanup && brew linkapps && pip_all && gem update && sudo sh -c 'GEM_HOME=/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/gems/2.0.0 gem cleanup' && git -C $ZSH pull && mas upgrade'
+  upgrade() {
+    brew update 
+    brew upgrade
+    brew cleanup
+    brew cask cleanup
+    brew linkapps
+    pip_all
+    gem update
+    sudo sh -c 'GEM_HOME=/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/gems/2.0.0 gem cleanup
+    git -C $ZSH pull
+    mas upgrade
+  }
   alias mdtool='/Applications/Xamarin\ Studio.app/Contents/MacOS/mdtool'
 fi
 # replace awk with ag if found
@@ -192,8 +214,6 @@ if type autojump > /dev/null 2>&1; then
 fi
 alias twitter='sudo rainbowstream -iot'
 alias irc='weechat'
-
-### Functions ###
 
 if [[ $MY_OS == darwin ]]; then
   here() {
