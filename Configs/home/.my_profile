@@ -382,3 +382,8 @@ if [[ $MY_OS == darwin ]]; then
   # play funny sounds from terminal
   source ~/.sounds/.sound > /dev/null 2>&1
 fi
+
+function finish {
+  echo "Done."
+}
+trap finish EXIT
