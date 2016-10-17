@@ -384,6 +384,6 @@ if [[ $MY_OS == darwin ]]; then
 fi
 
 function finish {
-  echo "Done."
+  echo ""
 }
 trap finish EXIT
