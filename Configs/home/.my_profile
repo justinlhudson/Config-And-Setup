@@ -187,7 +187,7 @@ if [[ $MY_DISTRO == debian ]]; then
     gem update 
     gem cleanup 
     pip_all 
-    git -C $ZSH pull'
+    git -C $ZSH pull
   }
 fi
 if [[ $MY_DISTRO == darwin ]]; then
@@ -199,7 +199,7 @@ if [[ $MY_DISTRO == darwin ]]; then
     brew linkapps
     pip_all
     gem update
-    sudo sh -c 'GEM_HOME=/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/gems/2.0.0 gem cleanup
+    sudo sh -c "GEM_HOME=/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/gems/2.0.0 gem cleanup"
     git -C $ZSH pull
     mas upgrade
   }
