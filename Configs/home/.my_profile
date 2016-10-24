@@ -175,6 +175,20 @@ fi
 pip_all() {
   sudo -H pip install --upgrade pip && pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo -H pip install -U
 }
+
+VBoxManage()
+{
+  if [ -n "$1" ] && [[ "$1" == "--poweroff" ]]; then
+    if [ -n "$2" ]; then
+      command tmux kill-session -t $2
+    else
+      command vboxmanage list runningvms | sed -r 's/.*\{(.*)\}/\1/' | xargs -L1 -I {} command VBoxManage controlvm {} poweroff
+    fi
+  elsef
+    command VBoxManage "$@"
+  fi
+}
+
 if [[ $MY_DISTRO == debian ]]; then
   alias apt-get='sudo apt-get --force-yes -y'
   upgrade() {
@@ -183,6 +197,7 @@ if [[ $MY_DISTRO == debian ]]; then
     apt-get upgrade
     apt-get autoclean
     apt-get autoremove
+    VBoxManage --poweroff
     sudo /sbin/rcvboxdrv setup
     gem update 
     gem cleanup 
@@ -192,6 +207,7 @@ if [[ $MY_DISTRO == debian ]]; then
 fi
 if [[ $MY_DISTRO == darwin ]]; then
   upgrade() {
+    VBoxManage --poweroff || true
     brew update 
     brew upgrade
     brew cleanup
