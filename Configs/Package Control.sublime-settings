@@ -1,13 +1,13 @@
 {
-	"bootstrapped": true,
-	"in_process_packages":
+	"draw_white_space": "all",
+	"font_size": 14,
+	"ignored_packages":
 	[
+		"Vintage"
 	],
-	"installed_packages":
-	[
-		"Anaconda",
-		"Better CoffeeScript",
-		"Package Control",
-		"Theme - Soda SolarizedDark"
-	]
+	"tab_size": 2,
+	"theme": "Soda Dark 3.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"swallow_startup_errors":true,
+	"update_check": true
 }
