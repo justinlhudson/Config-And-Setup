@@ -3,7 +3,7 @@ xterm*Background: black
 xterm*Foreground: green
 xterm*locale: true
 #xterm*faceName: Nimbus Mono
-xterm*faceSize: 11
+xterm*faceSize: 14
 xterm*saveLines: 16384
 xterm*termName: xterm-color
 xterm*vt100*geometry: 120x20
