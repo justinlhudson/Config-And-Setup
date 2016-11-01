@@ -180,20 +180,30 @@ VBoxManage()
 {
   if [ -n "$1" ] && [[ "$1" == "--poweroff" ]]; then
     VBoxManage list runningvms | for v in $(awk '{print $1}'); do VBoxManage controlvm $v poweroff; done
+  elif [ -n "$1" ] && [[ "$1" == "--upgrade" ]]; then
+    version=$(vboxmanage -v)
+    var1=$(echo $version | cut -d 'r' -f 1)
+    var2=$(echo $version | cut -d 'r' -f 2)
+    file="Oracle_VM_VirtualBox_Extension_Pack-$var1-$var2.vbox-extpack"
+    wget http://download.virtualbox.org/virtualbox/$var1/$file -O /tmp/$file
+    sudo VBoxManage extpack install /tmp/$file --replace
   else
     command VBoxManage "$@"
   fi
+  version=$(vboxmanage -v)
+
 }
 
 if [[ $MY_DISTRO == debian ]]; then
   alias apt-get='sudo apt-get --force-yes -y'
   upgrade() {
+    VBoxManage --poweroff
     apt-get update
     apt-get dist-upgrade
     apt-get upgrade
     apt-get autoclean
     apt-get autoremove
-    VBoxManage --poweroff
+    VBoxManage --upgrade
     sudo /sbin/rcvboxdrv setup
     gem update 
     gem cleanup 
@@ -209,6 +219,7 @@ if [[ $MY_DISTRO == darwin ]]; then
     brew cleanup
     brew cask cleanup
     brew linkapps
+    VBoxManage --upgrade
     pip_all
     gem update
     sudo sh -c "GEM_HOME=/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/gems/2.0.0 gem cleanup"
