@@ -65,8 +65,8 @@ ln -s /usr/bin/nodejs /usr/bin/node
 ### NPM installs ###
 npm install bower -g
 npm install gulp -g
-npm install -g forever
-npm install -g forever-service
+#deamonize nodejs scripts
+sudo npm install -g pm2
 
 # http://rvm.io/
 curl -sSL https://get.rvm.io | bash -s stable
