@@ -204,6 +204,7 @@ if [[ $MY_DISTRO == debian ]]; then
     apt-get autoclean
     apt-get autoremove
     VBoxManage --upgrade
+    sudo npm -g upgrade
     sudo /sbin/rcvboxdrv setup
     gem update 
     gem cleanup 
@@ -220,6 +221,7 @@ if [[ $MY_DISTRO == darwin ]]; then
     brew cask cleanup
     brew linkapps
     VBoxManage --upgrade
+    sudo npm -g upgrade
     pip_all
     gem update
     sudo sh -c "GEM_HOME=/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/gems/2.0.0 gem cleanup"
