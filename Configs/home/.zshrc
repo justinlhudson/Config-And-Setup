@@ -20,6 +20,3 @@ fi
 if [ -f ~/.my_profile ]; then
   source ~/.my_profile 2> /dev/null
 fi
-
-sleep 5
-clear
