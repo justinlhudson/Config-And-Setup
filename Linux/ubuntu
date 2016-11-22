@@ -1,3 +1,6 @@
+// automatically install security updates
+sudo dpkg-reconfigure -plow unattended-upgrades
+
 // Laptop screen dim backlight solution
 
 // add option
