@@ -1,6 +1,10 @@
 // automatically install security updates
 sudo dpkg-reconfigure -plow unattended-upgrades
 
+// check and set auto start configuration CLI
+sudo apt-get install rcconf
+sudo rcconf
+
 // Laptop screen dim backlight solution
 
 // add option
