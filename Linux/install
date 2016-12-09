@@ -79,6 +79,9 @@ sudo npm install -g pm2
 sudo apt-get install ruby
 gem install tmuxinator
 
+#python
+apt-get install python 3.X
+
 # python anaconda
 https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh
 bash Anaconda3-4.2.0-Linux-x86_64.sh 
