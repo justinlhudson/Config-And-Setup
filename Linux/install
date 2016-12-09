@@ -63,8 +63,11 @@ add-apt-repository ppa:transmissionbt/ppa
 apt-get update
 sudo apt-get install transmission-cli transmission-common transmission-daemon
 
+# node
+apt-get install nodejs
+apt-get install npm
 # node verse nodjs
-ln -s /usr/bin/nodejs /usr/bin/node
+sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 ### NPM installs ###
 npm install bower -g
@@ -72,12 +75,14 @@ npm install gulp -g
 #deamonize nodejs scripts
 sudo npm install -g pm2
 
-# http://rvm.io/
+# gem
 curl -sSL https://get.rvm.io | bash -s stable
+# http://rvm.io/
 
 # https://github.com/tmuxinator/tmuxinator
 gem install tmuxinator
 
+# vim package manager
 # https://github.com/gmarik/Vundle.vim
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
