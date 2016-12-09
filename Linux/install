@@ -7,23 +7,31 @@ fi
 
 # apt-get install -f
 
-silversearcher-ag expect git tmux gparted gdisk htop ssh vsftpd samba vim filezilla nautilus-dropbox bind9 supervisor vim vnc4server vncpasswd nodejs npm nginx
+silversearcher-ag expect git tmux gparted gdisk htop openssh-server vsftpd samba vim filezilla nautilus-dropbox bind9 supervisor vim vnc4server vncpasswd nodejs npm nginx
 redis-server cpulimit autojump screen dstat inotify-tools
 
 ### Latest per website instructions ###
 mongodb
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
 # Goto docker website for latest install instructions
 docker (docker-engine)
 docker-compose (docker service)
+https://docs.docker.com/engine/installation/linux/ubuntulinux/
 
 mono (mono-devel, mono-complete)
+http://www.mono-project.com/docs/getting-started/install/linux/
+
 monodevelop
+http://www.monodevelop.com/download/linux/
+
 oh-my-zsh
+http://ohmyz.sh/
 
 virtual box
 # For USB support
 # sudo adduser $USER vboxusers
+http://tecadmin.net/install-oracle-virtualbox-on-ubuntu/#
 
 # python package manager
 sudo apt-get intsall python-pip
