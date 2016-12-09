@@ -13,15 +13,4 @@ sudo rcconf
 GRUB_CMDLINE_LINUX="acpi_backlight=vendor"
 update-grub
 
-
-// start jodjs with froever at boot
-http://www.slidequest.com/q/70ang
-Making your forever app launch at boot using Ubuntu
-If you've installed forever and Node.js system-wide (so that they are located somewhere in $PATH), you can have your app started by forever at system-boot using Ubuntu's upstart. All you need to do is create a file named something like myapp.conf in /etc/init with the following contents:
-
-/etc/init/myapp.conf
-
-start on startup
-exec forever start /full/path/to/test.js
-
 // store applications in /opt
