@@ -1,7 +1,8 @@
 ### sudo (without passwd) to user or apps ###
 sudo visudo
+# application specific permissions
 <usr> ALL=NOPASSWD: /usr/bin/application
-# not password for admins running sudo
+# password for admins group running sudo
 %admin ALL=(ALL) NOPASSWD: ALL
 
 ### Logging system operations ###
@@ -56,10 +57,11 @@ sudo blkid
 dconf-editor
 
 ### Change cpu power strategy ###
-apt-get install Cpufregutils
+apt-get install cpufrequtils
 vim /etc/init.d/cpufrequtils
 service cpufrequtils restart
-cpufreq-info
+
+
 
 ### SSH save password ###
 ssh-keygen
