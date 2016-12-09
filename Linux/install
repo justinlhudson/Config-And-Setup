@@ -82,13 +82,12 @@ gem install tmuxinator
 # python anaconda
 https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh
 bash Anaconda3-4.2.0-Linux-x86_64.sh 
+# /opt/...
 # https://www.continuum.io/downloads
 
-# vim package manager
-
-
+# Vundle: vim package manager
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # https://github.com/gmarik/Vundle.vim
-
 
 # terminal landscape systeminformation
 apt-get install landscape-client
