@@ -1,6 +1,6 @@
 apt-get:
 silversearcher-ag expect git tmux gparted gdisk htop openssh-server vsftpd samba vim filezilla nautilus-dropbox bind9 supervisor vim vnc4server vncpasswd nodejs npm nginx
-redis-server cpulimit autojump screen dstat inotify-tools vnc4server
+redis-server cpulimit autojump screen dstat inotify-tools vnc4server openvpn
 
 ### Latest per website instructions ###
 mongodb
