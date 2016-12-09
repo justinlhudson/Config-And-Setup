@@ -1,3 +1,8 @@
+### Change cpu power strategy ###
+apt-get install cpufrequtils
+vim /etc/init.d/cpufrequtils
+service cpufrequtils restart
+
 # osx remote viewer to ubuntu remote desktop
 install: gconf-tools
 run: dconf-Editor
