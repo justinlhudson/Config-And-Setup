@@ -24,8 +24,8 @@ http://ohmyz.sh/
 
 virtual box
 # For USB support
-# sudo adduser $USER vboxusers
-http://tecadmin.net/install-oracle-virtualbox-on-ubuntu/#
+sudo adduser $USER vboxusers
+https://help.ubuntu.com/community/VirtualBox/Installation
 
 # python package manager
 sudo apt-get intsall python-pip
