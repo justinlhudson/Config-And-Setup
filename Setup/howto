@@ -5,8 +5,13 @@ sudo visudo
 # password for admins group running sudo
 %admin ALL=(ALL) NOPASSWD: ALL
 
-### Logging system operations ###
-tail -f /var/log/syslog
+### List drives ###
+sudo blkid
+
+### Disable automount ###
+# Edit gnome settings (to not auto mount external drive, if configured in fstab)
+# goto -> org.gnome.desktop.media-handling
+dconf-editor
 
 #### Remove files older then 5 days old recusively ###
 find /path/to/files/* -depth -mtime +5 -exec rm {} \;
@@ -47,21 +52,6 @@ for _d in $(find $_path  -mindepth 1 -maxdepth 1 -type d) ; do
     mv -- "$_f" "$_structure/"
   done
 done
-
-### List drives ###
-sudo blkid
-
-### Disable automount ###
-# Edit gnome settings (to not auto mount external drive, if configured in fstab)
-# goto -> org.gnome.desktop.media-handling
-dconf-editor
-
-### Change cpu power strategy ###
-apt-get install cpufrequtils
-vim /etc/init.d/cpufrequtils
-service cpufrequtils restart
-
-
 
 ### SSH save password ###
 ssh-keygen
