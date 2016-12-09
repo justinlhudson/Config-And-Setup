@@ -75,16 +75,20 @@ npm install gulp -g
 #deamonize nodejs scripts
 sudo npm install -g pm2
 
-# gem
-curl -sSL https://get.rvm.io | bash -s stable
-# http://rvm.io/
-
 # https://github.com/tmuxinator/tmuxinator
+sudo apt-get install ruby
 gem install tmuxinator
 
+# python anaconda
+https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh
+bash Anaconda3-4.2.0-Linux-x86_64.sh 
+# https://www.continuum.io/downloads
+
 # vim package manager
+
+
 # https://github.com/gmarik/Vundle.vim
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
 
 # terminal landscape systeminformation
 apt-get install landscape-client
