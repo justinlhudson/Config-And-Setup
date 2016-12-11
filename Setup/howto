@@ -4,6 +4,10 @@ sudo visudo
 <usr> ALL=NOPASSWD: /usr/bin/application
 # password for admins group running sudo
 %admin ALL=(ALL) NOPASSWD: ALL
+# add greoup admin
+sudo groupadd admin
+# add user to admin group
+sudo adduser $USER admin
 
 ### List drives ###
 sudo blkid
