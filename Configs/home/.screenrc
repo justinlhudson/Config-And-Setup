@@ -18,6 +18,20 @@ bind c screen 1
 bind ^c 1
 bind 0 select 10
 
+# bind F*unction keys properly ?
+# Note: nfocmp -1 | grep kf.=
+terminfo * k1=\EOP
+terminfo * k2=\EOQ
+terminfo * k3=\EOR
+terminfo * k4=\EOS
+terminfo * k5=\E[15~
+terminfo * k6=\E[17~
+terminfo * k7=\E[18~
+terminfo * k8=\E[19~
+terminfo * k9=\E[20~
+terminfo * F1=\E[23~
+terminfo * F2=\E[24~
+
 # prev and next window keys (alt L R arrow)
 bindkey -k k1 select 1  #  F1 = screen 1
 bindkey -k k2 select 2  #  ...
