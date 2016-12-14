@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Configure ##
-_directory="/<storage-location>/backup"
+_directory="$1"
 
 # shutdown VMs first if have virtualbox installed
 if hash vboxmanage 2>/dev/null; then
