@@ -1,4 +1,6 @@
 # Fail2Ban configuration file.
+# 
+# Stop command: fail2ban-client stop
 #
 # This file was composed for Debian systems from the original one
 # provided now under /usr/share/doc/fail2ban/examples/jail.conf
