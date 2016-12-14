@@ -12,7 +12,7 @@ fi
 _base="/"$(echo "$_directory" | awk -F "/" '{print $2}')
 
 # backup location
-mkdir -p $_directory
+#mkdir -p $_directory
 cd $_directory
 
 ## Backup ##
