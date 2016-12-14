@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ## Configure ##
-_directory="$1"
-_user="USER-ID" # value given during gpg --gen-key
+_directory="$2"
+_user="$1" #"USER-ID" value given during gpg --gen-key
 
 # shutdown VMs first if have virtualbox installed
 if hash vboxmanage 2>/dev/null; then
