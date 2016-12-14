@@ -27,7 +27,7 @@ cd $_directory
   # or just wait...
 
 # copy public keyfile with value used for "USER-ID"
-#gpg --export -a "USER-ID" > public.key
+#gpg --export -a "USER-ID" > backup.key
 #gpg --import public.key
 
 # archive
