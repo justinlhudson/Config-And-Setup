@@ -6,10 +6,13 @@ sudo visudo
 %admin ALL=(ALL:ALL) NOPASSWD: ALL
 # add group admin
 sudo groupadd admin
-# add user to admin group
-sudo adduser $USER admin
+# append user to admin group
+sudo usermod -a -G admin $USER
 # add to the end for specific user
 <user> ALL=(ALL) NOPASSWD: ALL
+
+# list groups user is in
+grep $USER /etc/group
 
 ### List drives ###
 sudo blkid
