@@ -1,5 +1,6 @@
 # add admin user
 sudo useradd <new-username> -s /bin/bash -g sudo -m
+sudo passwd <new-username>
 
 ### Change cpu power strategy ###
 apt-get install cpufrequtils
