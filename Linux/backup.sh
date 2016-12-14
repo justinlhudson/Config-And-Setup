@@ -1,14 +1,12 @@
 #!/bin/bash
 
-## Pre ##
-
-# shutdown VMs first
-vboxmanage list runningvms | sed -r 's/.*\{(.*)\}/\1/' | xargs -L1 -I {} VBoxManage controlvm {} poweroff soft
-
 ## Configure ##
+_directory="/<storage-location>/backup"
 
-_directory="/external/backup"
-_user="<USER-ID>"
+# shutdown VMs first if have virtualbox installed
+if hash vboxmanage 2>/dev/null; then
+  vboxmanage list runningvms | sed -r 's/.*\{(.*)\}/\1/' | xargs -L1 -I {} VBoxManage controlvm {} poweroff soft
+fi
 
 _base="/"$(echo "$_directory" | awk -F "/" '{print $2}')
 
@@ -19,11 +17,16 @@ cd $_directory
 ## Backup ##
 
 # generate private/public key-pair
-#   important: remember passphrase
+# important: remember passphrase
 #gpg --gen-key
+# Note:  write down uid given at the end of generation
+# ?'s: RSA, 10y, no passphrase, Real name: hostnam
+# Generating...
+  # find / | xargs file
+  # or just wait...
 
 # copy public keyfile with value used for "USER-ID"
-#gpg --export -a "$_user" > public.key
+#gpg --export -a "USER-ID" > public.key
 #gpg --import public.key
 
 # archive
@@ -45,4 +48,4 @@ if [[ $(pwd) == $_directory ]]; then
   ls -1tr | head -n -2 | xargs -d '\n' rm -f
 fi
 
-sudo shutdown -r +1 "Backup Complete..."
+sudo shutdown -r +1 "Backup Complete (rebooting...)"
