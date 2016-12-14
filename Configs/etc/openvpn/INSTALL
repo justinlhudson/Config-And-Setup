@@ -77,4 +77,9 @@ cd /etc/openvpn/client/
 vim client.ovpn
 # can change client.ovpn name if like to <name>.ovpn
 
+# place client config in home area
+tar -zcvf /tmp/openvpn-client.tar.gz /etc/openvpn/client/
+# change permissions out of root
+chmod 777 /tmp/openvpn-client.tar.gz
+
 # done I hope :)
