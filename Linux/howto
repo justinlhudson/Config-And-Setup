@@ -1,5 +1,5 @@
 # create user
-sudo useradd <new-username> -s -m /bin/bash 
+sudo useradd <new-username> -s /bin/bash -m
 sudo passwd <new-username>
 
 ### Change cpu power strategy ###
