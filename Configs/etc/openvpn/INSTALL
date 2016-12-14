@@ -1,28 +1,45 @@
-sudo apt-get install openvpn bridge-utils
-sudo apt-get install easy-rsa
+# Notes: https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-16-04
+
+sudo apt-get install openvpn easy-rsa
+sudo apt-get install bridge-utils
 
 # root terminal
 sudo -i
 
 make-cadir /etc/openvpn/easy-rsa
+cd /etc/openvpn/easy-rsa
 
-# edit
-# reflect your new CA information
+# edit to reflect new CA information to make cert
 vim /etc/openvpn/easy-rsa/vars
 
+# suggestion:  keep generic
+export KEY_COUNTRY="US"
+export KEY_PROVINCE="NA"
+export KEY_CITY="NA"
+export KEY_ORG="<NAME>"
+export KEY_EMAIL="<NAME>@<NAME>.noreply"
+export KEY_OU="<NAME>"
+export KEY_CN="<NAME>"
+
+# X509 Subject Field
+export KEY_NAME="<NAME>_RSA"
+
+# Bug (needs variable): KEY_ALTNAMES="<NAME>_RSA"
 source /etc/openvpn/easy-rsa/vars
 
-# create server cert
+# build cert
 ./clean-all  ## Setup the easy-rsa directory (Deletes all keys)
-./build-dh  ## takes a while consider backgrounding
-
-# keys/
+./build-dh  ## random generator generating for ca creation (takes some time...)
 ./build-ca
-./build-key-server server
 
-cd keys
+# create server keys pairs
+./build-key-server server
+# Note:  password not needed.
+
+# generated files located
+cd keys/
 openvpn --genkey --secret ta.key  ## Build a TLS key
-sudo cp server.crt server.key ca.crt dh2048.pem ta.key ../../
+cp ca.crt ca.key server.crt server.key ta.key dh2048.pem /etc/openvpn
 
 # forward traffic to LAN
 vim /etc/sysctl.conf
@@ -34,25 +51,30 @@ sysctl -p
 # configure routing back to clients on host computer
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 #add
-/etc/rc.local
-iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-<local_lan_interface_name> = eth0
+vim /etc/rc.local
+iptables -t nat -A POSTROUTING -o <local_lan_interface_name> -j MASQUERADE
+<local_lan_interface_name> = eth0 (in most cases)
 
 # example server.conf
 cp /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz /etc/openvpn/
 gzip -d /etc/openvpn/server.conf.gz
 
-vim server.conf
-# edit (save changes)
+vim /etc/openvpn/server.conf
+# edit (save changes), see this server.config as example
 
 # client Cert & Key
-cd /etc/openvpn/easy-rsa/
+cd /etc/openvpn/easy-rsa/keys
 source vars
 ./build-key client
+mkdir /etc/openvpn/client
+cp ca.crt ta.key client.crt client.key /etc/openvpn/client
 
-# profile
-/usr/share/doc/openvpn/examples/sample-config-files/client.conf
-rename 
-client.ovpn
+# client template profile
+cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf /etc/openvpn/client/client.ovpn
 
-# note:  match server with client config options!
+# note:  match server with client config options in client.ovpn!
+cd /etc/openvpn/client/
+vim client.ovpn
+# can change client.ovpn name if like to <name>.ovpn
+
+# done I hope :)
