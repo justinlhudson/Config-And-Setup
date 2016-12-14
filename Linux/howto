@@ -1,5 +1,5 @@
-# add admin user
-sudo useradd <new-username> -s /bin/bash -g sudo -m
+# create user
+sudo useradd <new-username> -s -m /bin/bash 
 sudo passwd <new-username>
 
 ### Change cpu power strategy ###
