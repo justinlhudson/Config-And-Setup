@@ -21,7 +21,7 @@ cd $_directory
 # important: remember passphrase
 #gpg --gen-key
 # Note:  write down uid given at the end of generation
-# ?'s: RSA, 10y, no passphrase, Real name: hostnam
+# ?'s: default, 10y, no passphrase, Real name: hostnam
 # Generating...
   # find / | xargs file
   # or just wait...
