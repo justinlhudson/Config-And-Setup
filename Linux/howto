@@ -3,6 +3,7 @@ sudo useradd <new-username> -s /bin/bash -m
 sudo passwd <new-username>
 # admin user
 sudo usermod -a -G sudo <new-username>
+sudo usermod -a -G root <new-username>
 sudo usermod -a -G admin <new-username>
 
 ### Change cpu power strategy ###
