@@ -75,6 +75,7 @@ npm install gulp -g
 #deamonize nodejs scripts
 
 # https://github.com/Unitech/pm2
+# http://pm2.keymetrics.io/docs/usage/application-declaration/
 sudo npm install -g pm2
 
 # https://github.com/tmuxinator/tmuxinator
