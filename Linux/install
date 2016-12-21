@@ -73,6 +73,8 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 npm install bower -g
 npm install gulp -g
 #deamonize nodejs scripts
+
+# https://github.com/Unitech/pm2
 sudo npm install -g pm2
 
 # https://github.com/tmuxinator/tmuxinator
