@@ -184,6 +184,7 @@ VBoxManage()
 {
   if [ -n "$1" ] && [[ "$1" == "--poweroff" ]]; then
     VBoxManage list runningvms | for v in $(awk '{print $1}'); do VBoxManage controlvm $v poweroff; done
+    pkill VirtualBox
   elif [ -n "$1" ] && [[ "$1" == "--upgrade" ]]; then
     version=$(vboxmanage -v)
     var1=$(echo $version | cut -d 'r' -f 1)
