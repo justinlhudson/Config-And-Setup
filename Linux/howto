@@ -1,6 +1,8 @@
 # port forward 80 to 3000 with iptables
 iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
-iptables-save
+sudo netfilter-persistent save
+sudo netfilter-persistent reload
+
 # save rules to a file
 sudo sh -c "iptables-save > /tmp/iptables.rules"
 
