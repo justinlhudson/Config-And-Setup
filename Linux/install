@@ -22,6 +22,9 @@ http://www.monodevelop.com/download/linux/
 oh-my-zsh
 http://ohmyz.sh/
 
+#nfs server
+sudo apt install nfs-kernel-server
+
 virtual box
 # For USB support
 sudo adduser $USER vboxusers
