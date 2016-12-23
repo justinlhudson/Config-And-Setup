@@ -25,6 +25,9 @@ http://ohmyz.sh/
 #nfs server
 sudo apt install nfs-kernel-server
 
+#samba netter then nfs
+sudo apt-get install samba
+
 virtual box
 # For USB support
 sudo adduser $USER vboxusers
