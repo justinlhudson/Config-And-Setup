@@ -1,11 +1,10 @@
 # create and fstab mount virtual disk image
 fallocate -l <size> <file to create>
 fallocate -l 256GB virtual.img
-# fill file with random data
+# fill file with random data (not needed)
 dd if=/dev/urandom of=virtual.img bs=1M count=256000
 # formate disk
 mkfs -t ext4 virtual.img.img
-# select "y"
 sudo mkdir /media/virtual
 sudo mount -t auto -o loop virtual.img /media/virtual/
 <disk image file> <mountpoint> <filesystem type> loop 0 0
