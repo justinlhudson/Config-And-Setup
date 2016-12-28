@@ -53,6 +53,7 @@ iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 #add
 vim /etc/rc.local
 iptables -t nat -A POSTROUTING -o <local_lan_interface_name> -j MASQUERADE
+# Example:  iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
 <local_lan_interface_name> = eth0 (in most cases)
 
 # example server.conf
