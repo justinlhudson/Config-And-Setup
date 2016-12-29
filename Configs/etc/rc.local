@@ -1,6 +1,12 @@
-iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+internal_if=enp1s0
+external_if=tun0
+
+# openvpn
+iptables -A FORWARD -i ${external_if} -o ${external_if} -j ACCEPT # VPN to VPN
+iptables -A FORWARD -i ${external_if} -o ${internal_if} -j ACCEPT # VPN to LAN
+iptables -t nat -I POSTROUTING -o ${internal_if} -s 10.8.0.0/24 -j MASQUERADE # VPN Clients as if is Server
 
 # forward port 3000 to 80
-# iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
+iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
 
 exit 0
