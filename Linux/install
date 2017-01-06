@@ -52,6 +52,7 @@ sudo apt-get install bsd-mailx
 apt-get install ddclient
 # gui configuration (query dyndns)
 dpkg-reconfigure ddclient
+/etc/ddclient/ddclient.conf
 
 # stop ssh and other attacks
 apt-get install fail2ban
