@@ -38,7 +38,7 @@ cd $_directory
 _mark=`date '+%Y_%m_%d-%H_%M_%S'`;
 # https://help.ubuntu.com/community/BackupYourSystem/TAR
 # Note: -h to follow symbolic links
-tar --exclude="$_base" --exclude='*.ecryptfs/*' --exclude='/ram' --exclude='/tmp' --exclude='/home' --exclude='/proc' --exclude='/sys' --exclude='/mnt' --exclude='/media' --exclude='/run' --exclude='/dev' --exclude='/proc' --exclude='/sys' -czvf - / | gpg --encrypt --quiet --recipient $_user > "$_mark".tar.gz.gpg
+tar --exclude='*.ecryptfs/*' --exclude='/ram' --exclude='/tmp' --exclude='/home' --exclude='/proc' --exclude='/sys' --exclude='/mnt' --exclude='/media' --exclude='/run' --exclude='/dev' --exclude='/proc' --exclude='/sys' -czvf - / | gpg --encrypt --quiet --recipient $_user > "$_mark".tar.gz.gpg
 
 # extract
 #   import key
