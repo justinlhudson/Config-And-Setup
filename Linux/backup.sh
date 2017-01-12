@@ -8,6 +8,7 @@ if [ -z $3 ]; then
 else
   _history=$3
 fi
+
 # shutdown VMs first if have virtualbox installed
 if hash vboxmanage 2>/dev/null; then
   vboxmanage list runningvms | sed -r 's/.*\{(.*)\}/\1/' | xargs -L1 -I {} VBoxManage controlvm {} poweroff soft
