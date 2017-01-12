@@ -3,7 +3,11 @@
 ## Configure ##
 _directory="$2"
 _user="$1" #"USER-ID" value given during gpg --gen-key
-
+if [ -z $3 ]; then
+  _history=2
+else
+  _history=$3
+fi
 # shutdown VMs first if have virtualbox installed
 if hash vboxmanage 2>/dev/null; then
   vboxmanage list runningvms | sed -r 's/.*\{(.*)\}/\1/' | xargs -L1 -I {} VBoxManage controlvm {} poweroff soft
@@ -46,7 +50,7 @@ tar --exclude="$_base" --exclude='*.ecryptfs/*' --exclude='/ram' --exclude='/tmp
 # keep current and prevous
 cd $_directory
 if [[ $(pwd) == $_directory ]]; then
-  ls -1tr | head -n -2 | xargs -d '\n' rm -f
+  ls -1tr | head -n -$_history | xargs -d '\n' rm -f
 fi
 
 sudo shutdown -r +1 "Backup Complete (rebooting...)"
