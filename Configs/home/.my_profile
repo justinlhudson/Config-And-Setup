@@ -268,7 +268,11 @@ ipPub() {
 # speed test
 speedtest() {
   ipPub
-  curl -o /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip
+  if type speedtest-cli > /dev/null 2>&1; then
+   speedtest-cli
+  else
+    curl -o /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip
+  fi
 }
 
 # like dos
