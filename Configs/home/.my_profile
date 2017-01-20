@@ -267,10 +267,10 @@ ipPub() {
 
 # speed test
 speedtest() {
-  ipPub
   if type speedtest-cli > /dev/null 2>&1; then
    speedtest-cli
   else
+    ipPub
     curl -o /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip
   fi
 }
