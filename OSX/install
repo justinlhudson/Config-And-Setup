@@ -64,3 +64,6 @@ vagrant
 gem
   tmuxinator
 launchcontrol (How To http://launchd.info/)
+
+pip
+  https://github.com/sivel/speedtest-cli
