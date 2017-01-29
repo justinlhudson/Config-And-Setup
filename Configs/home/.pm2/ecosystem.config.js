@@ -3,7 +3,7 @@ module.exports = {
    * Application configuration section
    * http://pm2.keymetrics.io/docs/usage/application-declaration/
    *
-   * pm2 start ecosystem.config.js --env production
+   * cronjob: @reboot sudo pm2 start ~/.pm2/ecosystem.config.js
    */
   apps : [
     {
