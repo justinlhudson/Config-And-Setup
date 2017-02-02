@@ -32,6 +32,7 @@
       Plugin 'Lokaltog/vim-easymotion'
       "Plugin 'taglist.vim'
       "Plugin 'Valloric/YouCompleteMe'
+      Plugin 'kchmck/vim-coffee-script'
   
     call vundle#end()                                      " required - All of your Plugins must be added before the following line
     filetype plugin indent on                              " required
