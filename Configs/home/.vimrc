@@ -86,7 +86,7 @@
   endif
 
 "" Options
-
+hi statusline guifg=Grey guibg=Black ctermfg=7 ctermbg=0   " status bar color schema
 syntax on                                                  " turn sytanx highlighting enabled
 
 "" Key Mappings
