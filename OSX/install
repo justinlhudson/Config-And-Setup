@@ -20,6 +20,8 @@ brew install
       brew cask alfred link
       virtualbox
       docker
+      redis
+      mongodb
       boot2docker
       google-chrome
       vlc
