@@ -209,6 +209,7 @@ if [[ $MY_DISTRO == debian ]]; then
   upgrade() {
     VBoxManage --poweroff
     apt-get update
+    apt-get upgrade
     apt-get dist-upgrade
     apt-get upgrade
     apt-get autoclean
