@@ -105,6 +105,8 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # terminal landscape systeminformation
 apt-get install landscape-client
 
+# file password ecrytpion
+apt-get install mcrypt
 
 # pip
  #  https://github.com/sivel/speedtest-cli
