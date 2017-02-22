@@ -1,3 +1,11 @@
+### SSH save password
+ssh-keygen
+ssh-copy-id <username>@<address> -p 22
+
+### cleanup NODE/NPM install
+brew uninstall node
+brew install node
+
 # To disable autosave in TextEdit.app, run the following command in Terminal:
 defaults write com.apple.TextEdit ApplePersistence -bool no
 
