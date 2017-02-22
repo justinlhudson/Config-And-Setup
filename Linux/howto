@@ -10,7 +10,7 @@ sudo visudo
 %admin ALL=(ALL:ALL) NOPASSWD: ALL
 ## append user to admin group
 sudo usermod -a -G admin $USER
-## add to the end for specific user
+## add (to the end of file!!!) for specific user
 <user> ALL=(ALL) NOPASSWD: ALL
 # list groups user is in
 grep $USER /etc/group
