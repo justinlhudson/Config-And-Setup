@@ -45,7 +45,7 @@ sudo swapon -s
 /etc/fstab:
 /swapfile   none    swap    sw    0   0
 
-# create and fstab mount virtual disk image
+### create and fstab mount virtual disk image
 fallocate -l <size> <file to create>
 fallocate -l 256GB virtual.img
 # fill file with random data (not needed)
@@ -56,37 +56,35 @@ sudo mkdir /media/virtual
 sudo mount -t auto -o loop virtual.img /media/virtual/
 <disk image file> <mountpoint> <filesystem type> loop 0 0
 
-# port forward 80 to 3000 with iptables
+### itables - port forward 80 to 3000
 /etc/rc.local
 iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
-
 # save rules to a file
 sudo sh -c "iptables-save > /tmp/iptables.rules"
 
-# create user
+### create user
 sudo useradd <new-username> -s /bin/bash -m
 sudo passwd <new-username>
-# admin user
+### admin user
 sudo usermod -a -G sudo <new-username>
 #sudo usermod -a -G root <new-username>
 sudo usermod -a -G admin <new-username>
-
 # remove user from group
 gpasswd -d user group
 
-### Change cpu power strategy ###
+### Change cpu power strategy
 apt-get install cpufrequtils
 vim /etc/init.d/cpufrequtils
 service cpufrequtils restart
 
-# osx remote viewer to ubuntu remote desktop
+### OSX remote viewer (VNC) to ubuntu remote desktop security FIX
 install: dconf-tools
 run in gui:  gconf-tools
 change: dconf -> org -> gnome -> desktop -> remote-access -> require-encription - uncheck
 terminal:
 gsettings set org.gnome.Vino require-encryption false
 
-# invert mouse like mac
+### invert mouse like OSX (natural)
 # create file
 sudo vim /usr/share/X11/xorg.conf.d/20-natural-scrolling.conf
 # insert text into file
@@ -100,7 +98,7 @@ Section "InputClass"
         Option "ZAxisMapping" "5 4"
 EndSection
 
-# install .deb packages
+### install .deb packages
 sudo dpkg -i filename.deb
 if errors,
 apt-get install -f
