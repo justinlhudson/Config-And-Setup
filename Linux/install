@@ -1,110 +1,82 @@
 ### apt-get
-silversearcher-ag expect git tmux gparted gdisk htop openssh-server vsftpd samba vim filezilla nautilus-dropbox bind9 supervisor vim vnc4server nodejs npm nginx redis-server autojump screen dstat inotify-tools vnc4server openvpn
+silversearcher-ag expect git tmux gparted gdisk htop openssh-server vsftpd samba vim filezilla nautilus-dropbox \
+bind9 supervisor vim vnc4server nodejs npm nginx redis-server autojump screen dstat inotify-tools vnc4server \
+openvpn python-pip python-pip3 bsd-mailx landscape-client mcrypt
 
 ### mongodb (latest)
-https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+# https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
 ### Docker website for latest install instructions
 ## docker (docker-engine)
-https://docs.docker.com/engine/installation/linux/ubuntulinux/
+# https://docs.docker.com/engine/installation/linux/ubuntulinux/
 
 ## docker-compose (docker service)
-https://docs.docker.com/compose/install/
+# https://docs.docker.com/compose/install/
+pip3 (or pip) install docker-compose
 
-mono (mono-devel, mono-complete)
-http://www.mono-project.com/docs/getting-started/install/linux/
+### mono (mono-devel, mono-complete, referenceassemblies-pcl)
+# http://www.mono-project.com/docs/getting-started/install/linux/
 
-monodevelop
-http://www.monodevelop.com/download/linux/
+### monodevelop
+# http://www.monodevelop.com/download/linux/
 
-oh-my-zsh
-http://ohmyz.sh/
+### oh-my-zsh
+# http://ohmyz.sh/
 
-#nfs server
-sudo apt install nfs-kernel-server
-
-#samba netter then nfs
-sudo apt-get install samba
-
-virtual box
-# For USB support
+### virtual box
+# https://www.virtualbox.org/wiki/Linux_Downloads
+# http://tecadmin.net/install-oracle-virtualbox-on-ubuntu/
+## For USB support
 sudo adduser $USER vboxusers
-https://www.virtualbox.org/wiki/Linux_Downloads
-http://tecadmin.net/install-oracle-virtualbox-on-ubuntu/
-
-# python package manager
-sudo apt-get intsall python-pip
-sudo pip install --upgrade pip
 
 # twitter in terminal
 # https://github.com/DTVD/rainbowstream
-pip install rainbowstream
+pip3 install rainbowstream
 
 # irc terminal client
 apt-get install weechat
 
-# mailx client (send mail)
-sudo apt-get install bsd-mailx
-
-# dns (dyndns)
+### dns updater (dyndns)
 apt-get install ddclient
 # gui configuration (query dyndns)
 dpkg-reconfigure ddclient
 /etc/ddclient.conf
 
-# stop ssh and other attacks
+### stop ssh and other attacks
 apt-get install fail2ban
+apt-get install denyhosts
 # optional helpers
 apt-get install nginx sendmail iptables-persistent
 # check rules with
 sudo iptables -S
-apt-get install denyhosts
 
-# terminal screen saver
+### terminal screen saver
 apt-get install cmatrix
 
-# torrent client
+### torrent client
 add-apt-repository ppa:transmissionbt/ppa
 apt-get update
-sudo apt-get install transmission-cli transmission-common transmission-daemon
+apt-get install transmission-cli transmission-common transmission-daemon
 
-# node
-apt-get install nodejs
-apt-get install npm
-# node verse nodjs
+### node (for legacy)
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 ### NPM installs ###
 npm install bower -g
 npm install gulp -g
-#deamonize nodejs scripts
 
+#### deamonize nodejs scripts
 # https://github.com/Unitech/pm2
 # http://pm2.keymetrics.io/docs/usage/application-declaration/
-sudo npm install -g pm2
+npm install -g pm2
 
 # https://github.com/tmuxinator/tmuxinator
 sudo apt-get install ruby
 gem install tmuxinator
 
-#python
-apt-get install python 3.X
-
-# python anaconda
-https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh
-bash Anaconda3-4.2.0-Linux-x86_64.sh 
-# /opt/...
-# https://www.continuum.io/downloads
-
-# Vundle: vim package manager
+### Vundle: vim package manager
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # https://github.com/gmarik/Vundle.vim
 
-# terminal landscape systeminformation
-apt-get install landscape-client
-
-# file password ecrytpion
-apt-get install mcrypt
-
-# pip
- #  https://github.com/sivel/speedtest-cli
+### pip packages
+ # https://github.com/sivel/speedtest-cli
