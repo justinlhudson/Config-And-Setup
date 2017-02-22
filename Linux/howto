@@ -33,14 +33,16 @@ vim /etc/init.d/cpufrequtils
 service cpufrequtils restart
 
 # osx remote viewer to ubuntu remote desktop
-install: gconf-tools
-run: dconf-Editor
+install: dconf-tools
+run in gui:  gconf-tools
 change: dconf -> org -> gnome -> desktop -> remote-access -> require-encription - uncheck
 terminal:
 gsettings set org.gnome.Vino require-encryption false
 
 # invert mouse like mac
+# create file
 sudo vim /usr/share/X11/xorg.conf.d/20-natural-scrolling.conf
+# insert text into file
 Section "InputClass"
         Identifier "natural scrolling for mouse wheel"
         MatchIsPointer "on"
@@ -51,7 +53,7 @@ Section "InputClass"
         Option "ZAxisMapping" "5 4"
 EndSection
 
-# isntall .deb packages
+# install .deb packages
 sudo dpkg -i filename.deb
 if errors,
 apt-get install -f
