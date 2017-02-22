@@ -37,12 +37,12 @@ tmpfs  /mnt/ramdisk tmpfs  nodev,nosuid,noexec,nodiratime,size=1024M  0 0
 mount -a # update fstab without reboot
 
 ### Create SWAP file after the fact or rather then a partition
-sudo fallocate -l 8G /swapfile
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
+sudo fallocate -l 8G swapfile
+sudo chmod 600 swapfile
+sudo mkswap swapfile
+sudo swapon swapfile
 sudo swapon -s
-/etc/fstab:
+# edit /etc/fstab
 /swapfile   none    swap    sw    0   0
 
 ### create and fstab mount virtual disk image
