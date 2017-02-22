@@ -26,6 +26,7 @@ pip3 (or pip) install docker-compose
 ### virtual box
 # https://www.virtualbox.org/wiki/Linux_Downloads
 # http://tecadmin.net/install-oracle-virtualbox-on-ubuntu/
+# http://ubuntuhandbook.org/index.php/2016/07/virtualbox-5-1-released/
 ## For USB support
 sudo adduser $USER vboxusers
 
