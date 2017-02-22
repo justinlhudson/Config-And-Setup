@@ -1,4 +1,5 @@
 ### Test LAN Speed
+# uses port 5001
 apt-get install iperf
 # main
 iperf -s
