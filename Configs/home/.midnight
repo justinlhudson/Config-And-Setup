@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# check can reach github first else do not attempt
 _address=$(nslookup github.com | tail -2 | head -1 | awk '{print $2}')
 ping -c 1 $_address &> /dev/null
 if [[ $? -ne 0 ]]; then
