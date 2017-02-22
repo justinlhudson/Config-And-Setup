@@ -1,7 +1,7 @@
 ### apt-get
 silversearcher-ag expect git tmux gparted gdisk htop openssh-server vsftpd samba vim filezilla nautilus-dropbox \
 bind9 supervisor vim vnc4server nodejs npm nginx redis-server autojump screen dstat inotify-tools vnc4server \
-openvpn python-pip python-pip3 bsd-mailx landscape-client mcrypt
+openvpn python-pip python-pip3 bsd-mailx landscape-client mcrypt zsh
 
 ### mongodb (latest)
 # https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
