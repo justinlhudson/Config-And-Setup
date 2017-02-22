@@ -1,15 +1,14 @@
-# apt-get:
-silversearcher-ag expect git tmux gparted gdisk htop openssh-server vsftpd samba vim filezilla nautilus-dropbox bind9 supervisor vim vnc4server vncpasswd nodejs npm nginx
-redis-server autojump screen dstat inotify-tools vnc4server openvpn
+### apt-get
+silversearcher-ag expect git tmux gparted gdisk htop openssh-server vsftpd samba vim filezilla nautilus-dropbox bind9 supervisor vim vnc4server nodejs npm nginx redis-server autojump screen dstat inotify-tools vnc4server openvpn
 
-# mongodb (latest)
+### mongodb (latest)
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
-# Goto docker website for latest install instructions
-docker (docker-engine)
+### Docker website for latest install instructions
+## docker (docker-engine)
 https://docs.docker.com/engine/installation/linux/ubuntulinux/
 
-docker-compose (docker service)
+## docker-compose (docker service)
 https://docs.docker.com/compose/install/
 
 mono (mono-devel, mono-complete)
