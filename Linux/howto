@@ -55,14 +55,15 @@ sudo swapon -s
 
 ### create and fstab mount virtual disk image
 fallocate -l <size> <file to create>
-fallocate -l 256GB virtual.img
+fallocate -l 256GB <var/opt/virtual.img>
 # fill file with random data (not needed)
 dd if=/dev/urandom of=virtual.img bs=1M count=256000
 # formate disk
-mkfs -t ext4 virtual.img.img
-sudo mkdir /media/virtual
-sudo mount -t auto -o loop virtual.img /media/virtual/
-<disk image file> <mountpoint> <filesystem type> loop 0 0
+mkfs -t ext4 virtual.img
+sudo mkdir /mnt/virtual
+sudo mount -t auto -o loop virtual.img /mnt/virtual/
+# add to fstab
+<disk image file>.img <mountpoint> ext4 nosuid,nodev,nofail, 0 0
 
 ### itables - port forward 80 to 3000
 /etc/rc.local
