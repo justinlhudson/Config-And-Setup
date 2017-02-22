@@ -1,3 +1,50 @@
+### SSH save password
+ssh-keygen
+ssh-copy-id <username>@<address> -p 22
+
+### sudo (without passwd) to user or apps
+sudo visudo
+## application specific permissions
+<usr> ALL=NOPASSWD: /usr/bin/application
+## password for admins group running sudo
+%admin ALL=(ALL:ALL) NOPASSWD: ALL
+## append user to admin group
+sudo usermod -a -G admin $USER
+## add to the end for specific user
+<user> ALL=(ALL) NOPASSWD: ALL
+# list groups user is in
+grep $USER /etc/group
+
+### cleanup NODE/NPM install
+sudo rm -rf /usr/local/lib/node_modules
+sudo rm -rf ~/.npm
+
+### List drive details
+sudo blkid
+
+### Disable automount
+# Edit gnome settings (to not auto mount external drive, if configured in fstab)
+# org->gnome->desktop->media-handling
+dconf-editor -> automount
+
+### Create RAM disk
+mkdir -p /mnt/ramdisk
+chmod 777 -R /mnet/ramdisk
+ln -s /mnt/ramdisk/ /ram
+mount -t tmpfs -o size=1024m tmpfs /mnt/ramdisk
+/etc/fstab
+tmpfs  /mnt/ramdisk tmpfs  nodev,nosuid,noexec,nodiratime,size=1024M  0 0
+mount -a # update fstab without reboot
+
+### Create SWAP file after the fact or rather then a partition
+sudo fallocate -l 8G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo swapon -s
+/etc/fstab:
+/swapfile   none    swap    sw    0   0
+
 # create and fstab mount virtual disk image
 fallocate -l <size> <file to create>
 fallocate -l 256GB virtual.img
