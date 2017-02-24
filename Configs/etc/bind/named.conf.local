@@ -6,6 +6,11 @@
 // organization
 //include "/etc/bind/zones.rfc1918";
 
+zone "server-2.lan" {
+  type master;
+  file "/etc/bind/db.server-2.lan";
+};
+
 // Logging
 //   Note: delete log to start logging again
 //   
