@@ -15,6 +15,7 @@ options {
                 208.67.220.220;
                 8.8.8.8;
                 8.8.4.4;
+                192.168.1.1;  // local router
          };
 
   //========================================================================
@@ -30,7 +31,6 @@ options {
   allow-query          { localhost; any; };
   allow-query-cache    { localhost; any; };
   recursion yes;
-
 
   //max-cache-size 512m;      // maximum cache size (default unlimited)
   //cleaning-interval 2160;   // clean cache every X minutes (default 60 minutes)
