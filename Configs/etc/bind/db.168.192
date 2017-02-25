@@ -1,0 +1,18 @@
+;
+; BIND reverse data file for local loopback interface
+;
+$TTL  604800
+@ IN  SOA localhost. root.localhost. (
+   2017022512   ; Serial
+       604800   ; Refresh
+        86400   ; Retry
+      2419200   ; Expire
+       604800 ) ; Negative Cache TTL
+;
+@ IN  NS  localhost.
+
+; PTR Records
+121.1 IN PTR server-2.lan ; 192.168.1.121
+122.1 IN PTR server-2.lan ; 192.168.1.122
+123.1 IN PTR server-2.lan ; 192.168.1.123
+124.1 IN PTR server-2.lan ; 192.168.1.124
