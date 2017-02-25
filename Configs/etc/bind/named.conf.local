@@ -11,6 +11,11 @@ zone "server-2.lan" {
   file "/etc/bind/db.server-2.lan";
 };
 
+zone "168.192.in-addr.arpa" {
+  type master;
+  file "/etc/bind/zones/db.168.192";  # 192.168.0.0
+};
+
 // Logging
 //   Note: delete log to start logging again
 //   
