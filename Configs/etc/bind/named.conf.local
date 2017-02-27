@@ -27,7 +27,7 @@ zone "168.192.in-addr.arpa" {
 // *** Manual Steps ***
 // mkdir /var/log/named
 // touch /var/log/named/query.log
-// chmod 775 /var/log/named/query.log
+// chmod -R 770 /var/log/named/
 // chown bind:root /var/log/named/query.log
 // Restart computer, bind was having issues resolving until computer reboot?!?
 
