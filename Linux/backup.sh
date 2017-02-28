@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Setup: chown root:<user>, chmod 775, crontab: @weekly /usr/bin/sudo /opt/backup.sh <user> /external/backup
+
 ## Configure ##
 _directory="$2"
 _user="$1" #"USER-ID" value given during gpg --gen-key
