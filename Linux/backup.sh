@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Setup 
-# chown root:<user>, chmod 775, crontab: @weekly /usr/bin/sudo /opt/backup.sh <user> /external/backup
+# chown root:<user>, chmod 775, crontab: @weekly /usr/bin/sudo /opt/backup.sh <USER-ID> /<path>/backup
 
 ## Configure ##
 _directory="$2"
