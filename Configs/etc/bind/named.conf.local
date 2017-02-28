@@ -17,23 +17,9 @@ zone "168.192.in-addr.arpa" {
 };
 
 // Logging
-//   Note: delete log to start logging again
-//   
-//   create log file: sudo touch /var/log/query.log && sudo chown bind /var/log/query.log
-//   edit: /etc/apparmor.d/usr.sbin.named
-//   add: /var/log/query.log rw,
-//   reload the profile: cat /etc/apparmor.d/usr.sbin.named | sudo apparmor_parser -r
-
-// *** Manual Steps ***
-// mkdir /var/log/named
-// touch /var/log/named/query.log
-// chmod -R 770 /var/log/named/
-// chown bind:root /var/log/named/query.log
-// Restart computer, bind was having issues resolving until computer reboot?!?
-
 logging {
     channel query.log {
-        file "/var/log/named/query.log" size 5m;
+        file "/var/lib/bind/query.log" size 5m;
         severity debug 3;
     };
     category queries { query.log; };
