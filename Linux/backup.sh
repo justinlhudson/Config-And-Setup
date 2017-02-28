@@ -1,10 +1,11 @@
 #!/bin/bash
 
-# Setup: chown root:<user>, chmod 775, crontab: @weekly /usr/bin/sudo /opt/backup.sh <user> /external/backup
+## Setup 
+# chown root:<user>, chmod 775, crontab: @weekly /usr/bin/sudo /opt/backup.sh <user> /external/backup
 
 ## Configure ##
 _directory="$2"
-_user="$1" #"USER-ID" value given during gpg --gen-key
+_user="$1" # "USER-ID" value given during gpg --gen-key (i.e. hostname, per directions below)
 if [ -z $3 ]; then
   _history=2
 else
@@ -24,18 +25,18 @@ cd $_directory
 
 ## Backup ##
 
-# generate private/public key-pair
-# important: remember passphrase
-#gpg --gen-key
+## Generate private/public key-pair
+# Important: remember passphrase
+# gpg --gen-key
 # Note:  write down uid given at the end of generation
-# ?'s: default, 10y, no passphrase, Real name: hostnam
+# ?'s: default, default, 10y, no passphrase, Real name: hostname
 # Generating...
   # find / | xargs file
   # or just wait...
 
 # copy public keyfile with value used for "USER-ID"
-#gpg --export -a "USER-ID" > backup.key
-#gpg --import public.key
+# gpg --export -a <USER-ID> > ~/backup.key
+# gpg --import backup.key
 
 # archive
 _mark=`date '+%Y_%m_%d-%H_%M_%S'`;
