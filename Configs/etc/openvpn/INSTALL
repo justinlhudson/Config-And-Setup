@@ -90,6 +90,7 @@ cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf /etc/openvpn/
 cd /etc/openvpn/client/
 vim client.ovpn
 # can change client.ovpn name if like to <name>.ovpn
+# see example file 
 
 # place client config in home area
 tar -zcvf /tmp/openvpn-client.tar.gz /etc/openvpn/client/
