@@ -16,15 +16,16 @@ vim /etc/openvpn/easy-rsa/vars
 export KEY_COUNTRY="US"
 export KEY_PROVINCE="NA"
 export KEY_CITY="NA"
-export KEY_ORG="<NAME>"
-export KEY_EMAIL="<NAME>@<NAME>.noreply"
-export KEY_OU="<NAME>"
-export KEY_CN="<NAME>"
+export KEY_ORG="<HOSTNAME>"
+export KEY_EMAIL="<HOSTNAME>@<HOSTNAME>.noreply"
+export KEY_OU="<HOSTNAME>"
+export KEY_CN="<HOSTNAME>"
 
 # X509 Subject Field
-export KEY_NAME="<NAME>_RSA"
+export KEY_NAME="<HOSTNAME>"
+# Bug (needs variable)
+export KEY_ALTNAMES="<NAME>_<RANDOM_STRING>"
 
-# Bug (needs variable): KEY_ALTNAMES="<NAME>_RSA"
 source /etc/openvpn/easy-rsa/vars
 
 # build cert
@@ -33,29 +34,39 @@ source /etc/openvpn/easy-rsa/vars
 ./build-ca
 
 # create server keys pairs
-./build-key-server server
-# Note:  password not needed.
+./build-key-server <hostname>
+# Note:  password not needed, and yes sign
 
 # generated files located
 cd keys/
 openvpn --genkey --secret ta.key  ## Build a TLS key
-cp ca.crt ca.key server.crt server.key ta.key dh2048.pem /etc/openvpn
+cp ca.crt ca.key <hostname>.crt <hostname>.key ta.key dh2048.pem /etc/openvpn/
 
 # forward traffic to LAN
 vim /etc/sysctl.conf
 # change
 net.ipv4.ip_forward = 1
+net.ipv6.conf.all.forwarding=1
 # refresh
 sysctl -p
 
 # configure routing back to clients on host computer
-iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-#add
+# Ex: iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+# add
 vim /etc/rc.local
-iptables -t nat -A POSTROUTING -o <local_lan_interface_name> -j MASQUERADE
-# Example:  iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-# Note:  see how to save iptable changes on reboot!!!
-<local_lan_interface_name> = eth0 (in most cases)
+
+# setup for all NIC interfaces (start with e)
+_interfaces=$(netstat -i | awk 'NR>2 {print $1}' | grep "^e")
+for _interface in $_interfaces
+do
+  # openvpn
+  _internal_if=$_interface
+  _external_if=tun0
+
+  iptables -A FORWARD -i ${_external_if} -o ${_external_if} -j ACCEPT # VPN to VPN
+  iptables -A FORWARD -i ${_external_if} -o ${_internal_if} -j ACCEPT # VPN to LAN
+  iptables -t nat -I POSTROUTING -o ${_internal_if} -s 10.8.0.0/24 -j MASQUERADE # VPN Clients as if is Server
+done
 
 # example server.conf
 cp /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz /etc/openvpn/
