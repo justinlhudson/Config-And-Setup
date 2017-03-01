@@ -75,11 +75,12 @@ gzip -d /etc/openvpn/server.conf.gz
 vim /etc/openvpn/server.conf
 # edit (save changes), see this server.config as example
 
-# client Cert & Key
-cd /etc/openvpn/easy-rsa/keys
+## Client Cert & Key
+cd /etc/openvpn/easy-rsa
 source vars
 ./build-key client
 mkdir /etc/openvpn/client
+cd /etc/openvpn/easy-rsa/keys
 cp ca.crt ta.key client.crt client.key /etc/openvpn/client
 
 # client template profile
