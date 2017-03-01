@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=Screen Lock
+Exec=gnome-screensaver-comand -l
