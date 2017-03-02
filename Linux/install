@@ -12,7 +12,9 @@ openvpn python-pip python-pip3 bsd-mailx landscape-client mcrypt zsh
 
 ## docker-compose (docker service)
 # https://docs.docker.com/compose/install/
-pip3 (or pip) install docker-compose
+sudo pip (not pip3) install docker-compose
+# set exec permissions in tmp
+sudo mount /tmp -o remount,exec
 
 ### mono (mono-devel, mono-complete, referenceassemblies-pcl)
 # http://www.mono-project.com/docs/getting-started/install/linux/
