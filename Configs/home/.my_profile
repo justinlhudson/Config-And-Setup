@@ -325,6 +325,11 @@ docker() {
     builtin docker rm $(builtin docker ps -a -f status=exited -q) || true
     # remove dangling volumes
     builtin docker volume rm $(builtin docker volume ls -f dangling=true -q) || true
+  elsif [ -n "$1" ] && [[ "$1" == "--init" ]]; then
+    iptables -t nat -F
+    ifconfig docker0 down
+    brctl delbr docker0
+    service docker restart
   else
     builtin docker "$@"
   fi
