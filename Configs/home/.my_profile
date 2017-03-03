@@ -327,6 +327,7 @@ docker() {
     builtin docker volume rm $(builtin docker volume ls -f dangling=true -q) || true
   else
     builtin docker "$@"
+  fi
 }
 
 #if [[ $MY_SHELL == *zsh* ]]; then
