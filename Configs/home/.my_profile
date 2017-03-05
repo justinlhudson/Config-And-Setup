@@ -319,12 +319,12 @@ cd() {
 # docker over-load
 docker() {
   if [ -n "$1" ] && [[ "$1" == "--reset" ]]; then
-    # remove dangling images
-    command docker rmi $(command docker images -f dangling=true -q)|| true
     # remove containers not currently running
     command docker rm $(command docker ps -a -f status=exited -q) || true
+    # remove images
+    command docker rmi $(command docker images -f -q)|| true
     # remove dangling volumes
-    command docker volume rm $(command docker volume ls -f dangling=true -q) || true
+    command docker volume rm $(command docker volume ls -f -q) || true
   elif [ -n "$1" ] && [[ "$1" == "--init" ]]; then
     sudo iptables -t nat -F
     sudo ifconfig docker0 down
