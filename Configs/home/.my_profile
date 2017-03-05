@@ -320,18 +320,18 @@ cd() {
 docker() {
   if [ -n "$1" ] && [[ "$1" == "--reset" ]]; then
     # remove dangling images
-    builtin docker rmi $(builtin docker images -f dangling=true -q)|| true
+    command docker rmi $(command docker images -f dangling=true -q)|| true
     # remove containers not currently running
-    builtin docker rm $(builtin docker ps -a -f status=exited -q) || true
+    command docker rm $(command docker ps -a -f status=exited -q) || true
     # remove dangling volumes
-    builtin docker volume rm $(builtin docker volume ls -f dangling=true -q) || true
+    command docker volume rm $(command docker volume ls -f dangling=true -q) || true
   elif [ -n "$1" ] && [[ "$1" == "--init" ]]; then
     sudo iptables -t nat -F
     sudo ifconfig docker0 down
     sudo brctl delbr docker0
-    sudo service docker restart
+    sudo service command docker restart
   else
-    builtin docker "$@"
+    command docker "$@"
   fi
 }
 
