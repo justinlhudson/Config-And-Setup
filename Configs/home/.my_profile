@@ -313,9 +313,9 @@ herein() {
 # list after each cd
 cd() {
   if [ -n "$1" ]; then
-    builtin cd "$@" && ls
+    builtin cd "$@" && pwd && ls
   else
-    builtin cd ~ && ls
+    builtin cd ~ && pwd && ls
   fi
 }
 
