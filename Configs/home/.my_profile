@@ -3,10 +3,6 @@
 # Add:  source ~/.my_profile
 # Done...
 
-### Options ###
-# expand aliases for on-interactive shell (i.e. scripts)
-shopt -s expand_aliases
-
 ### Determine OS being used ###
 
 MY_OS=$(uname)
@@ -103,6 +99,13 @@ if [[ ! "$@" == *"-w"* ]]; then
   # create permissions
   # in octal (777 - 750 = 027)
   umask 0027
+fi
+
+# expand aliases for on-interactive shell (i.e. scripts)
+if [[ $MY_SHELL == bash ]]; then
+  shopt -s expand_aliases
+elif [[ $MY_SHELL == zsh ]]; then
+  setopt aliases
 fi
 
 ### Variables ###
