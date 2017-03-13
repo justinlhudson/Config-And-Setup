@@ -200,6 +200,9 @@ pip3() {
 
 VBoxManage()
 {
+  #VBoxManage startvm "VM name" --type headless
+  #vboxmanage list runningvms | awk '{print $1}'
+
   if [ -n "$1" ] && [[ "$1" == "--poweroff" ]]; then
     VBoxManage list runningvms | for v in $(awk '{print $1}'); do VBoxManage controlvm $v poweroff; done
     pkill VirtualBox
@@ -215,7 +218,6 @@ VBoxManage()
     command VBoxManage "$@"
   fi
   version=$(vboxmanage -v)
-
 }
 
 if [[ $MY_DISTRO == debian ]]; then
