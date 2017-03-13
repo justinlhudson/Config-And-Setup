@@ -4,6 +4,8 @@
 # Done...
 
 ### Options ###
+# expand aliases for on-interactive shell (i.e. scripts)
+shopt -s expand_aliases
 
 ### Determine OS being used ###
 
