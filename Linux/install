@@ -3,6 +3,10 @@ silversearcher-ag expect git tmux gparted gdisk htop openssh-server vsftpd samba
 bind9 supervisor vim vnc4server nodejs npm nginx redis-server autojump screen dstat inotify-tools vnc4server \
 openvpn python-pip python-pip3 bsd-mailx landscape-client mcrypt zsh
 
+### utilities
+## restore boot loader
+sudo apt-get install -y boot-repair && boot-repair
+
 ### mongodb (latest)
 # https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
