@@ -26,6 +26,7 @@ sudo pip (not pip3) install docker-compose
 sudo mount /tmp -o remount,exec
 
 ### mono (mono-devel, mono-complete, referenceassemblies-pcl)
+# Note: Add source lists from website first
 # http://www.mono-project.com/docs/getting-started/install/linux/
 
 ### monodevelop
