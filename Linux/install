@@ -3,6 +3,11 @@ silversearcher-ag expect git tmux gparted gdisk htop openssh-server vsftpd samba
 bind9 supervisor vim vnc4server nodejs npm nginx redis-server autojump screen dstat inotify-tools vnc4server \
 openvpn python-pip python-pip3 bsd-mailx landscape-client mcrypt zsh
 
+### mac with linux installed
+# Apparently the laptop is much cooler without it. Install powertop instead, 
+# run “powertop –auto-tune” and check the improvement. 
+# Add it to /etc/rc.local so it will run on every startup.
+
 ### utilities
 ## restore boot loader
 sudo apt-get install -y boot-repair && boot-repair
