@@ -1,3 +1,6 @@
+### Add user to group
+usermod -a -G group user
+
 ### Test LAN Speed
 # uses port 5001
 apt-get install iperf
