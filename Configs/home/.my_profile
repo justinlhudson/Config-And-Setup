@@ -177,6 +177,9 @@ else
   alias ps='ps auxf'
 fi
 
+# with xsession
+alias ssh='ssh -X'
+
 # ISO-8601 compliant date (in mongodb formate)
 alias utc='date -u "+%Y-%m-%dT%H:%M:%S.%3NZ"'
 
