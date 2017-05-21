@@ -7,7 +7,7 @@
 _directory="$2"
 _user="$1" # "USER-ID" value given during gpg --gen-key (i.e. hostname, per directions below)
 if [ -z $3 ]; then
-  _history=2
+  _history=3
 else
   _history=$3
 fi
