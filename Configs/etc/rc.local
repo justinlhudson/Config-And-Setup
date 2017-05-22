@@ -3,7 +3,8 @@ _interfaces=$(netstat -i | awk 'NR>2 {print $1}' | grep "^e")
 
 for _interface in $_interfaces
 do
-  # openvpn
+  # OpenVPN
+  # Reference: https://community.openvpn.net/openvpn/wiki/BridgingAndRouting
   _internal_if=$_interface
   _external_if=tun0
 
