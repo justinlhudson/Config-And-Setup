@@ -19,7 +19,7 @@ zone "168.192.in-addr.arpa" {
 // Logging
 logging {
     channel query.log {
-        file "/var/lib/bind/query.log" size 5m;
+        file "/var/log/bind_query.log" size 5m;
         severity debug 3;
     };
     category queries { query.log; };
