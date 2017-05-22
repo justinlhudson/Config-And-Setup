@@ -9,6 +9,8 @@ do
 
   iptables -A FORWARD -i ${_external_if} -o ${_external_if} -j ACCEPT # VPN to VPN
   iptables -A FORWARD -i ${_external_if} -o ${_internal_if} -j ACCEPT # VPN to LAN
+  iptables -I FORWARD -i ${_internal_if} -o ${_external_if} -m state --state RELATED,ESTABLISHED -j ACCEPT # VPN <-> LAN
+  
   iptables -t nat -I POSTROUTING -o ${_internal_if} -s 10.8.0.0/24 -j MASQUERADE # VPN Clients as if is Server
 done
 
