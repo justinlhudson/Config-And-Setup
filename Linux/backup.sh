@@ -48,6 +48,7 @@ tar --exclude='*.ecryptfs/*' --exclude='/tmp' --exclude='/proc' --exclude='/sys'
 #   import key
 #gpg --import backup.key
 #gpg --no-use-agent --passphrase= --output temp.tar.gz --decrypt "$_mark".tar.gz.gpg
+#tar xvzf --no-same-permissions temp.tar.gz --directory /tmp/temp
 
 ## Post ##
 
