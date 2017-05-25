@@ -32,6 +32,9 @@ sudo mount /tmp -o remount,exec
 ### monodevelop
 # http://www.monodevelop.com/download/linux/
 
+### unit tests
+apt-get install monodevelop-nunit
+
 ### oh-my-zsh
 # http://ohmyz.sh/
 
