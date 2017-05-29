@@ -1,4 +1,4 @@
-#### Installation ####
+t#### Installation ####
 # File: .zshrc or .bashrc or ...
 # Add:  source ~/.my_profile
 # Done...
@@ -276,11 +276,13 @@ if [[ $MY_OS == darwin ]]; then
 fi
 
 # retry command 
-# usage: retry <command> sleep
+# usage: retry <command>
 retry() {
-  while 1 ; do 
-    $1 && break 
-    sleep $2
+  _result=1    
+  while [ $_result -ne 0 ] ; do 
+    "$@" && break 
+    result=$?
+	  sleep 3
   done
 }
 
