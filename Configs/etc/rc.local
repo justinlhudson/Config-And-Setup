@@ -1,3 +1,6 @@
+
+# Check:  sudo systemctl status rc-local
+
 # all "e"thos
 #_interfaces=$(netstat -i | awk 'NR>2 {print $1}' | grep "^e")
 _interfaces=eno1
