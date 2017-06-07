@@ -21,7 +21,7 @@ esac
 
 ### Determine ARCH being used ###
 
-MY_ARCH=$(uname -m)
+MY_ARCH=$(uname -m/
 case $MY_ARCH in
   x86_64)
     MY_ARCH=x64  # or AMD64 or Intel64 or whatever
@@ -161,13 +161,13 @@ alias apt-get='sudo apt-get'
 # search process match (e.g. psf name)
 alias psf='ps | grep -v grep | grep -i -e VSZ -e'
 if [[ $MY_OS == darwin ]]; then
-  alias ls='ls -GpF'
+  alias ls='ls -LGpF'
 else
-  alias ls='ls -pF --color=auto'
+  alias ls='ls -LpF --color=auto'
 fi
 alias l='ls'
-alias ll='ls -lAh'
-alias l.='ls -d .*'
+alias ll='ls -LlAh'
+alias l.='ls -Ld .*'
 alias la='ls -lah'
 if [[ $MY_OS == darwin ]]; then
   # gnu util for darwin
