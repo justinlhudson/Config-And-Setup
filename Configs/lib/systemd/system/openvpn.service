@@ -1,6 +1,4 @@
-#  Install:  sudo systemctl daemon-reload
-
-# HACK:  worst case add 'sleep 15' to '/etc/init.d/openvpn' 'start_vpn'
+# Install:  sudo systemctl daemon-reload
 
 # This service is actually a systemd target,
 # but we are using a service since targets cannot be reloaded.
@@ -8,12 +6,13 @@
 [Unit]
 Description=OpenVPN service
 #After=network.target
-After=network-online.target
-Wants=network-online.target
+#After=network-online.target
+#Wants=network-online.target
+After=multi-user.target
 
-[Timer]
+#[Timer]
 #OnBootSec=1min
-OnStartupSec=60
+#OnStartupSec=60
 
 [Service]
 Type=oneshot
