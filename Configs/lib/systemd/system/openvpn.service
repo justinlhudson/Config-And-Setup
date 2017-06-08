@@ -1,6 +1,6 @@
 # Install:  sudo systemctl daemon-reload
 
-### HACK:  when all else fails cronjob '@reboot /bin/sleep 30 && /usr/bin/sudo /etc/init.d/openvpn start'
+### HACK:  when all else fails cronjob '@reboot /bin/sleep 30 && /usr/bin/sudo /usr/sbin/service openvpn start'
 
 # This service is actually a systemd target,
 # but we are using a service since targets cannot be reloaded.
