@@ -21,7 +21,7 @@ esac
 
 ### Determine ARCH being used ###
 
-MY_ARCH=$(uname -m/
+MY_ARCH=$(uname -m)
 case $MY_ARCH in
   x86_64)
     MY_ARCH=x64  # or AMD64 or Intel64 or whatever
