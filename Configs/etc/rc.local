@@ -1,23 +1,20 @@
+# list all LAN interfaces (no wifi)
+_ifs=$(netstat -i | awk 'NR>2 {print $1}' | grep "^en")
+# openvpn adapter
+_tun_if=tun0
 
-# Check:  sudo systemctl status rc-local
+iptables -I INPUT -i ${_tun_if} -j ACCEPT
+iptables -I OUTPUT -o ${_tun_if} -j ACCEPT
+iptables -I FORWARD -i ${_tun_if} -j ACCEPT
+iptables -I FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
 
-# all "e"thos
-#_interfaces=$(netstat -i | awk 'NR>2 {print $1}' | grep "^e")
-_interfaces=eno1
-
-for _interface in $_interfaces
+_ifs=$(netstat -i | awk 'NR>2 {print $1}' | grep "^en")
+#_ifs=eno0
+for _if in $_ifs
 do
-# openvpn
-  _internal_if=$_interface
-  _external_if=tun0
-
-  iptables -A FORWARD -i ${_external_if} -o ${_external_if} -j ACCEPT # VPN to VPN
-  iptables -A FORWARD -i ${_external_if} -o ${_internal_if} -j ACCEPT # VPN to LAN
-  iptables -A FORWARD -i ${_internal_if} -o ${_external_if} -m state --state RELATED,ESTABLISHED -j ACCEPT # LAN <-> VPN
-  iptables -A FORWARD -i ${_external_if} -o ${_internal_if} -m state --state RELATED,ESTABLISHED -j ACCEPT # VPN <-> LAN
-
-  iptables -t nat -A POSTROUTING -o ${_internal_if} -s 10.8.0.0/24 -j MASQUERADE # VPN Clients as if is Server
-  iptables -A OUTPUT -o ${_external_if} -j ACCEPT # accept output?
+  iptables -A INPUT -i ${_if} -m state --state NEW -p udp --dport 1194 -j ACCEPT
+  iptables -A FORWARD -i ${_tun_if} -o ${_if} -j ACCEPT
+  iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o ${_if} -j MASQUERADE
 done
 
 # forward port 3000 to 80
