@@ -2,6 +2,8 @@
 # run this file then save to iptables
 # sudo ./iptable.rules
 # sudo bash -c "iptables-save > /etc/iptables/rules.v4"
+# or
+# place in /etc/rc.local
 
 ### VPN ###
 _tun_if=tun0
