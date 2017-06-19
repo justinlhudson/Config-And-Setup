@@ -1,3 +1,5 @@
+# https://help.ubuntu.com/community/IptablesHowTo#Solution_.231_-_.2Fetc.2Fnetwork.2Finterfaces
+
 # sudo chmod +x /etc/NetworkManager/dispatcher.d/01firewall
 
 if [ -x /usr/bin/logger ]; then
