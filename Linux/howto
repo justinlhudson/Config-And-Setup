@@ -70,12 +70,6 @@ sudo mount -t auto -o loop virtual.img /mnt/virtual/
 # add to fstab
 <disk image file>.img <mountpoint> ext4 nosuid,nodev,nofail, 0 0
 
-### itables - port forward 80 to 3000
-/etc/rc.local
-iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
-# save rules to a file
-sudo sh -c "iptables-save > /tmp/iptables.rules"
-
 ### create user
 sudo useradd <new-username> -s /bin/bash -m
 sudo passwd <new-username>
