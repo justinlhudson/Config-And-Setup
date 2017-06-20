@@ -41,18 +41,20 @@ dconf-editor -> automount
 ### Create RAM disk
 mkdir -p /mnt/ramdisk
 chmod 777 -R /mnt/ramdisk
-ln -s /mnt/ramdisk/ /ram
+# temp
 mount -t tmpfs -o size=1024m tmpfs /mnt/ramdisk
-/etc/fstab
-tmpfs  /mnt/ramdisk tmpfs  nodev,nosuid,noexec,nodiratime,size=1024M  0 0
+# permanent add to '/etc/fstab'
+# suggest 1/4 amount of RAM, goes to SWAP if needed
+tmpfs  /mnt/ramdisk tmpfs  nodev,nosuid,noexec,nodiratime,size=8192M  0 0
 mount -a # update fstab without reboot
 
 ### Create SWAP file after the fact or rather then a partition
-sudo fallocate -l 8G swapfile
-sudo chmod 600 swapfile
-sudo mkswap swapfile
-sudo swapon swapfile
-sudo swapon -s
+# Tip: put on a fast drive like solid state
+fallocate -l 8G swapfile
+chmod 600 swapfile
+mkswap swapfile
+swapon swapfile
+swapon -s
 # edit /etc/fstab
 /swapfile   none    swap    sw    0   0
 
