@@ -222,7 +222,7 @@ VBoxManage()
 }
 
 if [[ $MY_DISTRO == debian ]]; then
-  alias apt-get='sudo apt-get --allow -y'
+#  alias apt-get='sudo apt-get --allow -y'
   upgrade() {
     VBoxManage --poweroff
     apt-get update
