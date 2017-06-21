@@ -12,14 +12,8 @@ else
   _history=$3
 fi
 
-# shutdown VMs first if have virtualbox installed
-if hash vboxmanage 2>/dev/null; then
-  for _vm in `VBoxManage list runningvms|cut -d" " -f 1`; do
-    vboxmanage controlvm $_vm poweroff soft
-  done
-  sleep 30
-  pkill VirtualBox
-fi
+# HARD shutdown VMs
+pkill VirtualBox || true
 
 _base="/"$(echo "$_directory" | awk -F "/" '{print $2}')
 
