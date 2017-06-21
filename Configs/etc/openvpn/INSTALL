@@ -1,7 +1,7 @@
 # Notes: https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-16-04
 
-sudo apt-get install openvpn easy-rsa
-sudo apt-get install bridge-utils
+apt-get install openvpn easy-rsa
+apt-get install bridge-utils
 
 # root terminal
 sudo -i
@@ -35,7 +35,7 @@ source /etc/openvpn/easy-rsa/vars
 
 # create server keys pairs
 ./build-key-server <hostname>
-# Note:  password not needed, and yes sign
+# Note:  password not needed, yes sign, yes commit
 
 # generated files located
 cd keys/
@@ -64,6 +64,7 @@ vim /etc/openvpn/server.conf
 ## Client Cert & Key
 cd /etc/openvpn/easy-rsa
 source vars
+# Note: leave common name same or be sure not the same as server ct (i.e. not hostname)
 ./build-key client
 mkdir /etc/openvpn/client
 cd /etc/openvpn/easy-rsa/keys
