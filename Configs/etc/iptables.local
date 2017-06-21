@@ -1,4 +1,4 @@
-# Note: see 'etc/NetworkManager/dispatcher.d/01firewall' 
+# Note: see 'etc/NetworkManager/dispatcher.d/01firewall'
 #       forces this script to run, there are weird conflicts
 
 ### VPN ###
@@ -9,15 +9,15 @@ _vpn_if=eno1
 #do
 #  _vpn_if=$_if
 
--I FORWARD -i ${_tun_if} -o ${_tun_if} -j ACCEPT # VPN to VPN
--I FORWARD -i ${_tun_if} -o ${_vpn_if} -j ACCEPT # VPN to LAN
--I FORWARD -i ${_vpn_if} -o ${_tun_if} -m state --state RELATED,ESTABLISHED -j ACCEPT # VPN <-> LAN
+iptables -I FORWARD -i ${_tun_if} -o ${_tun_if} -j ACCEPT # VPN to VPN
+iptables -I FORWARD -i ${_tun_if} -o ${_vpn_if} -j ACCEPT # VPN to LAN
+iptables -I FORWARD -i ${_vpn_if} -o ${_tun_if} -m state --state RELATED,ESTABLISHED -j ACCEPT # VPN <-> LAN
 
--t nat -I POSTROUTING -o ${_vpn_if} -s 10.8.1.0/24 -j MASQUERADE # VPN Clients as if is Server
+iptables -t nat -I POSTROUTING -o ${_vpn_if} -s 10.8.1.0/24 -j MASQUERADE # VPN Clients as if is Server
 
 #done
 
 ### PORT Forward ###
 
 # forward port 3000 to 80
--t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
+iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
