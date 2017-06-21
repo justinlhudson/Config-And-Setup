@@ -11,20 +11,6 @@ findtime = 43200
 maxretry = 3
 
 #
-# FTP servers
-#
-
-[vsftpd]
-
-port     = ftp,ftp-data,ftps,ftps-data
-filter   = vsftpd
-logpath  = /var/log/vsftpd.log
-# or overwrite it in jails.local to be
-# logpath = /var/log/auth.log
-# if you want to rely on PAM failed login attempts
-# vsftpd's failregex should match both of those formats
-
-#
 # VPN servers
 #
 
