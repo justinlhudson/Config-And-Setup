@@ -1,7 +1,7 @@
 ### apt-get
 silversearcher-ag expect git tmux gparted gdisk htop openssh-server vsftpd samba vim filezilla nautilus-dropbox \
 bind9 supervisor vim vnc4server nodejs npm nginx redis-server autojump screen dstat inotify-tools vnc4server \
-openvpn python-pip bsd-mailx landscape-client mcrypt zsh dconf-editor
+openvpn python-pip python3 python3-pip bsd-mailx landscape-client mcrypt zsh dconf-editor curl ruby
 
 ### mac with linux installed
 # Apparently the laptop is much cooler with it. Install powertop instead, 
@@ -19,23 +19,22 @@ sudo apt-get install -y boot-repair && boot-repair
 https://www.tensorflow.org/install/install_linux
 
 ### Docker website for latest install instructions
-## docker (docker-engine)
-# https://docs.docker.com/engine/installation/linux/ubuntulinux/
+## docker CE (docker-engine)
+# https://docs.docker.com/engine/installation/linux/ubuntu/#install-using-the-repository
 
 ## docker-compose (docker service)
 # https://docs.docker.com/compose/install/
 sudo pip (not pip3) install docker-compose
-# set exec permissions in tmp
-sudo mount /tmp -o remount,exec
 
-### mono (mono-devel, mono-complete, referenceassemblies-pcl)
+### mono
 # Note: Add source lists from website first
-# http://www.mono-project.com/docs/getting-started/install/linux/
+# http://www.mono-project.com/download/#download-lin
+apt-get install mono-devel mono-complete referenceassemblies-pcl ca-certificates-mono
 
-### monodevelop
+## monodevelop - SKIPPED
 # http://www.monodevelop.com/download/linux/
 
-### unit tests
+## unit tests - SKIPPED
 apt-get install monodevelop-nunit
 
 ### oh-my-zsh
@@ -45,14 +44,15 @@ apt-get install monodevelop-nunit
 # https://www.virtualbox.org/wiki/Linux_Downloads
 # http://tecadmin.net/install-oracle-virtualbox-on-ubuntu/
 # http://ubuntuhandbook.org/index.php/2016/07/virtualbox-5-1-released/
+sudo apt-get install virtualbox vde2 virtualbox-guest-additions-iso
 ## For USB support
 sudo adduser $USER vboxusers
 
-# twitter in terminal
+# twitter in terminal - SKIPPED
 # https://github.com/DTVD/rainbowstream
 pip3 install rainbowstream
 
-# irc terminal client
+# irc terminal client - SKIPPED
 apt-get install weechat
 
 ### dns updater (dyndns)
@@ -72,12 +72,12 @@ sudo iptables -S
 ### terminal screen saver
 apt-get install cmatrix
 
-### torrent client
+### torrent client - SKIPPED
 add-apt-repository ppa:transmissionbt/ppa
 apt-get update
 apt-get install transmission-cli transmission-common transmission-daemon
 
-### node (for legacy)
+### node (for legacy) - SKIPPED
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 ### NPM installs ###
@@ -90,7 +90,8 @@ npm install gulp -g
 npm install -g pm2
 
 # https://github.com/tmuxinator/tmuxinator
-sudo apt-get install ruby
+# ruby
+# Note: no sudo
 gem install tmuxinator
 
 ### Vundle: vim package manager
