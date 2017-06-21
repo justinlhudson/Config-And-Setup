@@ -1,0 +1,24 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# File System
+/dev/mapper/isw_egjifaej_volume2 /               ext4    errors=remount-ro 0       1
+/dev/mapper/isw_egjifaej_volume1 /boot/efi       vfat    umask=0077      0       1
+#/dev/mapper/isw_egjifaej_volume3 none            swap    sw              0       0
+
+# RAM Disk
+tmpfs  /mnt/ramdisk tmpfs  nodev,nosuid,exec,noatime,nodiratime,size=8192M  0 0
+# SWAP
+/mnt/ssd/swapfile   none    swap    sw    0   0
+# SSD
+/dev/disk/by-uuid/d5a5d851-2384-409a-93f6-5be0970747fe /mnt/ssd auto nosuid,nodev,nofail,discard,noatime,nodiratime  0 2
+# External
+/dev/disk/by-id/usb-SABRENT_SABRENT_DB9876543213A-0:0 /mnt/external auto nosuid,nodev,nofail 0 2
+# Everyone
+/mnt/external/everyone.img /media/everyone ext4 nosuid,nodev,nofail, 0 0
+# FTP
+/mnt/external/ftp.img /media/ftp ext4 nosuid,nodev,nofail, 0 0
