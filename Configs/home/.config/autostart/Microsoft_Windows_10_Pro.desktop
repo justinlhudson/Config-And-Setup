@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=Microsoft_Windows_10_Pro
+Comment=Starts the VirtualBox machine Microsoft_Windows_10_Pro
+Type=Application
+Exec=/usr/lib/virtualbox/VirtualBox --comment "Microsoft_Windows_10_Pro" --startvm "effa2ef1-3b94-4cae-90b5-6c10df60965f"
+Icon=virtualbox-vbox.png
+X-GNOME-Autostart-Delay=60
