@@ -226,12 +226,11 @@ if [[ $MY_DISTRO == debian ]]; then
   upgrade() {
     VBoxManage --poweroff
     apt-get update
-    apt-get upgrade
     apt-get dist-upgrade
     apt-get upgrade
     apt-get autoclean
     apt-get autoremove
-    VBoxManage --upgrade
+#    VBoxManage --upgrade
     sudo npm -g upgrade
     pip --all
     pip3 --all
