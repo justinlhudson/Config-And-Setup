@@ -20,7 +20,7 @@ case "$2" in
 #                fi
 #                ${LOGGER} "Restoring iptables rules"
 #                /sbin/iptables-restore -c < /etc/iptables.rules
-                /etc/iptables.rules
+                /etc/iptables.local
                 ;;
         down)
 #                if [ ! -x /sbin/iptables-save ]; then
