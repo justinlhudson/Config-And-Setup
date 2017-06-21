@@ -12,3 +12,9 @@ GRUB_CMDLINE_LINUX="acpi_backlight=vendor"
 update-grub
 
 # store applications in /opt
+
+# http://howtoubuntu.org/how-to-disable-stop-uninstall-apport-error-reporting-in-ubuntu
+
+# Disable Apport at Boot ERROR
+sudo nano /etc/default/apport
+# Change the line that says enabled=1 to enabled=0 to disable Apport.
