@@ -1,3 +1,8 @@
+### mac with linux installed
+# Apparently the laptop is much cooler with it. Install powertop instead, 
+# run “powertop –auto-tune” and check the improvement. 
+# Add it to /etc/rc.local so it will run on every startup.
+
 # automatically install security updates
 dpkg-reconfigure -plow unattended-upgrades
 
