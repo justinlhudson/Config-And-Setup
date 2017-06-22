@@ -1,4 +1,4 @@
-# start:  sudo systemctl start mongodb
+# start:  sudo systemctl start mongodb && sudo systemctl enable mongodb
 
 [Unit]
 Description=High-performance, schema-free document-oriented database
