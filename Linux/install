@@ -94,6 +94,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # https://github.com/gmarik/Vundle.vim
 
 ### pip packages
-# pip 
-#   speedtest-cli
+sudo pip 
+   speedtest-cli
     # https://github.com/sivel/speedtest-cli
+   docker-compose
