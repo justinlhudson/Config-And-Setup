@@ -19,6 +19,9 @@ https://www.tensorflow.org/install/install_linux
 ## docker CE (docker-engine)
 # https://docs.docker.com/engine/installation/linux/ubuntu/#install-using-the-repository
 
+# add user to docker group
+sudo usermod -aG docker $USER
+
 ## docker-compose (docker service)
 # https://docs.docker.com/compose/install/
 sudo pip (not pip3) install docker-compose
