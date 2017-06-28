@@ -225,7 +225,6 @@ VBoxManage()
 }
 
 if [[ $MY_DISTRO == debian ]]; then
-#  alias apt-get='sudo apt-get --allow -y'
   upgrade() {
     VBoxManage --poweroff
     apt-get update
@@ -233,12 +232,12 @@ if [[ $MY_DISTRO == debian ]]; then
     apt-get upgrade
     apt-get autoclean
     apt-get autoremove
-#    VBoxManage --upgrade
+    VBoxManage --upgrade
     sudo npm -g upgrade
-    pip --all
-    pip3 --all
-    gem update 
-    gem cleanup 
+    sudo -H pip install -U `sudo -H pip list --outdated | awk '{ print $1}'`
+    sudo -H pip3 install -U `sudo -H pip3 list --outdated | awk '{ print $1}'`
+    sudo gem update 
+    sudo gem cleanup 
     git -C $ZSH pull
   }
 fi
