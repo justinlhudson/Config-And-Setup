@@ -16,6 +16,7 @@ sudo apt-get install -y boot-repair && boot-repair
 # https://www.tensorflow.org/install/install_linux
 # https://www.tensorflow.org/install/install_linux#InstallingNativePip
 sudo -H pip3 install tensorflow
+sudo -H pip3 install tensorflow-gpu
 
 ### Docker website for latest install instructions
 ## docker CE (docker-engine)
