@@ -74,4 +74,5 @@ pip
 
 
 ### TensorFlo
-https://www.tensorflow.org/install/install_mac
+# https://www.tensorflow.org/install/install_mac
+sudo -H pip3 install tensorflow
