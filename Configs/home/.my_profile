@@ -218,10 +218,6 @@ if [[ $MY_DISTRO == debian ]]; then
     apt-get autoremove
     VBoxManage --upgrade
     sudo npm -g upgrade
-    # local
-    pip install -U `pip list --outdated | awk '{ print $1}'`
-    pip3 install -U `pip3 list --outdated | awk '{ print $1}'`
-    # system
     sudo -H pip install -U `sudo -H pip list --outdated | awk '{ print $1}'`
     sudo -H pip3 install -U `sudo -H pip3 list --outdated | awk '{ print $1}'`
     sudo gem update 
@@ -239,10 +235,6 @@ if [[ $MY_DISTRO == darwin ]]; then
     brew linkapps
     VBoxManage --upgrade
     sudo npm -g upgrade
-    # local
-    pip install -U `pip list --outdated | awk '{ print $1}'`
-    pip3 install -U `pip3 list --outdated | awk '{ print $1}'`
-    # system
     sudo -H pip install -U `sudo -H pip list --outdated | awk '{ print $1}'`
     sudo -H pip3 install -U `sudo -H pip3 list --outdated | awk '{ print $1}'`
     gem update
