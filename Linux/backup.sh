@@ -2,6 +2,8 @@
 
 ## Setup 
 # chown root:<user>, chmod 775, crontab: @weekly /usr/bin/sudo /opt/backup.sh <USER-ID> /<path>/backup
+## Note
+# Run as normal user with sudo permissions
 
 ## Configure ##
 _directory="$2"
@@ -12,8 +14,12 @@ else
   _history=$3
 fi
 
+for _vm in `VBoxManage list runningvms|cut -d" " -f 1`; do
+  vboxmanage controlvm $_vm poweroff soft
+done
+sleep 60
 # HARD shutdown VMs
-pkill VirtualBox || true
+sudo pkill VirtualBox || true
 
 _base="/"$(echo "$_directory" | awk -F "/" '{print $2}')
 
@@ -39,7 +45,7 @@ cd $_directory
 _mark=`date '+%Y_%m_%d-%H_%M_%S'`;
 ## https://help.ubuntu.com/community/BackupYourSystem/TAR
 ## Note: -h to follow symbolic links
-tar --exclude='*.ecryptfs/*' --exclude='/tmp' --exclude='/proc' --exclude='/sys' --exclude='/media' --exclude='/run' --exclude='/dev' --exclude='/proc' --exclude='/sys' -zcvpf - / | gpg --encrypt --quiet --recipient $_user > "$_mark".tar.gz.gpg
+sudo tar --exclude='*.ecryptfs/*' --exclude='/tmp' --exclude='/proc' --exclude='/sys' --exclude='/media' --exclude='/run' --exclude='/dev' --exclude='/proc' --exclude='/sys' -zcvpf - / | sudo gpg --encrypt --quiet --recipient $_user > "$_mark".tar.gz.gpg
 
 ## extract
 ##   import key
@@ -52,7 +58,7 @@ tar --exclude='*.ecryptfs/*' --exclude='/tmp' --exclude='/proc' --exclude='/sys'
 # keep current and prevous
 cd $_directory
 if [[ $(pwd) == $_directory ]]; then
-  ls -1tr | head -n -$_history | xargs -d '\n' rm -f
+  ls -1tr | head -n -$_history | xargs -d '\n' sudo rm -f
 fi
 
 sudo shutdown -r +5 "Backup Complete (rebooting...)"
