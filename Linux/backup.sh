@@ -14,12 +14,12 @@ else
   _history=$3
 fi
 
-for _vm in `VBoxManage list runningvms|cut -d" " -f 1 | tr -d '"' `; do
-  vboxmanage controlvm $_vm poweroff soft
+_vms=`VBoxManage list runningvms|cut -d" " -f 1 | tr -d '"'`
+
+for _vm in $_vms; do
+  vboxmanage controlvm $_vm pause
 done
 sleep 5
-# HARD shutdown VMs
-sudo pkill VirtualBox || true
 
 _base="/"$(echo "$_directory" | awk -F "/" '{print $2}')
 
@@ -61,4 +61,6 @@ if [[ $(pwd) == $_directory ]]; then
   sudo sh -c "ls -1tr | head -n -$_history | xargs -d '\n' rm -f"
 fi
 
-sudo shutdown -r +5 "Backup Complete (rebooting...)"
+for _vm in $_vms; do
+  vboxmanage controlvm $_vm resume
+done
