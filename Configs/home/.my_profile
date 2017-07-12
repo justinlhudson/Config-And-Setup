@@ -217,6 +217,7 @@ if [[ $MY_DISTRO == debian ]]; then
     apt-get autoclean
     apt-get autoremove
     VBoxManage --upgrade
+    sudo npm i -g npm
     sudo npm -g upgrade
     sudo -H pip install -U `sudo -H pip list --outdated | awk '{ print $1}'`
     sudo -H pip3 install -U `sudo -H pip3 list --outdated | awk '{ print $1}'`
@@ -234,6 +235,7 @@ if [[ $MY_DISTRO == darwin ]]; then
     brew cask cleanup
     brew linkapps
     VBoxManage --upgrade
+    sudo npm i -g npm
     sudo npm -g upgrade
     sudo -H pip install -U `sudo -H pip list --outdated | awk '{ print $1}'`
     sudo -H pip3 install -U `sudo -H pip3 list --outdated | awk '{ print $1}'`
