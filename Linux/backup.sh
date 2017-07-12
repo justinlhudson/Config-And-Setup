@@ -14,7 +14,7 @@ else
   _history=$3
 fi
 
-for _vm in `VBoxManage list runningvms|cut -d" " -f 1`; do
+for _vm in `VBoxManage list runningvms|cut -d" " -f 1 | tr -d " `; do
   vboxmanage controlvm $_vm poweroff soft
 done
 sleep 60
