@@ -58,7 +58,7 @@ sudo sh -c "tar --exclude="$_directory" --exclude='*.ecryptfs/*' --exclude='/tmp
 # keep current and prevous
 cd $_directory
 if [[ $(pwd) == $_directory ]]; then
-  sudo sh -c "ls -1tr | head -n -$_history | xargs -d '\n' rm -f"
+  ls -1tr | head -n -$_history | xargs -d '\n' sudo rm -f
 fi
 
 for _vm in $_vms; do
