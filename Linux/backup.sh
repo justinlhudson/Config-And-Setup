@@ -17,7 +17,7 @@ fi
 for _vm in `VBoxManage list runningvms|cut -d" " -f 1 | tr -d '"' `; do
   vboxmanage controlvm $_vm poweroff soft
 done
-sleep 60
+sleep 5
 # HARD shutdown VMs
 sudo pkill VirtualBox || true
 
