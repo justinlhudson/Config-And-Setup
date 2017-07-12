@@ -1,6 +1,6 @@
 #!/bin/bash
 
-## Setup 
+## Setup
 # chown root:<user>, chmod 775, crontab: @weekly /usr/bin/sudo /opt/backup.sh <USER-ID> /<path>/backup
 ## Note
 # Run as normal user with sudo permissions
@@ -45,7 +45,7 @@ cd $_directory
 _mark=`date '+%Y_%m_%d-%H_%M_%S'`;
 ## https://help.ubuntu.com/community/BackupYourSystem/TAR
 ## Note: -h to follow symbolic links
-sudo tar --exclude="$_directory" --exclude='*.ecryptfs/*' --exclude='/tmp' --exclude='/proc' --exclude='/sys' --exclude='/media' --exclude='/run' --exclude='/dev' --exclude='/proc' --exclude='/sys' -zcvpf - / | sudo gpg --encrypt --quiet --recipient $_user > "$_mark".tar.gz.gpg
+sudo sh -c "tar --exclude="$_directory" --exclude='*.ecryptfs/*' --exclude='/tmp' --exclude='/proc' --exclude='/sys' --exclude='/media' --exclude='/run' --exclude='/dev' --exclude='/proc' --exclude='/sys' -zcvpf - / | gpg --encrypt --quiet --recipient $_user > "$_mark".tar.gz.gpg"
 
 ## extract
 ##   import key
@@ -58,7 +58,7 @@ sudo tar --exclude="$_directory" --exclude='*.ecryptfs/*' --exclude='/tmp' --exc
 # keep current and prevous
 cd $_directory
 if [[ $(pwd) == $_directory ]]; then
-  ls -1tr | head -n -$_history | xargs -d '\n' sudo rm -f
+  sudo sh -c "ls -1tr | head -n -$_history | xargs -d '\n' rm -f"
 fi
 
 sudo shutdown -r +5 "Backup Complete (rebooting...)"
