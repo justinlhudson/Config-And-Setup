@@ -183,17 +183,21 @@ alias ssh='ssh -X'
 # ISO-8601 compliant date (in mongodb formate)
 alias utc='date -u "+%Y-%m-%dT%H:%M:%S.%3NZ"'
 
+_vms=""
 VBoxManage()
 {
+  _vms=`VBoxManage list runningvms|cut -d" " -f 1 | tr -d '"'`
   #VBoxManage startvm "VM name" --type headless
   #vboxmanage list runningvms | awk '{print $1}'
 
   if [ -n "$1" ] && [[ "$1" == "--poweroff" ]]; then
-    for _vm in `VBoxManage list runningvms|cut -d" " -f 1`; do
+    for _vm in $_vms ; do
       vboxmanage controlvm $_vm poweroff soft
     done
-    sleep 30
-    pkill VirtualBox
+  elif [ -n "$1" ] && [[ "$1" == "--poweron" ]]; then
+    for _vm in $_vms ; do
+      vboxmanage startvm $_vm
+    done
   elif [ -n "$1" ] && [[ "$1" == "--upgrade" ]]; then
     version=$(vboxmanage -v)
     var1=$(echo $version | cut -d 'r' -f 1)
@@ -224,11 +228,12 @@ if [[ $MY_DISTRO == debian ]]; then
     sudo gem update 
     sudo gem cleanup 
     git -C $ZSH pull
+    VBoxManage --poweron
   }
 fi
 if [[ $MY_DISTRO == darwin ]]; then
   upgrade() {
-    VBoxManage --poweroff || true
+    VBoxManage --poweroff
     brew update 
     brew upgrade
     brew cleanup
@@ -243,6 +248,7 @@ if [[ $MY_DISTRO == darwin ]]; then
     sudo sh -c "GEM_HOME=/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/gems/2.0.0 gem cleanup"
     git -C $ZSH pull
     #mas upgrade
+    VBoxManage --poweron
   }
   alias mdtool='/Applications/Xamarin\ Studio.app/Contents/MacOS/mdtool'
 fi
