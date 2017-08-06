@@ -15,6 +15,7 @@ skitch
 filezilla
 Microsoft Remote Desktop
 brew install
+  avr-gcc (https://github.com/osx-cross/homebrew-avr)
   cask (ui programs)
       brew cask install caskroom/cask/brew-cask
       brew cask alfred link
@@ -73,6 +74,6 @@ pip
   https://github.com/sivel/speedtest-cli
 
 
-### TensorFlo
+### TensorFlow
 # https://www.tensorflow.org/install/install_mac
 sudo -H pip3 install tensorflow
