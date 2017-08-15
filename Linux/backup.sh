@@ -46,12 +46,13 @@ _mark=`date '+%Y_%m_%d-%H_%M_%S'`;
 ## https://help.ubuntu.com/community/BackupYourSystem/TAR
 ## Note: -h to follow symbolic links
 sudo sh -c "tar --exclude="$_directory" --exclude='*.ecryptfs/*' --exclude='/tmp' --exclude='/proc' --exclude='/sys' --exclude='/media' --exclude='/run' --exclude='/dev' --exclude='/proc' --exclude='/sys' -zcvpf - / | gpg --encrypt --quiet --recipient $_user > "$_mark".tar.gz.gpg"
+### Restore:  tar xvfpz 
 
 ## extract
 ##   import key
 #gpg --import backup.key
 #gpg --no-use-agent --passphrase= --output temp.tar.gz --decrypt "$_mark".tar.gz.gpg
-#tar xvzf --no-same-permissions temp.tar.gz --directory /tmp/temp
+#tar xvzfp --no-same-permissions temp.tar.gz --directory /tmp/temp
 
 ## Post ##
 
