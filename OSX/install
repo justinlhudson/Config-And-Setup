@@ -22,7 +22,6 @@ brew install
       virtualbox
       docker
       mcrypt
-      robomongo
       redis
       mongodb
       boot2docker
@@ -30,6 +29,7 @@ brew install
       vlc
       transmission(torrent client)
       firefox
+      robo-3t
   tmux
   mono
   python
