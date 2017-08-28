@@ -50,6 +50,9 @@
 
 """ Configuration """
 
+" Show hidden characters
+:set list
+
 "" Plugins
 
 " ctrlp
