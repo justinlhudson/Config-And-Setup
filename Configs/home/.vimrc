@@ -50,9 +50,6 @@
 
 """ Configuration """
 
-" Show hidden characters
-:set list
-
 "" Plugins
 
 " ctrlp
@@ -120,6 +117,7 @@ syntax on                                                  " turn sytanx highlig
 
 "" Settings
 
+  set list                                                 " show hidden characters
   set autoread                                             " reload changed files
   set lazyredraw                                           " faster response
   set splitbelow                                           " open horizontal splits on the right
