@@ -76,10 +76,8 @@ sudo iptables -S
 ### terminal screen saver
 apt-get install cmatrix
 
-### torrent client - SKIPPED
-add-apt-repository ppa:transmissionbt/ppa
-apt-get update
-apt-get install transmission-cli transmission-common transmission-daemon
+### torrent client
+sudo apt-get install deluge
 
 ### node (for legacy)
 sudo ln -s /usr/bin/nodejs /usr/bin/node
