@@ -1,0 +1,11 @@
+name: monitor
+root: ~/
+
+windows:
+  - main:
+      layout: tiled
+      panes:
+        - watch -n 3600 "mongo < /opt/st-monitor.js | tail -n $(($LINES - 2))"
+        - pm2 logs
+        - mongotop 15
+        - htop
