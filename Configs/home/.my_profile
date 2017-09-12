@@ -191,7 +191,7 @@ VBoxManage()
     var2=$(echo $version | cut -d 'r' -f 2)
     file="Oracle_VM_VirtualBox_Extension_Pack-$var1-$var2.vbox-extpack"
     wget http://download.virtualbox.org/virtualbox/$var1/$file -O /tmp/$file
-    sudo VBoxManage extpack install /tmp/$file --replace
+    sudo command VBoxManage extpack install /tmp/$file --replace
     sudo /sbin/rcvboxdrv setup
   else
     command VBoxManage "$@"
