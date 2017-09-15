@@ -4,6 +4,9 @@
 # device; this may be used with UUID= as a more robust way to name devices
 # that works even if disks are added and removed. See fstab(5).
 #
+# List device(s) information:
+#   lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,MODEL,UUID
+#
 # <file system> <mount point>   <type>  <options>       <dump>  <pass>
 # File System
 /dev/mapper/isw_egjifaej_volume2 /               ext4    errors=remount-ro 0       1
