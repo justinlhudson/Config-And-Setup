@@ -2,7 +2,7 @@
 silversearcher-ag expect git tmux gparted gdisk htop openssh-server vsftpd samba vim filezilla nautilus-dropbox \
 bind9 supervisor vim vnc4server nodejs npm nginx redis-server autojump screen dstat inotify-tools vnc4server \
 openvpn python-pip python3 python3-pip bsd-mailx landscape-client mcrypt zsh dconf-editor curl ruby run-one \
-mercurial nethogs
+mercurial nethogs exfat-utils
 
 sudo apt-get install bridge-utils
 
