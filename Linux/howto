@@ -1,3 +1,6 @@
+### Disabl User Shell (and SSH) ###
+usermod -s /bin/false <user>
+
 ### Add user to group
 usermod -a -G group user
 
