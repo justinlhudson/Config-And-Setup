@@ -25,3 +25,9 @@ tmpfs  /mnt/ramdisk tmpfs  nodev,nosuid,exec,noatime,nodiratime,size=8192M  0 0
 /mnt/external/everyone.img /media/everyone ext4 nosuid,nodev,nofail,noatime,nodiratime 0 0
 # FTP
 /mnt/external/ftp.img /media/ftp ext4 nosuid,nodev,nofail,noatime,nodiratime 0 0
+
+# Wife
+/dev/disk/by-uuid/59BB-EF7D /mnt/wife auto nosuid,nodev,noatime,nodiratime,nofail 0 2
+
+# SMB Share (example)
+#<host>/<share> /mnt/<share> cifs noauto,nofail,x-systemd.automount,x-systemd.requires=network-online.target,x-systemd.device-timeout=10,workgroup=workgroup,credentials=/home/<user>/.smb_credentials 0 0
