@@ -154,8 +154,8 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias random='cat /dev/urandom | tr -cd 'a-f0-9' | head -c 64 | cut -c 1-'
-alias reboot='sudo shutdown -r now'
-alias shutdown='sudo shutdown now'
+alias reboot=' vboxmanage --shutdown; sudo shutdown -r now'
+alias shutdown='vboxmanage --shutdown; sudo shutdown now'
 alias plogout='sudo pkill -KILL -u'
 alias apt-get='sudo apt-get'
 # search process match (e.g. psf name)
@@ -194,7 +194,7 @@ vboxmanage()
     sudo command VBoxManage extpack install /tmp/$file --replace
     sudo /sbin/rcvboxdrv setup
   elif [ -n "$1" ] && [[ "$1" == "--shutdown" ]]; then
-    _vms=`vboxmanage list runningvms|cut -d" " -f 1 | tr -d '"'`
+    _vms=`vboxmanage list runningvms | cut -d" " -f 1 | tr -d '"'`
     for _vm in $_vms; do
       vboxmanage controlvm $_vm poweroff soft
     done
