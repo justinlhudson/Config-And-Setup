@@ -183,7 +183,7 @@ alias ssh='ssh -X'
 # ISO-8601 compliant date (in mongodb formate)
 alias utc='date -u "+%Y-%m-%dT%H:%M:%S.%3NZ"'
 
-VBoxManage()
+vboxmanage()
 {
   if [ -n "$1" ] && [[ "$1" == "--upgrade" ]]; then
     version=$(vboxmanage -v)
@@ -193,8 +193,13 @@ VBoxManage()
     wget http://download.virtualbox.org/virtualbox/$var1/$file -O /tmp/$file
     sudo command VBoxManage extpack install /tmp/$file --replace
     sudo /sbin/rcvboxdrv setup
+  elif [ -n "$1" ] && [[ "$1" == "--shutdown" ]]; then
+    _vms=`vboxmanage list runningvms|cut -d" " -f 1 | tr -d '"'`
+    for _vm in $_vms; do
+      vboxmanage controlvm $_vm poweroff soft
+    done
   else
-    command VBoxManage "$@"
+    command vboxmanage "$@"
   fi
   version=$(vboxmanage -v)
 }
