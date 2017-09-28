@@ -11,7 +11,8 @@ find "$_location"/* -type d -empty -delete
 # Move files into date folders (Note: 1 level deep)
 for _directory in $(find "$_location" -maxdepth 1 -type d); do
   echo $_directory
-  for _file in $(find "$_directory" -maxdepth 1 -type f); do
+  # Note: skip hidden files
+  for _file in $(find "$_directory" -maxdepth 1 -type f | grep -v '/\.'); do
     _date=$(date -r "$_file" +%Y_%m_%d)
     _new="$_directory"/"$_date"
 
