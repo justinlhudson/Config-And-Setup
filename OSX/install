@@ -70,10 +70,7 @@ gem
   tmuxinator
 launchcontrol (How To http://launchd.info/)
 
-pip
+pip3
   https://github.com/sivel/speedtest-cli
-
-
-### TensorFlow
-# https://www.tensorflow.org/install/install_mac
-sudo -H pip3 install tensorflow
+  tensorflow
+  jupyter
