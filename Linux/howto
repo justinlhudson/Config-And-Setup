@@ -1,3 +1,6 @@
+# Python packages permissions issues (is this right?, but worked and looks clean)
+chmod -R a+rX /usr/local/lib/python3.5/dist-packages/*
+
 ### Disabl User Shell (and SSH) ###
 usermod -s /bin/false <user>
 
