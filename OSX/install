@@ -32,6 +32,8 @@ brew install
       robo-3t
   tmux
   mono
+  zsh
+  zsh-completions
   python
   python3
   vim
