@@ -5,7 +5,7 @@ DISABLE_AUTO_UPDATE="true"
 
 source $ZSH/oh-my-zsh.sh
 
-plugins=(cake coffee docker gem git github history mercurial node npm python pip screen sublime sudo supervisor tmux tmuxinator vi-mode) 
+plugins=(cake coffee docker gem git github history mercurial node npm python pip screen sublime sudo supervisor tmux tmuxinator vi-mode web-search) 
 
 # installing gems local need to add to path
 #if type ruby >/dev/null && type gem >/dev/null; then
