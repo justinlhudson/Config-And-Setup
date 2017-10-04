@@ -213,8 +213,8 @@ if [[ $MY_DISTRO == debian ]]; then
     apt-get autoremove
     sudo npm i -g npm
     sudo npm -g upgrade
-    sudo -H pip install -U `sudo -H pip list --outdated | awk '{ print $1}'`
-    sudo -H pip3 install -U `sudo -H pip3 list --outdated | awk '{ print $1}'`
+    sudo -H pip install $(pip list --outdated | awk '{ print $1 }') --upgrade
+    sudo -H pip3 install $(pip list --outdated | awk '{ print $1 }') --upgrade
     sudo gem update 
     sudo gem cleanup 
     git -C $ZSH pull
@@ -229,12 +229,12 @@ if [[ $MY_DISTRO == darwin ]]; then
     brew linkapps
     sudo npm i -g npm
     sudo npm -g upgrade
-    sudo -H pip install -U `sudo -H pip list --outdated | awk '{ print $1}'`
-    sudo -H pip3 install -U `sudo -H pip3 list --outdated | awk '{ print $1}'`
+    pip install $(pip list --outdated | awk '{ print $1 }') --upgrade
+    pip3 install $(pip list --outdated | awk '{ print $1 }') --upgrade
     gem update
-    sudo sh -c "GEM_HOME=/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/gems/2.0.0 gem cleanup"
+    #sudo sh -c "GEM_HOME=/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/gems/2.0.0 gem cleanup"
     git -C $ZSH pull
-    #mas upgrade
+    mas upgrade
   }
   alias mdtool='/Applications/Xamarin\ Studio.app/Contents/MacOS/mdtool'
 fi
