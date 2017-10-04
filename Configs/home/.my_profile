@@ -95,12 +95,6 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 ### Configuration ###
 
-if [[ ! "$@" == *"-w"* ]]; then
-  # create permissions
-  # in octal (777 - 750 = 027)
-  umask 0027
-fi
-
 # expand aliases for on-interactive shell (i.e. scripts)
 if [[ $MY_SHELL == bash ]]; then
   shopt -s expand_aliases
