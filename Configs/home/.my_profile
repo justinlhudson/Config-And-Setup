@@ -214,7 +214,9 @@ if [[ $MY_DISTRO == debian ]]; then
     sudo npm i -g npm
     sudo npm -g upgrade
     sudo -H pip install $(pip list --outdated | awk '{ print $1 }') --upgrade
-    sudo -H pip3 install $(pip list --outdated | awk '{ print $1 }') --upgrade
+    sudo chmod -R a+rX /usr/local/lib/python2.7/dist-packages/
+    sudo -H pip3 install $(pip3 list --outdated --format=legacy | awk '{ print $1 }') --upgrade
+    sudo chmod -R a+rX /usr/local/lib/python$(python3 --version | cut -d " " -f 2 | cut -d "." -f-2)/dist-packages/
     sudo gem update 
     sudo gem cleanup 
     git -C $ZSH pull
