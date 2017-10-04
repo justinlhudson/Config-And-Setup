@@ -1,5 +1,7 @@
 export DISPLAY=:0
 
+umask 0027
+
 if [ -f ~/.my_profile ]; then
   source ~/.my_profile 2> /dev/null
 fi
