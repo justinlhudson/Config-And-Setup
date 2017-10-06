@@ -11,6 +11,8 @@ apt-get install nvidia-384
 ## Configure
 
 # nvidia-settings
+# per manpage: http://manpages.ubuntu.com/manpages/precise/man1/alt-nvidia-current-settings.1.html
+# See ~/.xinitrc
 
 ## Specific cards only (if found after driver install then can use it).
 # set max power usage
