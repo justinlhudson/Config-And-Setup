@@ -1,0 +1,23 @@
+### Graphic Card Drivers ###
+# Version to install found:  http://www.nvidia.com/download/driverResults.aspx/123918/en-us
+add-apt-repository ppa:graphics-drivers/ppa
+
+# GeForce 10 Series, Version:	384.90
+apt-get install nvidia-384
+
+### cuda Support ###
+
+# http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
+
+# test for gpu support 
+lspci | grep -i nvidia
+
+#install linux kernal headers 
+apt-get install linux-headers-$(uname -r)
+
+# https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604&target_type=debnetwork
+dpkg -i cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
+apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub
+apt-get update
+# Note: search apt-get for other cuda install options/pieces
+apt-get install cuda
