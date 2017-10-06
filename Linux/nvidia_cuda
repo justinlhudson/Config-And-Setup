@@ -8,6 +8,15 @@ add-apt-repository ppa:graphics-drivers/ppa
 # GeForce 10 Series, Version:	384.90
 apt-get install nvidia-384
 
+## Configure
+
+# nvidia-settings
+
+## Specific cards only (if found after driver install then can use it).
+# set max power usage
+#nvidia-smi -pm 1 (?)
+#nvidia-smi -pl 66 (?)
+
 ### cuda Support ###
 
 # http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
