@@ -1,4 +1,7 @@
 ### Graphic Card Drivers ###
+
+# Note: secure boot should be disabled on system
+
 # Version to install found:  http://www.nvidia.com/download/driverResults.aspx/123918/en-us
 add-apt-repository ppa:graphics-drivers/ppa
 
@@ -12,10 +15,12 @@ apt-get install nvidia-384
 # test for gpu support 
 lspci | grep -i nvidia
 
-#install linux kernal headers 
+#install linux kernal headers, if not already
 apt-get install linux-headers-$(uname -r)
 
 # https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604&target_type=debnetwork
+# get address from link in webpage
+wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
 dpkg -i cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
 apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub
 apt-get update
