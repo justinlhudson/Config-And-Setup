@@ -5,6 +5,11 @@ ssh-copy-id <username>@<address> -p 22
 ### Network Shares
 # disable .DS_Store files on network drives
 defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+# https://support.apple.com/en-us/TS1564
+sudo vim /etc/nsmb.conf
+[default]
+minauth=none
+sudo chmod a+r  /etc/nsmb.conf
 
 ### cleanup/fix NODE/NPM install
 sudo rm -rf /usr/local/lib/node_modules
