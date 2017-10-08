@@ -411,6 +411,22 @@ if type cmatrix > /dev/null 2>&1; then
   }
 fi
 
+# change priority of interfaces (i.e. to swap priority)
+ifswap() {
+  if [ $# -ne 2 ]; then
+    ifconfig 
+    echo ""
+    echo "Pick higher and lower interface priority"
+    echo "Example:  ifswap enp0 eno1"
+  fi
+  if type ifmetric > /dev/null 2>&1; then
+    # highest
+    ifmetric $1 0
+    # lower
+    ifmetric $2 1
+  fi
+}
+
 ### Key Bindings ###
 
 if [[ $MY_TERM == xterm ]]; then
