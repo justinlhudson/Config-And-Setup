@@ -413,6 +413,7 @@ fi
 
 # change priority of interfaces (i.e. to swap priority)
 ifswap() {
+  # ifmetric INTERFACE [METRIC]
   if [ $# -ne 2 ]; then
     ifconfig 
     echo ""
