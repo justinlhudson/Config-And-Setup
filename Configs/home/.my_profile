@@ -419,8 +419,7 @@ ifswap() {
     echo ""
     echo "Pick higher and lower interface priority"
     echo "Example:  ifswap enp0 eno1"
-  fi
-  if type ifmetric > /dev/null 2>&1; then
+  elif type ifmetric > /dev/null 2>&1; then
     # highest
     ifmetric $1 0
     # lower
