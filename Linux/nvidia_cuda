@@ -54,3 +54,6 @@ powerstat
 
 # monitor
 nvidia-smi -l 1
+
+# gui
+nvidia profiler
