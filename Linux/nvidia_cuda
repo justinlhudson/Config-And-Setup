@@ -37,3 +37,17 @@ apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos
 apt-get update
 # Note: search apt-get for other cuda install options/pieces
 apt-get install cuda
+
+# test cuda
+
+cd ~/
+apt-get install cuda-samples-X -y
+cd /usr/local/cuda-X/samples
+make
+
+# run
+deviceQuery
+bandwidthTest
+
+# watch
+powerstat
