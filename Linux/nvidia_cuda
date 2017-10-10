@@ -46,8 +46,8 @@ cd /usr/local/cuda-X/samples
 make
 
 # run
-deviceQuery
-bandwidthTest
+/usr/local/cuda-X/samples/bin/x86_64/linux/release/deviceQuery
+/usr/local/cuda-X/samples/bin/x86_64/linux/release/bandwidthTest
 
-# watch
+# watch (if can read power)
 powerstat
