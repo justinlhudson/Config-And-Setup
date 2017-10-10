@@ -51,3 +51,6 @@ make
 
 # watch (if can read power)
 powerstat
+
+# monitor
+nvidia-smi -l 1
