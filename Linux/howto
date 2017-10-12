@@ -1,3 +1,9 @@
+# screen split
+C-a |     // Create a split
+C-a <Tab> // Move to the split
+C-a c     // Create a new window within the split
+C-a X    // will close the pane that has focus
+
 # Python packages permissions issues (is this right?, but worked and looks clean)
 chmod -R a+rX /usr/local/lib/python3.5/dist-packages/*
 
