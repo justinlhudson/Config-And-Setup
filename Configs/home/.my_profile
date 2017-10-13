@@ -155,13 +155,13 @@ alias apt-get='sudo apt-get'
 # search process match (e.g. psf name)
 alias psf='ps | grep -v grep | grep -i -e VSZ -e'
 if [[ $MY_OS == darwin ]]; then
-  alias ls='ls -LGpF'
+  alias ls='ls -GpF'
 else
-  alias ls='ls -LpF --color=auto'
+  alias ls='ls -pF --color=auto'
 fi
 alias l='ls'
-alias ll='ls -LlAh'
-alias l.='ls -Ld .*'
+alias ll='ls -lAh'
+alias l.='ls -d .*'
 alias la='ls -lah'
 if [[ $MY_OS == darwin ]]; then
   # gnu util for darwin
