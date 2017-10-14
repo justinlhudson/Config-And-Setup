@@ -2,7 +2,6 @@
 oh my zsh
 homebrew
 iterm2
-redis desktop client
 sublime
 chrome
 docker.io
@@ -21,6 +20,7 @@ brew install
       brew cask install caskroom/cask/brew-cask
       brew cask alfred link
       virtualbox
+      rdm # redis desktop manager
       docker
       mcrypt
       redis
