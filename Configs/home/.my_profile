@@ -1,81 +1,76 @@
 #### Installation ####
 # File: .zshrc or .bashrc or ...
 # Add:  source ~/.my_profile
-# Done...
+# Done
 
 ### Determine OS being used ###
-
-MY_OS=$(uname)
-case $MY_OS in
+_my_os=$(uname)
+case $_my_os in
   'Linux')
-    MY_OS='linux'
+    _my_os='linux'
     ;;
   'WindowsNT')
-    MY_OS='dos'
+    _my_os='dos'
     ;;
   'Darwin')
-    MY_OS='darwin'
+    _my_os='darwin'
     ;;
   *) ;;
 esac
 
 ### Determine ARCH being used ###
-
-MY_ARCH=$(uname -m)
-case $MY_ARCH in
+_my_arch=$(uname -m)
+case $_my_arch in
   x86_64)
-    MY_ARCH=x64  # or AMD64 or Intel64 or whatever
+    _my_arch=x64  # or AMD64 or Intel64 or whatever
     ;;
   i*86)
-    MY_ARCH=x86  # or IA32 or Intel32 or whatever
+    _my_arch=x86  # or IA32 or Intel32 or whatever
     ;;
   *)
     ;;
 esac
 
 ### Determine DISTRO being used ###
-
 # by type
-MY_DISTRO=$(uname)
-case $MY_DISTRO in
+_my_distro=$(uname)
+case $_my_distro in
   Linux )
     # test for distro by command
-    MY_DISTRO=$(cat /proc/version)
-    if [[ "$MY_DISTRO" == *"Ubuntu"* ]]; then
-      MY_DISTRO=debian
-    elif [[ "$MY_DISTRO" == *"Red Hat"* ]]; then
-      MY_DISTRO=rhel
+    _my_distro=$(cat /proc/version)
+    if [[ "$_my_distro" == *"Ubuntu"* ]]; then
+      _my_distro=debian
+    elif [[ "$_my_distro" == *"Red Hat"* ]]; then
+      _my_distro=rhel
     fi
     ;;
   Darwin )
-     MY_DISTRO=darwin
+     _my_distro=darwin
      ;;
   * )
      ;;
 esac
  
 ### Determine SHELL being used ###
-
-MY_SHELL=$(echo $0)
-#MY_SHELL=$SHELL
-if [[ $MY_SHELL == *zsh* ]]; then
+_my_shell=$(echo $0)
+#_my_shell=$SHELL
+if [[ $_my_shell == *zsh* ]]; then
   #!/bin/zsh
-  MY_SHELL=zsh
-elif [[ $MY_SHELL == *bash* ]]; then
+  _my_shell=zsh
+elif [[ $_my_shell == *bash* ]]; then
   #!/bin/bash
-  MY_SHELL=bash
+  _my_shell=bash
 fi
 
 ### Determine TERM being used ###
-
-MY_TERM=$TERM
-if [[ $MY_TERM == *xterm* ]]; then
-  MY_TERM=xterm
+_my_term=$TERM
+if [[ $_my_term == *xterm* ]]; then
+  _my_term=xterm
 fi
 
 # Display env. in terminal
 if [[ "$@" == *"-v"* ]]; then
-  echo "$MY_OS $MY_DISTRO $MY_ARCH $MY_TERM $MY_SHELL"
+  echo "$_my_os $_my_distro $_my_arch $_my_term $_my_shell"
   echo ""
 fi
 
@@ -85,9 +80,9 @@ fi
 HISTSIZE=5000
 HISTFILESIZE=10000
 # Append history from each session, not the last terminal to log out
-if [[ $MY_SHELL == bash ]]; then
+if [[ $_my_shell == bash ]]; then
   shopt -s histappend > /dev/null 2>&1
-elif [[ $MY_SHELL == zsh ]]; then
+elif [[ $_my_shell == zsh ]]; then
   setopt INC_APPEND_HISTORY > /dev/null 2>&1
 fi
 # Add commands immediatley to history, not wait for log out
@@ -95,43 +90,31 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 ### Configuration ###
 
-# expand aliases for on-interactive shell (i.e. scripts)
-if [[ $MY_SHELL == bash ]]; then
+# expand aliases for non-interactive shell (i.e. scripts)
+if [[ $_my_shell == bash ]]; then
   shopt -s expand_aliases
-elif [[ $MY_SHELL == zsh ]]; then
+elif [[ $_my_shell == zsh ]]; then
   setopt aliases
 fi
 
-### Variables ###
+### Shared Variables ###
 
-export SUCCESS=0
-export FAIL=1
 export EDITOR='vim'
 
-# GO's environment 
-if [[ $MY_OS == darwin ]]; then
-  export PATH=$PATH:/usr/local/opt/go/libexec/bin
-  export GOPATH=/usr/local/opt/go/bin
-fi
-
-### The Magic ###
 if type htop > /dev/null 2>&1; then
   alias top='htop'
 fi
 alias vi='vim'
 alias curl='noglob curl'
-# not the real God, hence lowercase.
-alias god='sudo'
+alias god='sudo'  # not the real God, hence lowercase.
 alias please='god'
 alias c='clear'
 alias h='history'
-alias quit='exit'
-alias q='quit'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias mkdir='mkdir -pv'
-if [[ $MY_OS == darwin ]]; then
+if [[ $_my_os == darwin ]]; then
   alias df='df -ha'
 else
   alias df='df -Tha'
@@ -141,20 +124,16 @@ alias free='free -mt'
 alias here='find . -iname'
 alias whereami='uname -a'
 alias echoerr='>&2 echo'
-# w/ millisecond
-alias now='date +"%m-%d-%Y %T.%3N"'
-## safety
+alias now='date +"%m-%d-%Y %T.%3N"'  # w/ millisecond
+# safety
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias random='cat /dev/urandom | tr -cd 'a-f0-9' | head -c 64 | cut -c 1-'
-alias reboot='vboxmanage --shutdown; sudo shutdown -r now'
-alias shutdown='vboxmanage --shutdown; sudo shutdown now'
 alias plogout='sudo pkill -KILL -u'
 alias apt-get='sudo apt-get'
-# search process match (e.g. psf name)
-alias psf='ps | grep -v grep | grep -i -e VSZ -e'
-if [[ $MY_OS == darwin ]]; then
+alias psf='ps | grep -v grep | grep -i -e VSZ -e' # search process match (e.g. psf name)
+if [[ $_my_os == darwin ]]; then
   alias ls='ls -GpF'
 else
   alias ls='ls -pF --color=auto'
@@ -163,19 +142,20 @@ alias l='ls'
 alias ll='ls -lAh'
 alias l.='ls -d .*'
 alias la='ls -lah'
-if [[ $MY_OS == darwin ]]; then
+if [[ $_my_os == darwin ]]; then
   # gnu util for darwin
   alias timeout='gtimeout'
   alias ps='ps aux'
-else 
+else
   alias ps='ps auxf'
 fi
 
-# with xsession
-alias ssh='ssh -X'
-
 # ISO-8601 compliant date (in mongodb formate)
 alias utc='date -u "+%Y-%m-%dT%H:%M:%S.%3NZ"'
+
+# helpers for shutting down VMs and other things before system
+alias reboot='vboxmanage --shutdown; sudo shutdown -r now'
+alias shutdown='vboxmanage --shutdown; sudo shutdown now'
 
 vboxmanage()
 {
@@ -198,7 +178,7 @@ vboxmanage()
   version=$(vboxmanage -v)
 }
 
-if [[ $MY_DISTRO == debian ]]; then
+if [[ $_my_distro == debian ]]; then
   upgrade() {
     apt-get update
     apt-get dist-upgrade
@@ -208,44 +188,43 @@ if [[ $MY_DISTRO == debian ]]; then
     sudo npm i -g npm
     sudo npm -g upgrade
     sudo -H pip install $(pip list --outdated | awk '{ print $1 }') --upgrade
-    #sudo chmod -R a+rX /usr/local/lib/python2.7/dist-packages/
     sudo -H pip3 install $(pip3 list --outdated --format=legacy | awk '{ print $1 }') --upgrade
-    #sudo chmod -R a+rX /usr/local/lib/python$(python3 --version | cut -d " " -f 2 | cut -d "." -f-2)/dist-packages/
-    sudo gem update 
-    sudo gem cleanup 
+    sudo gem update
+    sudo gem cleanup
     git -C $ZSH pull
   }
 fi
-if [[ $MY_DISTRO == darwin ]]; then
+if [[ $_my_distro == darwin ]]; then
   upgrade() {
-    brew update 
+    brew update
     brew upgrade
     brew cleanup
     brew cask cleanup
-    brew linkapps
+    brew linkapps # sets symbolic links from /Application directory to brew files
     sudo npm i -g npm
     sudo npm -g upgrade
-    pip install $(pip list --outdated | awk '{ print $1 }') --upgrade
-    pip3 install $(pip list --outdated | awk '{ print $1 }') --upgrade
-    gem update
-    #sudo sh -c "GEM_HOME=/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/gems/2.0.0 gem cleanup"
+    sudo pip install $(pip list --outdated | awk '{ print $1 }') --upgrade
+    sudo pip3 install $(pip list --outdated | awk '{ print $1 }') --upgrade
+    sudo gem update
     git -C $ZSH pull
-    mas upgrade
+    #mas upgrade
   }
-  alias mdtool='/Applications/Xamarin\ Studio.app/Contents/MacOS/mdtool'
 fi
-# replace awk with ag if found
+
+# Replace defualt tooling with better similar option
 if type ag > /dev/null 2>&1; then
-  alias ack='ag'
+  alias awk='ag'
 fi
 if type autojump > /dev/null 2>&1; then
   alias j='autojump'
 fi
+
 alias twitter='sudo rainbowstream -iot'
 alias irc='weechat'
 
-if [[ $MY_OS == darwin ]]; then
+if [[ $_my_os == darwin ]]; then
   here() {
+    # ignore permission denied messages
     find . -iname $1 2>&1 | grep -v "Permission denied"
   }
 fi
@@ -253,11 +232,11 @@ fi
 # retry command 
 # usage: retry <command>
 retry() {
-  _result=1    
+  _result=1
   while [ $_result -ne 0 ] ; do 
     "$@" && break 
     result=$?
-	  sleep 3
+    sleep 3
   done
 }
 
@@ -293,7 +272,7 @@ herein() {
   fi
 }
 
-# list after each cd
+# list some infor after each cd
 cd() {
   if [ -n "$1" ]; then
     builtin cd "$@" && pwd && ls
@@ -321,11 +300,11 @@ docker() {
   fi
 }
 
-#if [[ $MY_SHELL == *zsh* ]]; then
+#if [[ $_my_shell == *zsh* ]]; then
 #  which() {
 #    (alias; declare -f) | command which --tty-only --read-alias --read-functions --show-tilde --show-dot $@
 #  }
-#elif [[ $MY_SHELL == *bash* ]]; then
+#elif [[ $_my_shell == *bash* ]]; then
 #  alias which 'alias | command which --tty-only --read-alias -read-functions --show-dot --show-tilde'
 #  export -f which
 #fi
@@ -429,21 +408,21 @@ ifswap() {
 
 ### Key Bindings ###
 
-if [[ $MY_TERM == xterm ]]; then
+if [[ $_my_term == xterm ]]; then
   # backspace work instead of delete ^H
   stty erase '^?'
 fi
 
 # bind keys per shell and terminal
-if [[ $MY_SHELL == zsh ]]; then
+if [[ $_my_shell == zsh ]]; then
   # home and end keys
   bindkey '\e[1~' beginning-of-line
-  bindkey '\e[4~' end-of-line  
+  bindkey '\e[4~' end-of-line
 fi
 
 ### Other ###
 
-if [[ $MY_OS == darwin ]]; then
+if [[ $_my_os == darwin ]]; then
   if type archey > /dev/null 2>&1; then
     archey
   fi
