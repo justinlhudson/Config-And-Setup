@@ -132,7 +132,7 @@ alias mv='mv -i'
 alias random='cat /dev/urandom | tr -cd 'a-f0-9' | head -c 64 | cut -c 1-'
 alias plogout='sudo pkill -KILL -u'
 alias apt-get='sudo apt-get'
-alias psf='ps -aux | grep -v grep | grep -i -e VSZ -e' # search process match (e.g. psf name)
+alias psf='ps -e | grep -v grep | grep -i -e VSZ -e' # search process match (e.g. psf name)
 if [[ $_my_os == darwin ]]; then
   alias ls='ls -GpF'
 else
