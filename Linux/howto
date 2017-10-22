@@ -72,15 +72,15 @@ swapon -s
 
 ### create and fstab mount virtual disk image
 fallocate -l <size> <file to create>
-fallocate -l 256GB <var/opt/virtual.img>
+fallocate -l 256GB /mnt/<disk>/<name>.img
 # fill file with random data (not needed)
-dd if=/dev/urandom of=virtual.img bs=1M count=256000
+dd if=/dev/urandom of=<name>.img bs=1M count=256000
 # formate disk
-mkfs -t ext4 virtual.img
-sudo mkdir /mnt/virtual
-sudo mount -t auto -o loop virtual.img /mnt/virtual/
+mkfs -t ext4 <name>.img
+sudo mkdir /media/<name>
+sudo mount -t auto -o loop <name>.img /mnt/<name>/
 # add to fstab
-<disk image file>.img <mountpoint> ext4 nosuid,nodev,nofail, 0 0
+/mnt/<drive>/<name>.img /media/<name> ext4 nosuid,nodev,nofail,noatime,nodiratime 0 0
 
 ### create user
 sudo useradd <new-username> -s /bin/bash -m
