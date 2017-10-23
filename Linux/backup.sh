@@ -48,6 +48,13 @@ _mark=`date '+%Y_%m_%d-%H_%M_%S'`;
 sudo sh -c "tar --exclude="$_directory" --exclude='*.ecryptfs/*' --exclude='/tmp' --exclude='/proc' --exclude='/sys' --exclude='/media' --exclude='/run' --exclude='/dev' --exclude='/proc' --exclude='/sys' -zcvpf - / | gpg --encrypt --quiet --recipient $_user > "$_mark".tar.gz.gpg"
 ### Restore:  tar xvfpz 
 
+# Mongodb backup
+if type "mongorestore" > /dev/null; then
+  mongorestore --archive=mongodb_"$_mark".gz --gzip
+  # double history, since have two files now
+  _history=$((2 * $_history))
+fi
+
 ## extract
 ##   import key
 #gpg --import backup.key
