@@ -49,8 +49,8 @@ sudo sh -c "tar --exclude="$_directory" --exclude='*.ecryptfs/*' --exclude='/tmp
 ### Restore:  tar xvfpz 
 
 # Mongodb backup
-if type "mongorestore" > /dev/null; then
-  mongorestore --archive=mongodb_"$_mark".gz --gzip
+if type "mongodump" > /dev/null; then
+  mongodump --archive=mongodb_"$_mark".gz --gzip
   # double history, since have two files now
   _history=$((2 * $_history))
 fi
