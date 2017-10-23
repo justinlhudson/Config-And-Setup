@@ -342,6 +342,17 @@ screen() {
   fi
 }
 
+git()
+{
+  if [ -n "$1" ] && [[ "$1" == "--commit" ]]; then
+    command git add -A && command git commit
+  elif [ -n "$1" ] && [[ "$1" == "--latest" ]]; then
+    command git pull && command git reset --hard HEAD
+  else
+    command git "$@"
+  fi
+}
+
 mux()
 {
   if [ -n "$1" ] && [[ "$1" == "-k" ]]; then
