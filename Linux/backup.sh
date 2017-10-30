@@ -18,6 +18,7 @@ _vms=`VBoxManage list runningvms|cut -d" " -f 1 | tr -d '"'`
 
 for _vm in $_vms; do
   vboxmanage controlvm $_vm pause
+  #vboxmanage controlvm $_vm poweroff soft
 done
 sleep 5
 
