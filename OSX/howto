@@ -1,3 +1,6 @@
+### Allow port through firewall
+sed -i '' -e '$a\pass in proto <tcp, udp> from any to any port <port>' /etc/pf.conf; pfctl -vnf /etc/pf.conf
+
 ### SSH save password
 ssh-keygen
 ssh-copy-id <username>@<address> -p 22
