@@ -5,4 +5,4 @@
 
 :: Aliases
 doskey clear=cls
-doskey python=C:\<path>\anaconda\4.2.0\python
+doskey python=C:\<path>\anaconda\4.2.0\python $*
