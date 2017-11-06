@@ -7,6 +7,7 @@ if [[ $? -ne 0 ]]; then
   exit
 fi
 
+curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.profile > ~/.profile
 curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.my_profile > ~/.my_profile
 curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.vimrc > ~/.vimrc
 curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.tmux.conf > ~/.tmux.conf
@@ -16,6 +17,5 @@ curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Con
 # if any arg get --all
 if [ $# -ne 0 ]; then
   curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.screenrc > ~/.screenrc
-  curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.profile > ~/.profile
   curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.zshrc-user > ~/.zshrc-user
 fi
