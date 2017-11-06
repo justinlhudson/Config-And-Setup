@@ -12,6 +12,11 @@ plugins=(cake coffee docker gem git github history mercurial node npm python pip
 #  PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 #fi
 
+# run profile script not in zsh mode
+if [ -f ~/.profile ]; then
+  emulate sh -c '. ~/.profile'
+fi
+
 if [ -f ~/.zshrc-user ]; then
   source ~/.zshrc-user
 fi
