@@ -99,7 +99,7 @@ service cpufrequtils restart
 
 ### OSX remote viewer (VNC) to ubuntu remote desktop security FIX
 install: dconf-tools
-run in gui:  gconf-tools
+run in gui:  dconf-tools
 change: dconf -> org -> gnome -> desktop -> remote-access -> require-encription - uncheck
 terminal:
 gsettings set org.gnome.Vino require-encryption false
