@@ -28,6 +28,11 @@ ssh-copy-id <username>@<address> -p 22
 ### sudo (without passwd) to user or apps
 sudo visudo
 ## application specific permissions
+
+# add user to sudo group
+gpasswd -a demo sudo
+
+# Add application to sudo group
 <usr> ALL=NOPASSWD: /usr/bin/application
 ## password for admins group running sudo
 %admin ALL=(ALL:ALL) NOPASSWD: ALL
