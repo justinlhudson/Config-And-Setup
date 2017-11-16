@@ -322,6 +322,20 @@ history() {
   fi
 }
 
+ssh() {
+  if type autossh > /dev/null 2>&1; then
+    # disable the built-in AutoSSH monitoring port "-M 0"
+    #
+    #  "ServerAliveInterval" & "ServerAliveCountMax" – they cause the SSH client to send traffic 
+    #  through the encrypted link to the server. This will keep the connection alive when there
+    #  is no other activity and also when it does not receive any alive data, it will tell AutoSSH
+    #  that the connection is broken and AutoSSH will then restart the connection.
+    autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" $@
+  else
+    echo "Hint: install 'autossh'"
+    command ssh $@
+}
+
 screen() {
   local _session="default"
   # if no option(s), run default
