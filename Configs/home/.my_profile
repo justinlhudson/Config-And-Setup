@@ -322,7 +322,8 @@ history() {
   fi
 }
 
-ssh() {
+ssh()
+{
   if type autossh > /dev/null 2>&1; then
     # disable the built-in AutoSSH monitoring port "-M 0"
     #
@@ -334,6 +335,7 @@ ssh() {
   else
     echo "Hint: install 'autossh'"
     command ssh $@
+  fi
 }
 
 screen() {
