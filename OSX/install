@@ -33,6 +33,7 @@ brew install
       robo-3t
   tmux
   mono
+  autossh
   zsh
   zsh-completions
   python
