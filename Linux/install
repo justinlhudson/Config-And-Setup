@@ -2,7 +2,7 @@
 silversearcher-ag expect git tmux gparted gdisk htop openssh-server vsftpd samba vim filezilla nautilus-dropbox \
 bind9 supervisor vim vnc4server nodejs npm nginx redis-server autojump screen dstat inotify-tools vnc4server \
 openvpn python-pip python3 python3-pip bsd-mailx landscape-client mcrypt zsh dconf-editor curl ruby run-one \
-mercurial nethogs exfat-utils ifmetric powerstat iftop autossh
+mercurial nethogs exfat-utils ifmetric powerstat iftop autossh bmon
 
 NOTE:  chmod -R a+rX /usr/local/lib/python???/dist-packages/
 
