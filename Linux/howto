@@ -62,7 +62,9 @@ chmod 777 -R /mnt/ramdisk
 mount -t tmpfs -o size=1024m tmpfs /mnt/ramdisk
 # permanent add to '/etc/fstab'
 # suggest 1/4 amount of RAM, goes to SWAP if needed
-tmpfs  /mnt/ramdisk tmpfs  nodev,nosuid,noexec,noatime,nodiratime,size=8192M  0 0
+#tmpfs  /mnt/ramdisk tmpfs  nodev,nosuid,noexec,noatime,nodiratime,size=8192M  0 0
+# no size given uses 1/4 (default)
+tmpfs  /mnt/ramdisk tmpfs  nodev,nosuid,noexec,noatime,nodiratime  0 0
 mount -a # update fstab without reboot
 
 ### Create SWAP file after the fact or rather then a partition
