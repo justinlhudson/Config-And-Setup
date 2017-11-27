@@ -51,7 +51,7 @@ sudo sh -c "tar --exclude="$_directory" --exclude='*.ecryptfs/*' --exclude='/tmp
 
 # Mongodb backup
 if type mongodump > /dev/null; then
-  mongodump --archive=mongodb_"$_mark".gz --gzip
+  sudo mongodump --archive=mongodb_"$_mark".gz --gzip
   # double history, since have two files now
   _history=$((2 * $_history))
 fi
