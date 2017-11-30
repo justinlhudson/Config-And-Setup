@@ -6,4 +6,6 @@ if [ -f ~/.my_profile ]; then
   source ~/.my_profile 2> /dev/null
 fi
 
+timedatectl set-timezone America/Detroit
+
 alias mac="ssh <username>@<host> -L 5902:localhost:5900"
