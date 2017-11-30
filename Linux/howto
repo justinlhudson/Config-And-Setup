@@ -1,3 +1,6 @@
+# set timezone
+sudo timedatectl set-timezone America/Detroit
+ 
 # screen split
 C-a |     // Create a split
 C-a <Tab> // Move to the split
