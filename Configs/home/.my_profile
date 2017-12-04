@@ -159,6 +159,10 @@ alias shutdown='vboxmanage --shutdown; sudo shutdown now'
 
 vboxmanage()
 {
+  if ! type vboxmanage > /dev/null 2>&1; then
+    return 0
+  fi
+
   if [ -n "$1" ] && [[ "$1" == "--upgrade" ]]; then
     version=$(vboxmanage -v)
     var1=$(echo $version | cut -d 'r' -f 1)
