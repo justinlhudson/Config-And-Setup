@@ -76,6 +76,7 @@ fallocate -l 8G swapfile
 chmod 600 swapfile
 mkswap swapfile
 swapon swapfile
+# swapoff swapfile
 swapon -s
 # edit /etc/fstab
 /swapfile   none    swap    sw    0   0
