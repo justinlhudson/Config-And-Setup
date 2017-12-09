@@ -1,3 +1,7 @@
+# enable/disable service from startup
+sudo systemctl enable <mongod>
+sudo systemctl disable <mongod>
+
 # set timezone
 sudo timedatectl set-timezone America/Detroit
  
