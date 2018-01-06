@@ -178,9 +178,8 @@ vboxmanage()
       vboxmanage controlvm $_vm poweroff soft
     done
   else
-    command vboxmanage "$@"
+    command vboxmanage $@
   fi
-  version=$(vboxmanage -v)
 }
 
 if [[ $_my_distro == debian ]]; then
