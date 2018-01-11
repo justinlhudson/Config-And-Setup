@@ -165,6 +165,9 @@ vboxmanage()
   fi
 
   if [ -n "$1" ] && [[ "$1" == "--upgrade" ]]; then
+    # make sure user is in group for USB to work
+    sudo adduser $USER vboxusers
+    
     version=$(vboxmanage -v)
     var1=$(echo $version | cut -d '_' -f 1)
     var2=$(echo $version | cut -d 'r' -f 2)
