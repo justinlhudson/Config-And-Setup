@@ -1,3 +1,6 @@
+# To display the largest folders/files including the sub-directories, run:
+du -Sh | sort -rh | head -10
+
 # virtual box
 # add usb support, user needs to be in group
 sudo adduser $USER vboxusers
