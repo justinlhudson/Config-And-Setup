@@ -1,0 +1,8 @@
+armhf
+
+# VNC window resize
+  edited /boot/config.txt
+  enabled these configs:
+
+framebuffer_width=1280
+framebuffer_height=720
