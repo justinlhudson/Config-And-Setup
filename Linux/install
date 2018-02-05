@@ -8,6 +8,11 @@ NOTE:  chmod -R a+rX /usr/local/lib/python???/dist-packages/
 
 sudo apt-get install bridge-utils
 
+# Visual Studio
+https://code.visualstudio.com/docs/?dv=linux64_deb
+# Extensions
+  ms-python.python
+
 ### utilities
 ## restore boot loader
 sudo apt-get install -y boot-repair && boot-repair
