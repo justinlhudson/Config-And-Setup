@@ -12,8 +12,8 @@ case $_my_os in
   'WindowsNT')
     _my_os='dos'
     ;;
-  'Darwin')
-    _my_os='darwin'
+  'macOS')
+    _my_os='macOS'
     ;;
   *) ;;
 esac
@@ -44,7 +44,7 @@ case $_my_distro in
       _my_distro=rhel
     fi
     ;;
-  Darwin )
+  macOS )
      _my_distro=darwin
      ;;
   * )
@@ -114,7 +114,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias mkdir='mkdir -pv'
-if [[ $_my_os == darwin ]]; then
+if [[ $_my_os == macOS ]]; then
   alias df='df -ha'
 else
   alias df='df -Tha'
@@ -134,7 +134,7 @@ alias random='cat /dev/urandom | tr -cd 'a-f0-9' | head -c 64 | cut -c 1-'
 alias plogout='sudo pkill -KILL -u'
 alias apt-get='sudo apt-get'
 alias psf='ps -e | grep -v grep | grep -i -e VSZ -e' # search process match (e.g. psf name)
-if [[ $_my_os == darwin ]]; then
+if [[ $_my_os == macOS ]]; then
   alias ls='ls -GpF'
 else
   alias ls='ls -pF --color=auto'
@@ -143,8 +143,8 @@ alias l='ls'
 alias ll='ls -lAh'
 alias l.='ls -d .*'
 alias la='ls -lah'
-if [[ $_my_os == darwin ]]; then
-  # gnu util for darwin
+if [[ $_my_os == macOS ]]; then
+  # gnu util for macOS
   alias timeout='gtimeout'
   alias ps='ps aux'
 else
@@ -229,7 +229,7 @@ fi
 alias twitter='sudo rainbowstream -iot'
 alias irc='weechat'
 
-if [[ $_my_os == darwin ]]; then
+if [[ $_my_os == macOS ]]; then
   here() {
     # ignore permission denied messages
     find . -iname $1 2>&1 | grep -v "Permission denied"
@@ -457,7 +457,7 @@ fi
 
 ### Other ###
 
-if [[ $_my_os == darwin ]]; then
+if [[ $_my_os == macOS ]]; then
   if type archey > /dev/null 2>&1; then
     archey
   fi
