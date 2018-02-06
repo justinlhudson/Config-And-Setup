@@ -12,7 +12,7 @@ case $_my_os in
   'WindowsNT')
     _my_os='dos'
     ;;
-  'macOS')
+  'Darwin')
     _my_os='macOS'
     ;;
   *) ;;
@@ -44,7 +44,7 @@ case $_my_distro in
       _my_distro=rhel
     fi
     ;;
-  macOS )
+  Darwin )
      _my_distro=darwin
      ;;
   * )
