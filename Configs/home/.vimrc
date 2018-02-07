@@ -33,6 +33,7 @@
       "Plugin 'taglist.vim'
       "Plugin 'Valloric/YouCompleteMe'
       Plugin 'kchmck/vim-coffee-script'
+      Plugin 'octol/vim-cpp-enhanced-highlight'
   
     call vundle#end()                                      " required - All of your Plugins must be added before the following line
     filetype plugin indent on                              " required
@@ -47,6 +48,14 @@
 
     set runtimepath^=~/.vim/bundle/ctrlp.vim
   endif
+
+  """ Without Vundle support :( Install & Setup """
+  if executable("git")
+    if !filereadable(expand('~/.vim/bundle/vim-csharp/README.md'))
+      silent !git clone git://github.com/OrangeT/vim-csharp.git ~/.vim/bundle/vim-csharp
+    endif
+  endif
+  set runtimepath^=~/.vim/bundle/vim-csharp
 
 """ Configuration """
 
