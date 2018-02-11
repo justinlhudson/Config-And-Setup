@@ -77,8 +77,8 @@ fi
 ### Terminal History ###
 
 # Saving HISTFILESIZE lines to disk and loading the last HISTSIZE lines into memory
-HISTSIZE=5000
-HISTFILESIZE=10000
+HISTSIZE=10000
+HISTFILESIZE=50000
 # Append history from each session, not the last terminal to log out
 if [[ $_my_shell == bash ]]; then
   shopt -s histappend > /dev/null 2>&1
@@ -319,7 +319,7 @@ docker() {
 # history info "-i [depth]" added
 history() {
   if [ -n "$1" ] && [[ "$1" == "-i" ]]; then
-    local _depth=10
+    local _depth=50
     if [ -n "$2" ]; then
       local _depth=$2
     fi
