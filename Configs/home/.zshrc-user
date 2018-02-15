@@ -2,6 +2,8 @@ export DISPLAY=:0
 
 umask 0027
 
+export TERM=xterm-256color
+
 if [ -f ~/.my_profile ]; then
   source ~/.my_profile 2> /dev/null
 fi
