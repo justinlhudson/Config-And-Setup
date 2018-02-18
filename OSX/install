@@ -37,6 +37,7 @@ brew install
       transmission(torrent client)
       firefox
       robo-3t
+      real-vnc
   tmux
   mono
   autossh
