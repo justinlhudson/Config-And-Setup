@@ -192,6 +192,7 @@ if [[ $_my_distro == debian ]]; then
     apt-get upgrade
     apt-get autoclean
     apt-get autoremove
+    sudo npm install npm@latest -g
     sudo npm i -g npm
     sudo npm -g upgrade
     sudo -H pip install $(pip list --outdated | awk '{ print $1 }') --upgrade
@@ -208,6 +209,7 @@ if [[ $_my_distro == darwin ]]; then
     brew cleanup
     brew cask cleanup
     brew linkapps # sets symbolic links from /Application directory to brew files
+    sudo npm install npm@latest -g
     sudo npm i -g npm
     sudo npm -g upgrade
     sudo pip install $(pip list --outdated | awk '{ print $1 }') --upgrade
