@@ -195,7 +195,7 @@ if [[ $_my_distro == debian ]]; then
     sudo npm install npm@latest -g
     sudo npm i -g npm
     sudo npm -g upgrade
-    sudo -H pip install $(pip list --outdated | awk '{ print $1 }') --upgrade
+    sudo -H pip install $(pip list --outdated --format=legacy | awk '{ print $1 }') --upgrade
     sudo -H pip3 install $(pip3 list --outdated --format=legacy | awk '{ print $1 }') --upgrade
     sudo gem update
     sudo gem cleanup
@@ -212,8 +212,8 @@ if [[ $_my_distro == darwin ]]; then
     sudo npm install npm@latest -g
     sudo npm i -g npm
     sudo npm -g upgrade
-    sudo pip install $(pip list --outdated | awk '{ print $1 }') --upgrade
-    sudo pip3 install $(pip list --outdated | awk '{ print $1 }') --upgrade
+    sudo pip install $(pip list --outdated --format=legacy | awk '{ print $1 }') --upgrade
+    sudo pip3 install $(pip list --outdated --format=legacy | awk '{ print $1 }') --upgrade
     sudo gem update
     git -C $ZSH pull
     #mas upgrade
