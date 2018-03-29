@@ -35,7 +35,7 @@
       "Plugin 'taglist.vim'
       "Plugin 'Valloric/YouCompleteMe'
       Plugin 'kchmck/vim-coffee-script'
-      Plugin 'OmniSharp/omnisharp-vim'
+      "Plugin 'OmniSharp/omnisharp-vim'
       Plugin 'octol/vim-cpp-enhanced-highlight'
       Plugin 'csharp.vim'
       Plugin 'oranget/vim-csharp'
