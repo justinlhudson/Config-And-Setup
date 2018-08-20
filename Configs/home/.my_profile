@@ -100,7 +100,9 @@ fi
 ### Shared Variables ###
 
 if [[ $_my_shell == *zsh* ]]; then
-  unalias history  # oh-my-zsh defined an conflicting alias
+  if type omz_history /dev/null 2>&1; then
+    unalias history  # oh-my-zsh defined an conflicting alias
+  fi
 fi
 
 export EDITOR='vim'
