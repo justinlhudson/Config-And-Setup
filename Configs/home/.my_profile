@@ -99,6 +99,10 @@ fi
 
 ### Shared Variables ###
 
+if [[ $_my_shell == *zsh* ]]; then
+  unalias history  # oh-my-zsh defined an conflicting alias
+fi
+
 export EDITOR='vim'
 
 if type htop > /dev/null 2>&1; then
@@ -231,12 +235,12 @@ fi
 alias twitter='sudo rainbowstream -iot'
 alias irc='weechat'
 
-if [[ $_my_os == macOS ]]; then
-  here() {
-    # ignore permission denied messages
-    find . -iname $1 2>&1 | grep -v "Permission denied"
-  }
-fi
+#if [[ $_my_os == macOS ]]; then
+#  here() {
+#    # ignore permission denied messages
+#    find . -iname $1 2>&1 | grep -v "Permission denied"
+#  }
+#fi
 
 # retry command 
 # usage: retry <command>
