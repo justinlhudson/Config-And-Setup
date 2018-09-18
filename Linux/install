@@ -101,6 +101,7 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 ### NPM installs ###
 npm install bower -g
 npm install gulp -g
+npm install ngrok -g
 
 #### deamonize nodejs scripts
 # https://github.com/Unitech/pm2
