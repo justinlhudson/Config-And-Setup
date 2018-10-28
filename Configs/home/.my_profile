@@ -68,14 +68,13 @@ if [[ $_my_term == *xterm* ]]; then
   _my_term=xterm
 fi
 
-# Display env. in terminal
+### Verbose ###
 if [[ "$@" == *"-v"* ]]; then
   echo "$_my_os $_my_distro $_my_arch $_my_term $_my_shell"
   echo ""
 fi
 
 ### Terminal History ###
-
 # Saving HISTFILESIZE lines to disk and loading the last HISTSIZE lines into memory
 HISTSIZE=10000
 HISTFILESIZE=50000
@@ -88,8 +87,7 @@ fi
 # Add commands immediatley to history, not wait for log out
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
-### Configuration ###
-
+### Configuration(s) ###
 # expand aliases for non-interactive shell (i.e. scripts)
 if [[ $_my_shell == bash ]]; then
   shopt -s expand_aliases
@@ -98,7 +96,6 @@ elif [[ $_my_shell == zsh ]]; then
 fi
 
 ### Shared Variables ###
-
 if [[ $_my_shell == *zsh* ]]; then
   if type omz_history /dev/null 2>&1; then
     unalias history  # oh-my-zsh defined an conflicting alias
@@ -132,7 +129,6 @@ alias whereami='hostname'
 alias whatami='uname -a'
 alias echoerr='>&2 echo'
 alias now='date +"%m-%d-%Y %T.%3N"'  # w/ millisecond
-# safety
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -156,10 +152,8 @@ if [[ $_my_os == macOS ]]; then
 else
   alias ps='ps auxf'
 fi
-
 # ISO-8601 compliant date (in mongodb formate)
 alias utc='date -u "+%Y-%m-%dT%H:%M:%S.%3NZ"'
-
 # helpers for shutting down VMs and other things before system
 alias reboot='vboxmanage --shutdown; sudo shutdown -r now'
 alias shutdown='vboxmanage --shutdown; sudo shutdown now'
@@ -173,7 +167,7 @@ vboxmanage()
   if [ -n "$1" ] && [[ "$1" == "--upgrade" ]]; then
     # make sure user is in group for USB to work
     sudo adduser $USER vboxusers
-    
+
     version=$(vboxmanage -v)
     var1=$(echo $version | cut -d '_' -f 1)
     var2=$(echo $version | cut -d 'r' -f 2)
@@ -191,41 +185,6 @@ vboxmanage()
   fi
 }
 
-if [[ $_my_distro == debian ]]; then
-  upgrade() {
-    apt-get update
-    apt-get dist-upgrade
-    apt-get upgrade
-    apt-get autoclean
-    apt-get autoremove
-    sudo npm install npm@latest -g
-    sudo npm i -g npm
-    sudo npm -g upgrade
-    sudo -H pip install $(pip list --outdated --format=legacy | awk '{ print $1 }') --upgrade
-    sudo -H pip3 install $(pip3 list --outdated --format=legacy | awk '{ print $1 }') --upgrade
-    sudo gem update
-    sudo gem cleanup
-    git -C $ZSH pull
-  }
-fi
-if [[ $_my_distro == darwin ]]; then
-  upgrade() {
-    brew update
-    brew upgrade
-    brew cleanup
-    brew cask cleanup
-    brew linkapps # sets symbolic links from /Application directory to brew files
-    sudo npm install npm@latest -g
-    sudo npm i -g npm
-    sudo npm -g upgrade
-    sudo pip install $(pip list --outdated --format=legacy | awk '{ print $1 }') --upgrade
-    sudo pip3 install $(pip list --outdated --format=legacy | awk '{ print $1 }') --upgrade
-    sudo gem update
-    git -C $ZSH pull
-    #mas upgrade
-  }
-fi
-
 # Replace defualt tooling with better similar option
 if type ag > /dev/null 2>&1; then
   alias awk='ag'
@@ -237,14 +196,11 @@ fi
 alias twitter='sudo rainbowstream -iot'
 alias irc='weechat'
 
-#if [[ $_my_os == macOS ]]; then
-#  here() {
-#    # ignore permission denied messages
-#    find . -iname $1 2>&1 | grep -v "Permission denied"
-#  }
-#fi
+# system backup (cheap way, but works)
+backup() {
+  sudo tar --exclude='*.ecryptfs/*' --exclude='/proc' --exclude='/sys' --exclude='/mnt' --exclude='media' --exclude='/run' --exclude='/dev' -zcvpf backup_$(date '+%Y_%m_%d-%H_%M_%S').tar.gz /
+}
 
-# retry command 
 # usage: retry <command>
 retry() {
   _result=1
@@ -277,7 +233,8 @@ pause(){
   read -rsp $'Press any key to continue...\n' -n 1 key
 }
 
-# show or not to show contents
+# searches in files for match
+# -s: how or not to show contents
 herein() {
   if [ -n "$1" ] && [[ "$1" == "-s" ]]; then
     shift
@@ -287,7 +244,7 @@ herein() {
   fi
 }
 
-# list some infor after each cd
+# list some info after each cd
 cd() {
   if [ -n "$1" ]; then
     builtin cd "$@" && pwd && ls
@@ -314,15 +271,6 @@ docker() {
     command docker "$@"
   fi
 }
-
-#if [[ $_my_shell == *zsh* ]]; then
-#  which() {
-#    (alias; declare -f) | command which --tty-only --read-alias --read-functions --show-tilde --show-dot $@
-#  }
-#elif [[ $_my_shell == *bash* ]]; then
-#  alias which 'alias | command which --tty-only --read-alias -read-functions --show-dot --show-tilde'
-#  export -f which
-#fi
 
 # history info "-i [depth]" added
 history() {
@@ -353,6 +301,7 @@ ssh()
   fi
 }
 
+# makes default session and starts if already running
 screen() {
   local _session="default"
   # if no option(s), run default
@@ -370,18 +319,6 @@ screen() {
     fi
   else
      command screen "$@"
-  fi
-}
-
-git()
-{
-  if [ -n "$1" ] && [[ "$1" == "--commit" ]]; then
-    command git add -A && command git commit
-  elif [ -n "$1" ] && [[ "$1" == "--latest" ]]; then
-    #command git pull && command git reset --hard HEAD
-    command git pull && command git reset --hard origin/master
-  else
-    command git "$@"
   fi
 }
 

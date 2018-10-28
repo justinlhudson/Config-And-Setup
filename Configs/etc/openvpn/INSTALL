@@ -4,7 +4,6 @@ apt-get install bridge-utils
 # root terminal
 sudo -i
 
-
 make-cadir /etc/openvpn/easy-rsa
 cd /etc/openvpn/easy-rsa
 
@@ -53,7 +52,7 @@ sysctl -p
 
 # configure routing back to clients on host computer
 # Example: iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-# NOTE: '../etc/iptables.rules' & '../etc/NetworkManager/dispatcher.d/01firewall'
+# NOTE: '../etc/iptables.local' & '../etc/NetworkManager/dispatcher.d/01-firewall'
 
 # example server.conf
 cp /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz /etc/openvpn/
@@ -102,4 +101,3 @@ iptables -I FORWARD -i ${_tun_if} -o ${_vpn_if} -j ACCEPT # VPN to LAN
 iptables -I FORWARD -i ${_vpn_if} -o ${_tun_if} -m state --state RELATED,ESTABLISHED -j ACCEPT # VPN <-> LAN
 
 iptables -t nat -I POSTROUTING -o ${_vpn_if} -s 10.8.1.0/24 -j MASQUERADE # VPN Clients as if is Server
-

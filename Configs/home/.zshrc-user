@@ -1,8 +1,8 @@
 # X11 programs need to know where to display windows (should be automatic)
-export DISPLAY=:0
+#export DISPLAY=:0
 
 # chmod 750 permissions by default
-umask 0027
+#umask 0027
 
 # Should not have to set manually (macOS, was not happy without it)
 export TERM=xterm-256color

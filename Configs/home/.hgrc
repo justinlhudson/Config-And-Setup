@@ -1,9 +1,0 @@
-# Note: chmod 600 ~/.hgrc
-[ui]
-username = yourusername <your@e.mail>
-editor = vim
-
-[auth]
-bb.prefix = https://bitbucket.org
-bb.username = yourusername
-bb.password = yourpassword
