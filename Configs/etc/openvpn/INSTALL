@@ -1,10 +1,9 @@
-# Notes: https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-16-04
-
 apt-get install openvpn easy-rsa
 apt-get install bridge-utils
 
 # root terminal
 sudo -i
+
 
 make-cadir /etc/openvpn/easy-rsa
 cd /etc/openvpn/easy-rsa
@@ -26,12 +25,14 @@ export KEY_NAME="<HOSTNAME>"
 # Bug (needs variable)
 export KEY_ALTNAMES="<NAME>_<RANDOM_STRING>"
 
+ln -s openssl-1.0.0.cnf openssl.cnf
 source /etc/openvpn/easy-rsa/vars
 
 # build cert
 ./clean-all  ## Setup the easy-rsa directory (Deletes all keys)
 ./build-dh  ## random generator generating for ca creation (takes some time...)
 ./build-ca
+./pkitool --initca
 
 # create server keys pairs
 ./build-key-server <hostname>
@@ -46,7 +47,7 @@ cp ca.crt ca.key <hostname>.crt <hostname>.key ta.key dh2048.pem /etc/openvpn/
 vim /etc/sysctl.conf
 # change
 net.ipv4.ip_forward = 1
-net.ipv6.conf.all.forwarding=1
+##net.ipv6.conf.all.forwarding=1
 # refresh
 sysctl -p
 
@@ -84,4 +85,21 @@ tar -zcvf /tmp/openvpn-client.tar.gz /etc/openvpn/client/
 # change permissions out of root
 chmod 777 /tmp/openvpn-client.tar.gz
 
+sudo systemctl restart openvpn@server
 # done I hope :)
+
+# Do NOT forget to setup iptables to see outside the server into the network
+
+# See iptables.local
+#EXAMPLE:
+
+### VPN ###
+_tun_if=tun0
+_vpn_if=eno1
+
+iptables -I FORWARD -i ${_tun_if} -o ${_tun_if} -j ACCEPT # VPN to VPN
+iptables -I FORWARD -i ${_tun_if} -o ${_vpn_if} -j ACCEPT # VPN to LAN
+iptables -I FORWARD -i ${_vpn_if} -o ${_tun_if} -m state --state RELATED,ESTABLISHED -j ACCEPT # VPN <-> LAN
+
+iptables -t nat -I POSTROUTING -o ${_vpn_if} -s 10.8.1.0/24 -j MASQUERADE # VPN Clients as if is Server
+

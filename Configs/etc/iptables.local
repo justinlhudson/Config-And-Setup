@@ -1,5 +1,5 @@
-# Note: see 'etc/NetworkManager/dispatcher.d/01firewall'
-#       forces this script to run, there are weird conflicts
+# Note: see '/etc/NetworkManager/dispatcher.d/01firewall'
+#       forces this script to run on network up
 
 ### VPN ###
 _tun_if=tun0

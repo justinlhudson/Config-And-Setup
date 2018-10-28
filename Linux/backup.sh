@@ -46,7 +46,7 @@ cd $_directory
 _mark=`date '+%Y_%m_%d-%H_%M_%S'`;
 ## https://help.ubuntu.com/community/BackupYourSystem/TAR
 ## Note: -h to follow symbolic links
-sudo sh -c "tar --exclude="$_directory" --exclude='*.ecryptfs/*' --exclude='/tmp' --exclude='/proc' --exclude='/sys' --exclude='/mnt' --exclude='/run' --exclude='/dev' --exclude='/proc' --exclude='/sys' -zcvpf - / | gpg --encrypt --quiet --recipient $_user > "$_mark".tar.gz.gpg"
+sudo sh -c "tar --exclude="$_directory" --exclude='*.ecryptfs/*' --exclude='/tmp' --exclude='/proc' --exclude='/sys' --exclude='/mnt' --exclude='media' --exclude--exclude='/run' --exclude='/dev' --exclude='/proc' --exclude='/sys' -zcvpf - / | gpg --encrypt --quiet --recipient $_user > "$_mark".tar.gz.gpg"
 ### Restore:  tar xvfpz 
 
 # Mongodb backup
