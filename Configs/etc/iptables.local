@@ -1,32 +1,64 @@
-# Note: see '/etc/NetworkManager/dispatcher.d/01-firewall', forces this script to run on network up
-# chmod +x iptables.local
+### LAN ###
+_lan_if=eno1
+_host_ip="$(ip addr show eno1 | grep 'inet ' | awk '{print $2}' | cut -f1 -d'/')"
+_lan_ip="$(echo ${_host_ip} | sed 's/.$//')0"
+_lan_mask="$(ifconfig | grep -A 1 ${_lan_if} | tail -1 | awk -F" " '{print $4}')"
+
+echo "Host"
+echo "${_host_ip}"
+echo "${_lan_if} -> ${_lan_ip}/${_lan_mask}"
+
+### Flush & Delete ALL rules ###
+#iptables -F; iptables -X; iptables -t nat -F; iptables -t nat -X; iptables -t mangle -F
+
+### General ###
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+# Loopback
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A FORWARD -i lo -j ACCEPT
+iptables -A OUTPUT -o lo -j ACCEPT
+
+# Allow established traffic pass back and forth
+iptables -I FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+
+### Docker ###
+_bridge_if=docker0
+_bridge_ip="$(ifconfig | grep -A 1 ${_bridge_if} | tail -1 | awk -F" " '{print $2}' | sed 's/.$//')0"
+_bridge_mask="$(ifconfig | grep -A 1 ${_bridge_if} | tail -1 | awk -F" " '{print $4}')"
+
+echo "Docker"
+echo "${_bridge_ip}/${_bridge_mask}"
+
+# All apart of bridge can talk with each other
+iptables -I FORWARD -i ${_bridge_if} -o ${_bridge_if} -j ACCEPT
+# Allow traffic initiated to access LAN
+iptables -I FORWARD -i ${_bridge_if} -o ${_lan_if} -m conntrack --ctstate NEW -j ACCEPT
+# Instead of host ip resturn gives actual from request
+iptables -t nat -I POSTROUTING -s ${_bridge_ip}/${_bridge_mask} -j SNAT --to-source ${_host_ip}
+# Masquerade all traffic from clients -- done in the nat table
+iptables -t nat -I POSTROUTING -o ${_lan_if} -s ${_bridge_ip}/${_bridge_mask} -j MASQUERADE
 
 ### VPN ###
-# echo $(ip link)
 _tun_if=tun0
-_vpn_if=eno1
+_tun_ip="$(ifconfig | grep -A 1 ${_tun_if} | tail -1 | awk -F" " '{print $2}' | sed 's/.$//')0"
+_tun_mask="$(ifconfig | grep -A 1 ${_tun_if} | tail -1 | awk -F" " '{print $4}')"
 
-#for _if in $(netstat -i | awk 'NR>2 {print $1}' | grep "^en")
-#do
-#  _vpn_if=$_if
+echo "VPN"
+echo "${_tun_ip}/${_tun_mask}"
 
-iptables -I FORWARD -i ${_tun_if} -o ${_tun_if} -j ACCEPT # VPN to VPN
-iptables -I FORWARD -i ${_tun_if} -o ${_vpn_if} -j ACCEPT # VPN to LAN
-iptables -I FORWARD -i ${_vpn_if} -o ${_tun_if} -m state --state RELATED,ESTABLISHED -j ACCEPT # VPN <-> LAN
-
-iptables -t nat -I POSTROUTING -o ${_vpn_if} -s 10.8.1.0/24 -j MASQUERADE # VPN Clients as if is Server
-
-#done
-
-### Backup Strategy ##
-# Allow traffic initiated from VPN to access LAN
-##iptables -I FORWARD -i ${_tun_if} -o ${_vpn_if} -s 10.8.0.0/24 -d 192.168.0.0/24 -m conntrack --ctstate NEW -j ACCEPT
-# Allow established traffic to pass back and forth
-##iptables -I FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
-# Masquerade all traffic from VPN clients -- done in the nat table
-###iptables -t nat -I POSTROUTING -o ${_vpn_if} -s 10.8.0.0/24 -j MASQUERADE
+# https://community.openvpn.net/openvpn/wiki/BridgingAndRouting
+# All apart of bridge can talk with each other
+iptables -I FORWARD -i ${_tun_if} -o ${_tun_if} -j ACCEPT
+# Allow traffic initiated to access LAN
+iptables -I FORWARD -i ${_tun_if} -o ${_lan_if} -s ${_tun_ip}/${_tun_mask} -d ${_lan_ip}/${_lan_mask} -m conntrack --ctstate NEW -j ACCEPT
+# Masquerade all traffic from clients -- done in the nat table
+iptables -t nat -I POSTROUTING -o ${_lan_if} -s ${_tun_ip}/${_tun_mask} -j MASQUERADE
 
 ### PORT Forward ###
-
 # forward port 3000 to 80
-iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
+iptables -t nat -I PREROUTING -i ${_lan_if} -p tcp --dport 80 -j REDIRECT --to-port 3000
+
+### Status ###
+iptables -S; iptables -t nat -S
