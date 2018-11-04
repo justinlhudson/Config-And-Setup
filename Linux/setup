@@ -1,2 +1,0 @@
-# tmp area to ram disk
-# point /tmp -> /var/tmp and /var/tmp -> /mnt/ramdisk
