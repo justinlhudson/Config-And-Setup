@@ -1,0 +1,4 @@
+# run: update-grub
+
+# forces menu to be shown before timeout
+GRUB_TIMEOUT_STYLE=menu
