@@ -96,7 +96,7 @@ elif [[ $_my_shell == zsh ]]; then
 fi
 
 ### Shared Variables ###
-if type omz_history /dev/null 2>&1; then
+if [[ ! $(type -f omz_history) == *"not found"* ]]; then
   unalias history  # oh-my-zsh defined an conflicting alias
 fi
 
