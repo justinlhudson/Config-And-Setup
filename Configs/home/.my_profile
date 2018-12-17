@@ -196,7 +196,7 @@ alias irc='weechat'
 
 # system backup (cheap way, but works)
 backup() {
-  sudo tar --exclude='*.ecryptfs/*' --exclude='/proc' --exclude='/sys' --exclude='/mnt' --exclude='media' --exclude='/run' --exclude='/dev' -zcvpf backup_$(date '+%Y_%m_%d-%H_%M_%S').tar.gz /
+  sudo tar --exclude='*.ecryptfs/*' --exclude='/proc' --exclude='/sys' --exclude='/mnt' --exclude='/media' --exclude='/run' --exclude='/dev' -zcvpf backup_$(date '+%Y_%m_%d-%H_%M_%S').tar.gz /
 }
 
 # usage: retry <command>
