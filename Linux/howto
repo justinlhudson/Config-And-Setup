@@ -1,3 +1,9 @@
+### sftp
+# Download a single file from a remote ftp server to your machine:
+sftp {user}@{host}:{remoteFileName} {localFileName}
+# Upload a single file from your machine to a remote ftp server:
+sftp {user}@{host}:{remote_dir} <<< $'put {local_file_path}'
+
 # To display the largest folders/files including the sub-directories, run:
 du -Sh | sort -rh | head -10
 
