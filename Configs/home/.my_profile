@@ -191,8 +191,10 @@ alias twitter='sudo rainbowstream -iot'
 alias irc='weechat'
 
 # system backup (cheap way, but works)
+# Note: rsync used to be able to copy "live" files, but be careful on location this is run
 backup() {
-  sudo tar --exclude='*.ecryptfs/*' --exclude='/proc' --exclude='/sys' --exclude='/mnt' --exclude='/media' --exclude='/run' --exclude='/dev' -zcvpf backup_$(date '+%Y_%m_%d-%H_%M_%S').tar.gz /
+  sudo rsync --recursive --links --hard-links --whole-file --owner --group --devices --specials --times --perms --acls --xattrs --numeric-ids --info=progress2 --exclude='*.ecryptfs/*' --exclude='/proc' --exclude='/sys' --exclude='/mnt' --exclude='/media' --exclude='/run' --exclude='/dev' / .
+  sudo tar --create --gzip --preserve-permissions --verbose --exclude='./backup_*' --file=backup_$(date '+%Y_%m_%d-%H_%M_%S').tar.gz .
 }
 
 # usage: retry <command>
