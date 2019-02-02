@@ -1,7 +1,7 @@
-# split
-split -b 2G filename.tar.bz2 filename.tar.bz2.part
-# join
-cat *.part* >> filename.tar.bz2
+# split/join
+split -b 2G <file_name> <file_name>.part
+cat *.part* >> <file_name>
+ls *.part* | sort | xargs cat >> <file_name>
 
 ### sftp
 # Download a single file from a remote ftp server to your machine:
