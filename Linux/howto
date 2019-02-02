@@ -1,3 +1,8 @@
+# split
+split -b 2G filename.tar.bz2 filename.tar.bz2.part
+# join
+cat *.part* >> filename.tar.bz2
+
 ### sftp
 # Download a single file from a remote ftp server to your machine:
 sftp {user}@{host}:{remoteFileName} {localFileName}
