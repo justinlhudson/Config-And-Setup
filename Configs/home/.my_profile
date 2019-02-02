@@ -335,6 +335,29 @@ vncserver()
   fi
 }
 
+# --split <filename> [size], --join <filename>
+split()
+{
+  _size="214748364" # 2G default
+  if [ -n "$1" ]; then
+    if [[ "$1" == "--join" ]]; then
+      if [ -f "$2" ]; then
+        rm "$2"
+      fi
+      ls *.part* | sort | xargs cat >> "$2"
+    elif [[ "$1" == "--split" ]]; then
+      if [ -n "$3" ]; then
+        _size="$3"
+      fi
+      command split -b "$_size" "$2" "$2".part
+    else
+      command split "$@"
+    fi
+  else
+    command split "$@"
+  fi
+}
+
 # make space in terminal for scrolling
 s() {
   space
