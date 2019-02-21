@@ -3,6 +3,7 @@ _lan_if=eno1
 _host_ip="$(ip addr show eno1 | grep 'inet ' | awk '{print $2}' | cut -f1 -d'/')"
 _lan_ip="$(echo ${_host_ip} | sed 's/.$//')0"
 _lan_mask="$(ifconfig | grep -A 1 ${_lan_if} | tail -1 | awk -F" " '{print $4}')"
+_wifi_if=wlan0
 
 echo "Host"
 echo "${_host_ip}"
@@ -55,6 +56,11 @@ iptables -I FORWARD -i ${_tun_if} -o ${_tun_if} -j ACCEPT
 iptables -I FORWARD -i ${_tun_if} -o ${_lan_if} -s ${_tun_ip}/${_tun_mask} -d ${_lan_ip}/${_lan_mask} -m conntrack --ctstate NEW -j ACCEPT
 # Masquerade all traffic from clients -- done in the nat table
 iptables -t nat -I POSTROUTING -o ${_lan_if} -s ${_tun_ip}/${_tun_mask} -j MASQUERADE
+
+### Bridge Wifi to Ethernet ###
+#iptables -t nat -A POSTROUTING -o ${_wifi_if} -j MASQUERADE
+#iptables -A FORWARD -i ${_wifi_if} -o ${_lan_if} -m state --state RELATED,ESTABLISHED -j ACCEPT
+#iptables -A FORWARD -i ${_lan_if} -o ${_wifi_if} -j ACCEPT
 
 ### PORT Forward ###
 # forward port 3000 to 80
