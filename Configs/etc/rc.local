@@ -1,0 +1,3 @@
+# NOTE: not part of newer distributions see /etc/NetworkManager/dispatcher.d
+
+source /etc/iptables.rules
