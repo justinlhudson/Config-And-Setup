@@ -1,0 +1,2 @@
+# Only allow specific user and specific ip range
+AllowUsers user@192.168.1.0/22 #255.255.255.252
