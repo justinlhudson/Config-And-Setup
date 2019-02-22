@@ -60,7 +60,7 @@ iptables -t nat -I POSTROUTING -o ${_lan_if} -s ${_tun_ip}/${_tun_mask} -j MASQU
 ### Bridge Wifi to Ethernet ###
 #iptables -t nat -A POSTROUTING -o ${_wifi_if} -j MASQUERADE
 #iptables -A FORWARD -i ${_wifi_if} -o ${_lan_if} -m state --state RELATED,ESTABLISHED -j ACCEPT
-#iptables -A FORWARD -i ${_lan_if} -o ${_wifi_if} -j ACCEPT
+#iptables -A FORWARD -i ${_lan_if} -o ${_wifi_if} -m state --state NEW -j ACCEPT
 
 ### PORT Forward ###
 # forward port 3000 to 80
