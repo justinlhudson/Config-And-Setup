@@ -1,3 +1,13 @@
+# how to mount partioned disk image
+fdisk -l image.img
+Units: sectors of 1 * 512 = 512 bytes
+Device                    Boot  Start       End   Sectors   Size Id Type
+image.img1 *      8192    124927    116736    57M  e W95 FAT16 (LBA)
+image.img2      124928 238858232 238733305 113.9G 83 Linux
+124928 * 512 = 63963136
+mkdir /mnt/test
+mount -v -o offset=63963136 -t ext4 image.img /mnt/test
+
 # split/join
 split -b 2G <file_name> <file_name>.part
 cat *.part* >> <file_name>
