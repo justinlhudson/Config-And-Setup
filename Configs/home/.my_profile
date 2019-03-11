@@ -335,6 +335,16 @@ vncserver()
   fi
 }
 
+# --upgrade argument added 
+pip3()
+{
+  if [ -n "$1" ] && [[ "$1" == "--upgrade" ]]; then
+    command pip3 install -U $(command pip3 freeze | cut -d '=' -f 1)
+  else
+    command pip3 "$@"
+  fi
+}
+
 # --split <filename> [size], --join <filename>
 split()
 {
