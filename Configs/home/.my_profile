@@ -339,7 +339,7 @@ vncserver()
 pip3()
 {
   if [ -n "$1" ] && [[ "$1" == "--upgrade" ]]; then
-    command pip3 install -U $(command pip3 freeze | cut -d '=' -f 1)
+    command pip3 freeze --local |sed -rn 's/^([^=# \t\\][^ \t=]*)=.*/echo; echo Processing \1 ...; command pip3 install -U \1/p' |sh
   else
     command pip3 "$@"
   fi
