@@ -89,6 +89,11 @@ apt-get install nginx sendmail iptables-persistent
 # check rules with
 sudo iptables -S
 
+### ad-blocker
+# pi-hole
+# https://pi-hole.net/
+curl -sSL https://install.pi-hole.net | bash
+
 ### terminal screen saver
 apt-get install cmatrix
 
