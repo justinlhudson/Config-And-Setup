@@ -39,6 +39,7 @@
       Plugin 'octol/vim-cpp-enhanced-highlight'
       Plugin 'csharp.vim'
       Plugin 'oranget/vim-csharp'
+      Plugin 'posva/vim-vue'
 
     call vundle#end()                                      " required - All of your Plugins must be added before the following line
     filetype plugin indent on                              " required
