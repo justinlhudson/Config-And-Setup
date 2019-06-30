@@ -1,3 +1,7 @@
+### brew - fix linking
+sudo chmod 776 /usr/local/lib
+brew link --overwrite <program>
+
 ### Allow port through firewall
 sed -i '' -e '$a\pass in proto <tcp, udp> from any to any port <port>' /etc/pf.conf; pfctl -vnf /etc/pf.conf
 
