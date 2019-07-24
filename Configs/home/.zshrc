@@ -1,7 +1,8 @@
 export ZSH=~/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
-#DISABLE_AUTO_UPDATE="true"
+# auto update no prompting!
+DISABLE_AUTO_PROMPT="true"
 
 source $ZSH/oh-my-zsh.sh
 
