@@ -13,12 +13,13 @@ curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Con
 curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.tmux.conf > ~/.tmux.conf
 curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.Xdefaults > ~/.Xdefaults
 curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.zshrc > ~/.zshrc
-curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.zshrc-user > ~/.xinitrc
+curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.zshrc-user > ~/.zshrc-user
 
 # if any arg(s) get --all
 if [ $# -ne 0 ]; then
-  curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.screenrc > ~/.netrc
-  curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.screenrc > ~/.smbcredentials
+  curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.netrc > ~/.netrc
+  curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.smbcredentials > ~/.smbcredentials
+  curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.xinitrc > ~/.xinitrc
   curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.screenrc > ~/.screenrc
   curl https://raw.githubusercontent.com/justinlhudson/Config-And-Setup/master/Configs/home/.zshrc-user > ~/.zshrc-user
 fi
