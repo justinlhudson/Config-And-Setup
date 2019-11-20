@@ -1,0 +1,2 @@
+add to real VNC shortcut target to get copy/paste to work:
+ -clientcuttext=1
