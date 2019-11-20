@@ -1,2 +1,7 @@
+REAL VNC
 add to real VNC shortcut target to get copy/paste to work:
  -clientcuttext=1
+ 
+ # store settings and password into config address book file
+ <F8> save config
+  vncviwer.exe -config configfile.vnc
