@@ -16,9 +16,7 @@ xterm -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
 
 ## Install and uncomment for xfce (preffered!) ##
 ## apt install xfce4 xfce4-goodies
-##!/bin/bash
-#xrdb $HOME/.Xresources
-#startxfce4 &
+#exec startxfce4
 
 ## Install and uncomment for Ubuntu Gnome Desktop ##
 ## apt-get install gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
