@@ -12,6 +12,8 @@ vncconfig -iconic &
 
 xterm -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
 
+## sudo apt install tightvncserver (vncserver)
+
 ## Install and uncomment for xfce (preffered!) ##
 ## apt install xfce4 xfce4-goodies
 xrdb $HOME/.Xresources
