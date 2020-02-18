@@ -24,6 +24,7 @@ brew install
   cask (ui programs)
       brew cask install caskroom/cask/brew-cask
       brew cask alfred link
+      handbrake
       arduino
       pdftotext
       virtualbox
