@@ -42,6 +42,7 @@ brew install
       robo-3t
       real-vnc
   tmux
+  docx2txt
   p7zip
   mono
   autossh
