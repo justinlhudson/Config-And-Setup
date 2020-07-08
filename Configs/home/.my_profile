@@ -198,7 +198,6 @@ backup() {
   sudo rsync --recursive --links --hard-links --whole-file --owner --group --devices --specials --times --perms --acls --xattrs --numeric-ids --info=progress2 --exclude='*.ecryptfs/*' --exclude='/proc' --exclude='/sys' --exclude='/mnt' --exclude='/media' --exclude='/run' --exclude='/dev' --exclude='/tmp' --exclude='/ram' --exclude='/scratch' / .
   sudo touch $_backup_file
   sudo tar --create --gzip --preserve-permissions --verbose --exclude='./backup_*' --file=$_backup_file .
-  sudo mv -fv $_backup_file .
 }
 
 # usage: retry <command>
