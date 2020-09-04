@@ -1,0 +1,29 @@
+>brew list
+autoconf		gmp			libusb			qt
+autojump		gmp@4			libusb-compat		rbenv
+automake		go			libyaml			readline
+autossh			gpsbabel		lua			redis
+avr-binutils		htop			macvim			ruby
+avr-gcc			htop-osx		mas			ruby-build
+avr-gcc@6		icu4c			mcrypt			scons
+avrdude			iftop			mercurial		screen
+boot2docker		iperf			mhash			shapelib
+cloog			isl			mongodb			sphinx-doc
+cmatrix			isl@0.12		mongodb-community	sqlite
+coreutils		jpeg			mono			ssh-copy-id
+cscope			libelf			mpfr			tcl-tk
+docker			libevent		ncurses			the_silver_searcher
+docker-machine		libffi			netcat			tmux
+docx2txt		libftdi0		node			utf8proc
+dos2unix		libhid			openssl@1.1		watch
+ext4fuse		libidn2			p7zip			watchman
+fontconfig		libmpc			pcre			wget
+freetype		libpng			pkg-config		xz
+gdbm			libtiff			proj			zsh
+geos			libtool			python@2		zsh-completions
+gettext			libunistring		python@3.8
+
+>brew cask list
+arduino               handbrake             ngrok                 rdm                   wireshark
+gimp                  iterm2                osxfuse               robo-3t
+google-earth-pro      java                  pdftotext             vlc
