@@ -19,59 +19,6 @@ eagle (cadsoft)
 skitch
 filezilla
 Microsoft Remote Desktop
-brew install
-  avr-gcc (https://github.com/osx-cross/homebrew-avr)
-  cask (ui programs)
-      brew cask install caskroom/cask/brew-cask
-      brew cask alfred link
-      handbrake
-      arduino
-      pdftotext
-      virtualbox
-      vlc
-      rdm # redis desktop manager
-      docker
-      mcrypt
-      redis
-      mongodb
-      boot2docker
-      google-chrome
-      vlc
-      transmission(torrent client)
-      firefox
-      robo-3t
-      real-vnc
-  tmux
-  docx2txt
-  p7zip
-  mono
-  autossh
-  zsh
-  zsh-completions
-  python
-  python3
-  vim
-  macvim
-  autojump
-  screen
-  htop
-  iftop
-  ruby-build
-  rbenv
-  autojump
-  the_silver_searcher
-  xamarin studio
-  mongodb
-  wget
-  coreutils
-  redis
-  nodejs
-  npm
-    phantomjs
-    ember-cli
-  virtual
-  archey
-  cmatrix # funny
 robomongo
 java
 moom
