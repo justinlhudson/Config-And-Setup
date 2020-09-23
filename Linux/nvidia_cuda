@@ -22,3 +22,12 @@ sudo apt update
 sudo ubuntu-drivers autoinstall
 sudo apt full-upgrade
 sudo apt-get install nvidia-cuda-toolkit 
+
+or ............ MANUAL
+https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
+https://www.nvidia.com/Download/index.aspx#
+sudo ./NVIDIA-Linux-x86_64-410.78.run --no-cc-version-check
+# verify version installed
+nvidia-smi  # nvidia driver
+nvcc --version  # cuda driver
+https://developer.nvidia.com/cuda-downloads
