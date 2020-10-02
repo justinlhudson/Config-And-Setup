@@ -4,7 +4,7 @@
 # Done
 
 ### Determine OS being used ###
-_my_os=$(uname)
+_my_os=$(uname)f
 case $_my_os in
   'Linux')
     _my_os='linux'
@@ -33,7 +33,7 @@ esac
 
 ### Determine DISTRO being used ###
 # by type
-_my_distro=$(uname)
+_my_distro=$(uname)f
 case $_my_distro in
   Linux )
     # test for distro by command
@@ -195,7 +195,7 @@ alias irc='weechat'
 # Note: rsync used to be able to copy "live" files, but be careful on location this is run and tar still trying to archive itself so moved to /tmp first
 backup() {
   _backup_file=/tmp/backup_$(date '+%Y_%m_%d-%H_%M_%S').tar.gz
-  sudo rsync --recursive --links --hard-links --whole-file --owner --group --devices --specials --times --perms --acls --xattrs --numeric-ids --info=progress2 --exclude='*.ecryptfs/*' --exclude='/proc' --exclude='/sys' --exclude='/mnt' --exclude='/media' --exclude='/run' --exclude='/dev' --exclude='/tmp' --exclude='/ram' --exclude='/scratch' / .
+  sudo rsync --recursive --copy-links --hard-links --whole-file --owner --group --devices --specials --times --perms --acls --xattrs --numeric-ids --info=progress2 --exclude='*.ecryptfs/*' --exclude='/proc' --exclude='/sys' --exclude='/mnt' --exclude='/media' --exclude='/run' --exclude='/dev' --exclude='/tmp' --exclude='/ram' --exclude='/scratch' / .
   sudo touch $_backup_file
   sudo tar --create --gzip --preserve-permissions --verbose --exclude='./backup_*' --file=$_backup_file .
 }
@@ -410,9 +410,9 @@ ifswap() {
 if [[ $_my_term == xterm ]]; then
   # backspace work instead of delete ^H
   stty erase '^?'
-fi
+fif
 
-# bind keys per shell and terminal
+# bind keys per shell and terminalf
 if [[ $_my_shell == zsh ]]; then
   # home and end keys
   bindkey '\e[1~' beginning-of-line
