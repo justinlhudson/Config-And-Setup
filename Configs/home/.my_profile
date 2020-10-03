@@ -410,9 +410,9 @@ ifswap() {
 if [[ $_my_term == xterm ]]; then
   # backspace work instead of delete ^H
   stty erase '^?'
-fif
+if
 
-# bind keys per shell and terminalf
+# bind keys per shell and terminal
 if [[ $_my_shell == zsh ]]; then
   # home and end keys
   bindkey '\e[1~' beginning-of-line
