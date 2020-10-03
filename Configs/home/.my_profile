@@ -410,7 +410,7 @@ ifswap() {
 if [[ $_my_term == xterm ]]; then
   # backspace work instead of delete ^H
   stty erase '^?'
-if
+fi
 
 # bind keys per shell and terminal
 if [[ $_my_shell == zsh ]]; then
