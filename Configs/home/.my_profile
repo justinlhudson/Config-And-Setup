@@ -4,7 +4,7 @@
 # Done
 
 ### Determine OS being used ###
-_my_os=$(uname)f
+_my_os=$(uname)
 case $_my_os in
   'Linux')
     _my_os='linux'
