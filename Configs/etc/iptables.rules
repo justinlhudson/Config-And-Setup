@@ -1,9 +1,10 @@
 ### LAN ###
 _lan_if=eno1
-_host_ip="$(ip addr show eno1 | grep 'inet ' | awk '{print $2}' | cut -f1 -d'/')"
+_host_ip="$(ip addr show ${_lan_if} | grep 'inet ' | awk '{print $2}' | cut -f1 -d'/')"
 _lan_ip="$(echo ${_host_ip} | sed 's/.$//')0"
 _lan_mask="$(ifconfig | grep -A 1 ${_lan_if} | tail -1 | awk -F" " '{print $4}')"
 _wifi_if=wlan0
+_wifi_ip="$(ip addr show ${_wifi_if} | grep 'inet ' | awk '{print $2}' | cut -f1 -d'/')"
 
 echo "Host"
 echo "${_host_ip}"
