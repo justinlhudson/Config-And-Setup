@@ -1,0 +1,4 @@
+wpa_supplicant.conf  (or setup via desktop GUI)
+sysctl.conf
+dnsmasq (note: activates when network connect physically)
+dhcpcd.conf (still use static port to connect with)
