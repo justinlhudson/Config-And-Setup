@@ -253,6 +253,10 @@ cd() {
   fi
 }
 
+vnc() {
+  openvpn3 session-start --config "$@"
+}
+
 # docker over-load
 docker() {
   if [ -n "$1" ] && [[ "$1" == "--reset" ]]; then
