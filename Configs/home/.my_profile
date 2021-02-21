@@ -254,7 +254,8 @@ cd() {
 }
 
 vnc() {
-  openvpn3 session-start --config "$@"
+  # note:  must be in directory of .ovpn file
+  openvpn --config "$@"
 }
 
 # docker over-load
