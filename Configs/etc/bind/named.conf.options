@@ -22,6 +22,8 @@ options {
 
   listen-on-v6 { any; };
 
+  auth-nxdomain no;    # conform to RFC1035
+
   // optional - BIND default behavior is recursion
   recursion yes;
 
