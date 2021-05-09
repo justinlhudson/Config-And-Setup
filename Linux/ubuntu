@@ -23,3 +23,8 @@ update-grub
 # Disable Apport at Boot ERROR
 sudo nano /etc/default/apport
 # Change the line that says enabled=1 to enabled=0 to disable Apport.
+
+
+# change AWS default user password
+sudo su -
+passwd ubuntu
