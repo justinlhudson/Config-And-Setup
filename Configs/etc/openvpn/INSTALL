@@ -39,8 +39,25 @@ cp ~/easy-rsa/pki/issued/server.crt /tmp
 sudo cp /tmp/{server.crt,ca.crt} /etc/openvpn/server
 
 ### make on CA server
-cd ~/easy-rsa
+openvpn --genkey --secret ta.key
+sudo cp ta.key /etc/openvpn/server
+mkdir -p ~/client-configs/keys
+/easyrsa gen-req client nopass
+    [cllient]
+cp pki/private/client.key ~/client-configs/keys/
+scp ~/easy-rsa/pki/reqs/client.req $USER@$(hostname -I | awk '{print $1}'): /tmp
+./easyrsa import-req /tmp/client.req client
+./easyrsa sign-req client client1
+scp ~/easy-rsa/pki/issued/client.crt $USER@$(hostname -I | awk '{print $1}'): /tmp
+cp /tmp/client.crt ~/client-configs/keys/
+cp ~/easy-rsa/ta.key ~/client-configs/keys/
+sudo cp /etc/openvpn/server/ca.crt ~/client-configs/keys/
+sudo chown $USER.$USER ~/client-configs/keys/*
+sudo cp /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz /etc/openvpn/server/
 
+
+
+#####################################################3
 
 # edit to reflect new CA information to make cert
 vim /etc/openvpn/easy-rsa/vars
