@@ -3,7 +3,7 @@
 ########################################################################################################
 
 ### LAN ###
-_lan_if=eno1
+_lan_if=ens5
 _host_ip="$(ip addr show ${_lan_if} | grep 'inet ' | awk '{print $2}' | cut -f1 -d'/')"
 _lan_ip="$(echo ${_host_ip} | sed 's/.$//')0"
 _lan_mask="$(ifconfig | grep -A 1 ${_lan_if} | tail -1 | awk -F" " '{print $4}')"
@@ -56,9 +56,9 @@ echo "${_tun_ip}/${_tun_mask}"
 
 # https://community.openvpn.net/openvpn/wiki/BridgingAndRouting
 # All apart of bridge can talk with each other
-iptables -I FORWARD -i ${_tun_if} -o ${_tun_if} -j ACCEPT
+iptables -I FORWARD -i ${_tun_if} -o ${_tun_if} -m conntrack --ctstate NEW -j ACCEPT
 # Allow traffic initiated to access LAN
-iptables -I FORWARD -i ${_tun_if} -o ${_lan_if} -s ${_tun_ip}/${_tun_mask} -d ${_lan_ip}/${_lan_mask} -m conntrack --ctstate NEW -j ACCEPT
+iptables -I FORWARD -i ${_tun_if} -o ${_lan_if} -s ${_tun_ip}/${_tun_mask} -d ${_lan_ip}/${_lan_mask} -m conntrack --ctstate RELATED, ESTABLISHED -j ACCEPT
 # Masquerade all traffic from clients -- done in the nat table
 iptables -t nat -I POSTROUTING -o ${_lan_if} -s ${_tun_ip}/${_tun_mask} -j MASQUERADE
 
@@ -67,9 +67,9 @@ iptables -t nat -I POSTROUTING -o ${_lan_if} -s ${_tun_ip}/${_tun_mask} -j MASQU
 #iptables -A FORWARD -i ${_wifi_if} -o ${_lan_if} -m state --state RELATED,ESTABLISHED -j ACCEPT
 #iptables -A FORWARD -i ${_lan_if} -o ${_wifi_if} -m state --state NEW -j ACCEPT
 
-### PORT Forward ###
+#### PORT Forward ###
 # forward port 3000 to 80
 iptables -t nat -I PREROUTING -i ${_lan_if} -p tcp --dport 80 -j REDIRECT --to-port 3000
 
-### Status ###
+#### Status ###
 iptables -S; iptables -t nat -S
