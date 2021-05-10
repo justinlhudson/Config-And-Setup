@@ -1,0 +1,8 @@
+set_var EASYRSA_REQ_COUNTRY    "US"
+set_var EASYRSA_REQ_PROVINCE   "NA"
+set_var EASYRSA_REQ_CITY       "NA"
+set_var EASYRSA_REQ_ORG        "NA"
+set_var EASYRSA_REQ_EMAIL      "NA@noreply"
+set_var EASYRSA_REQ_OU         "NA"
+set_var EASYRSA_ALGO           "ec"
+set_var EASYRSA_DIGEST         "sha512"
