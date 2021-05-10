@@ -98,6 +98,7 @@ vim ../client/client.conf
 # note: could append keys with ovpn, but i rather not
 cp ../client/client.conf ../client/client.ovpn
 
+cd ..
 tar -zcvf openvpn-client.tar.gz client/
 
 
