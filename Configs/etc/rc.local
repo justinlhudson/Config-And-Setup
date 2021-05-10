@@ -13,6 +13,6 @@
 #sudo systemctl status rc-local.service
 ###################################
 
-source /etc/iptables.rules
+source /etc/iptable.rules
 
 exit 0
