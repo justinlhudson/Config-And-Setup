@@ -1,15 +1,16 @@
-
-sudo vim /etc/rc.local
-  #!/bin/bash
-  <your_program>.sh
-  exit 0
-sudo chmod +x /etc/rc.local
-see:
-  https://github.com/justinlhudson/Config-And-Setup/blob/master/Configs/etc/systemd/system/rc-local.service
-sudo systemctl enable rc-local.service
-sudo systemctl start rc-local.service
-sudo systemctl status rc-local.service
-
-exit 0
+#############################3
+#sudo vim /etc/rc.local
+#  #!/bin/bash
+#  <your_program>.sh
+#  exit 0
+#sudo chmod +x /etc/rc.local
+#see:
+#  https://github.com/justinlhudson/Config-And-Setup/blob/master/Configs/etc/systemd/system/rc-local.service
+#sudo systemctl enable rc-local.service
+#sudo systemctl start rc-local.service
+#sudo systemctl status rc-local.service
+###################################
 
 source /etc/iptables.rules
+
+exit 0
