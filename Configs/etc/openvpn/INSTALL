@@ -55,7 +55,11 @@ sudo cp /etc/openvpn/server/ca.crt ~/client-configs/keys/
 sudo chown $USER.$USER ~/client-configs/keys/*
 sudo cp /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz /etc/openvpn/server/
 
+sudo vim /etc/sysctl.conf
+net.ipv4.ip_forward = 1
+sudo sysctl -p
 
+see:  /etc/ufw/before.rules
 
 #####################################################3
 
