@@ -5,53 +5,66 @@ apt-get install openvpn easy-rsa
 apt-get install bridge-utils
 apt-get install checkinstall zlib1g-dev
 
-# root terminal
-sudo -i
+#sudo -i
 
-make-cadir /etc/openvpn/easy-rsa
-cd /etc/openvpn/easy-rsa
+### Installing OpenVPN and Easy-RSA ###
+###################################
+#make-cadir /etc/openvpn/easy-rsa
 
-mkdir ~/openvpn-confg/easy-rsa
-ln -s /usr/share/easy-rsa/* ~/openvpn-confg/easy-rsa/
-sudo chown $USER ~/openvpn-confg
-chmod 700 ~/openvpn-confg/
+mkdir -p ~/openvpn_config/easy-rsa
+cd openvpn_config/
+
+ln -s /usr/share/easy-rsa/* easy-rsa/
+sudo chown $USER easy-rsa/
+chmod 700 easy-rsa/
+cd easy-rsa/
+mkdir server
+mkdir client
+
+###  Creating a PKI for OpenVPN ###
+###################################
 # see vars file
-vim ~/openvpn-confg/easy-rsa/vars
-# no passphrase <enter> <enter>
-./openvpn-confg/easyrsa build-ca
-# company name "server"
-./openvpn-confg/easyrsa build-ca nopass
-ls ~/openvpn-confg/easy-rsa/pki/ 
-./openvpn-confg/easyrsa init-pki
-./openvpn-confg/easyrsa build-ca
-sudo cp ~/openvpn-confg/easy-rsa/pki/ca.crt /usr/local/share/ca-certificates/
-sudo update-ca-certificates
-./openvpn-confg/easyrsa gen-req server nopass
+vim vars
+./easyrsa build-ca nopass
     [server]
-sudo cp ~/openvpn-confg/easy-rsa/pki/private/server.key /etc/openvpn/server/
-scp ~/openvpn-confg/easy-rsa/pki/reqs/server.req $USER@$(hostname -I | awk '{print $1}'): /tmp
-./openvpn-confg/easyrsa import-req /tmp/server.req server
-./openvpn-confg/easyrsa sign-req server server
-~/openvpn-confg/easy-rsa/pki/issued/server.crt
-scp ~/openvpn-confg/easy-rsa/pki/reqs/server.req $USER@$(hostname -I | awk '{print $1}'): /tmp
-scp pki/ca.crt $USER@$(hostname -I | awk '{print $1}'):/tmp
-cp ~/openvpn-confg/easy-rsa/pki/issued/server.crt /tmp
-sudo cp /tmp/{server.crt,ca.crt} /etc/openvpn/server
+./easyrsa init-pki
+sudo cp pki/ca.crt /usr/local/share/ca-certificates/
+sudo update-ca-certificates
 
-### make on CA server
+### Creating an OpenVPN Server Certificate Request and Private Key ###
+###################################
+./easyrsa gen-req server nopass
+    [server]
+sudo cp pki/private/server.key /etc/openvpn/server/
+
+### Signing the OpenVPN Server’s Certificate Request ###
+###################################
+# place to store files being created
+cp pki/reqs/server.req server/
+./easyrsa import-req server/server.req server
+./easyrsa sign-req server server 
+cp pki/issued/server.crt server/
+cp pki/ca.crt server/
+sudo cp server/{server.crt,ca.crt} /etc/openvpn/server
+
+### Configuring OpenVPN Cryptographic Material ###
+###################################
 openvpn --genkey --secret ta.key
 sudo cp ta.key /etc/openvpn/server
-mkdir -p ~/openvpn-confg/client-configs/keys/easyrsa gen-req client nopass
+
+### Generating a Client Certificate and Key Pair ###
+###################################
+./easyrsa gen-req client nopass
     [client]
-cp pki/private/client.key ~/client-configs/keys/
-scp ~/easy-rsa/pki/reqs/client.req $USER@$(hostname -I | awk '{print $1}'): /tmp
-./easyrsa import-req /tmp/client.req client
-./easyrsa sign-req client client1
-scp ~/easy-rsa/pki/issued/client.crt $USER@$(hostname -I | awk '{print $1}'): /tmp
+cp pki/private/client.key client/
+cp easy-rsa/pki/reqs/client.req client/
+./easyrsa import-req client/client.req client
+./easyrsa sign-req client client
+cp pki/issued/client.crt client/
 cp /tmp/client.crt ~/client-configs/keys/
-cp ~/easy-rsa/ta.key ~/client-configs/keys/
-sudo cp /etc/openvpn/server/ca.crt ~/client-configs/keys/
-sudo chown $USER.$USER ~/client-configs/keys/*
+cp ta.key client/
+sudo cp /etc/openvpn/server/ca.crt client/
+sudo chown $USER.$USER client/*
 sudo cp /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz /etc/openvpn/server/
 
 sudo vim /etc/sysctl.conf
@@ -76,15 +89,12 @@ sudo systemctl start openvpn-server@server.service
 
 sudo systemctl status openvpn-server@server.service
 
-mkdir -p ~/client-configs/files
-cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf ~/client-configs/base.conf
-~/client-configs/files/base.conf ~/client-configs/files/client.conf
-vim ~/client-configs/filesclient.conf
-~/client-configs/files/client.conf ~/client-configs/files/client.ovpn
+cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf client/client.conf
+vim client/client.conf
+# note: could append keys with ovpn, but i rather not
+cp client/client.conf client/client.ovpn
 
-
-cp ~/client-configs/keys/* ~/client-configs/files/
-tar -zcvf openvpn-client.tar.gz ~/client-config/client/
+tar -zcvf openvpn-client.tar.gz client/
 
 ############## DEPRECATED ###################
 
