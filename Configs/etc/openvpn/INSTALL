@@ -1,11 +1,36 @@
+# https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-an-openvpn-server-on-ubuntu-20-04
+# https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-a-certificate-authority-ca-on-ubuntu-20-04
+
 apt-get install openvpn easy-rsa
 apt-get install bridge-utils
+apt-get install checkinstall zlib1g-dev
 
 # root terminal
 sudo -i
 
 make-cadir /etc/openvpn/easy-rsa
 cd /etc/openvpn/easy-rsa
+
+mkdir ~/easy-rsa
+ln -s /usr/share/easy-rsa/* ~/easy-rsa/
+sudo chown $USER ~/easy-rsa
+chmod 700 ~/easy-rsa
+vim ~/easy-rsa/vars
+    set_var EASYRSA_ALGO "ec"
+    set_var EASYRSA_DIGEST "sha512"
+ 
+./easyrsa init-pki
+./easyrsa build-ca
+
+
+./easyrsa gen-req server nopass
+    [server]
+sudo cp ~/easy-rsa/pki/private/server.key /etc/openvpn/server/
+scp ~/easy-rsa/pki/reqs/server.req $USER@$(hostname -I | awk '{print $1}'):/tmp
+
+### make on CA server
+cd ~/easy-rsa
+
 
 # edit to reflect new CA information to make cert
 vim /etc/openvpn/easy-rsa/vars
