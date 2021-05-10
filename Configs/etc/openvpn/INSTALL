@@ -15,18 +15,28 @@ mkdir ~/easy-rsa
 ln -s /usr/share/easy-rsa/* ~/easy-rsa/
 sudo chown $USER ~/easy-rsa
 chmod 700 ~/easy-rsa
+# see vars file
 vim ~/easy-rsa/vars
-    set_var EASYRSA_ALGO "ec"
-    set_var EASYRSA_DIGEST "sha512"
- 
+# no passphrase <enter> <enter>
+./easyrsa build-ca
+# company name "server"
+./easyrsa build-ca nopass
+ls ~/easy-rsa/pki/ 
 ./easyrsa init-pki
 ./easyrsa build-ca
-
-
+sudo cp ~/easy-rsa/pki/ca.crt /usr/local/share/ca-certificates/
+sudo update-ca-certificates
 ./easyrsa gen-req server nopass
     [server]
 sudo cp ~/easy-rsa/pki/private/server.key /etc/openvpn/server/
-scp ~/easy-rsa/pki/reqs/server.req $USER@$(hostname -I | awk '{print $1}'):/tmp
+scp ~/easy-rsa/pki/reqs/server.req $USER@$(hostname -I | awk '{print $1}'): /tmp
+./easyrsa import-req /tmp/server.req server
+./easyrsa sign-req server server
+~/easy-rsa/pki/issued/server.crt
+scp ~/easy-rsa/pki/reqs/server.req $USER@$(hostname -I | awk '{print $1}'): /tmp
+scp pki/ca.crt $USER@$(hostname -I | awk '{print $1}'):/tmp
+cp ~/easy-rsa/pki/issued/server.crt /tmp
+sudo cp /tmp/{server.crt,ca.crt} /etc/openvpn/server
 
 ### make on CA server
 cd ~/easy-rsa
