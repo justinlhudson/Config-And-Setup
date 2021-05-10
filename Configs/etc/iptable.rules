@@ -1,3 +1,7 @@
+########################################################################################################
+# Important : 'ipconfig' is old start using 'ip', but until then isntall 'sudo apt install net-tools'  #
+########################################################################################################
+
 ### LAN ###
 _lan_if=eno1
 _host_ip="$(ip addr show ${_lan_if} | grep 'inet ' | awk '{print $2}' | cut -f1 -d'/')"
