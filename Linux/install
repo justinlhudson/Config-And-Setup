@@ -23,6 +23,10 @@ https://code.visualstudio.com/docs/?dv=linux64_deb
   ms-python.python
 
 ### utilities
+## cpulimit (% usuage verse nice)
+# cpulimit -l 20 <command>
+apt install cpulimit
+
 ## restore boot loader
 sudo apt-get install -y boot-repair && boot-repair
 
