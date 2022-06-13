@@ -39,7 +39,7 @@ sudo apt-get install -y boot-repair && boot-repair
 sudo -H pip3 install tensorflow
 sudo -H pip3 install tensorflow-gpu
 
-### Docker website for latest install instructions
+### Docker website for latest install instructionsf
 ## docker CE (docker-engine)
 # https://docs.docker.com/engine/installation/linux/ubuntu/#install-using-the-repository
 
@@ -100,6 +100,9 @@ curl -sSL https://install.pi-hole.net | bash
 
 ### terminal screen saver
 apt-get install cmatrix
+
+### video editing
+apt install handbrake
 
 ### motion video detection
 pip install dvr-scan
