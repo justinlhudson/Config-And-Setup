@@ -127,8 +127,6 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias random='cat /dev/urandom | tr -cd 'a-f0-9' | head -c 64 | cut -c 1-'
-alias plogout='sudo pkill -KILL -u'
-alias apt-get='sudo apt-get'
 alias psf='ps -e | grep -v grep | grep -i -e VSZ -e' # search process match (e.g. psf name)
 if [[ $_my_os == macOS ]]; then
   alias ls='ls -GpF'
@@ -148,37 +146,7 @@ else
 fi
 # ISO-8601 compliant date (in mongodb formate)
 alias utc='date -u "+%Y-%m-%dT%H:%M:%S.%3NZ"'
-# helpers for shutting down VMs and other things before system
-alias reboot='vboxmanage --shutdown; sudo shutdown -r now'
-alias shutdown='vboxmanage --shutdown; sudo shutdown now'
 alias duck='du -cks -- * | sort -rn | head'
-
-vboxmanage()
-{
-  if ! type vboxmanage > /dev/null 2>&1; then
-    return 0
-  fi
-
-  if [ -n "$1" ] && [[ "$1" == "--upgrade" ]]; then
-    # make sure user is in group for USB to work
-    sudo adduser $USER vboxusers
-
-    version=$(vboxmanage -v)
-    var1=$(echo $version | cut -d '_' -f 1)
-    var2=$(echo $version | cut -d 'r' -f 2)
-    file="Oracle_VM_VirtualBox_Extension_Pack-$var1-$var2.vbox-extpack"
-    wget http://download.virtualbox.org/virtualbox/$var1/$file -O /tmp/$file
-    sudo vboxmanage extpack install /tmp/$file --replace
-    #sudo /sbin/rcvboxdrv setup
-  elif [ -n "$1" ] && [[ "$1" == "--shutdown" ]]; then
-    _vms=`vboxmanage list runningvms | cut -d" " -f 1 | tr -d '"'`
-    for _vm in $_vms; do
-      vboxmanage controlvm $_vm poweroff soft
-    done
-  else
-    command vboxmanage $@
-  fi
-}
 
 # Replace defualt tooling with better similar option
 if type ag > /dev/null 2>&1; then
@@ -253,30 +221,6 @@ cd() {
   fi
 }
 
-vnc() {
-  # note:  must be in directory of .ovpn file
-  openvpn --config "$@"
-}
-
-# docker over-load
-docker() {
-  if [ -n "$1" ] && [[ "$1" == "--reset" ]]; then
-    # remove containers not currently running
-    command docker rm $(command docker ps -a -f status=exited -q) || true
-    # remove images
-    command docker rmi $(command docker images -f -q)|| true
-    # remove dangling volumes
-    command docker volume rm $(command docker volume ls -f -q) || true
-  elif [ -n "$1" ] && [[ "$1" == "--init" ]]; then
-    sudo iptables -t nat -F
-    sudo ifconfig docker0 down
-    sudo brctl delbr docker0
-    sudo service docker restart
-  else
-    command docker "$@"
-  fi
-}
-
 ssh()
 {
   if type autossh > /dev/null 2>&1; then
@@ -338,16 +282,6 @@ vncserver()
     done
   else
     command vncserver "$@"
-  fi
-}
-
-# --upgrade argument added 
-pip3()
-{
-  if [ -n "$1" ] && [[ "$1" == "--upgrade" ]]; then
-    command pip3 freeze --local |sed -rn 's/^([^=# \t\\][^ \t=]*)=.*/echo; echo Processing \1 ...; command pip3 install -U \1/p' |sh
-  else
-    command pip3 "$@"
   fi
 }
 
