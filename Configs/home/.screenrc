@@ -41,10 +41,10 @@ bindkey -k k5 select 5
 bindkey -k k6 select 6
 bindkey -k k7 select 7
 bindkey -k k8 select 8
-bindkey -k k9 prev
-bindkey -k k; next
-bindkey -k F1 command
-bindkey -k F2 detach
+bindkey -k k9 prev      # F9
+bindkey -k k; next      # F10
+bindkey -k F1 command   # F11
+bindkey -k F2 detach    # F12
 
 # status
 #caption always "screen [%n: %t]: "
