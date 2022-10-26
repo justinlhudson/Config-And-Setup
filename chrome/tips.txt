@@ -1,2 +1,0 @@
-# auto scroll chrome window
-var scroll = setInterval(function(){ window.scrollBy(0,20); }, 200);
