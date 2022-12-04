@@ -60,6 +60,8 @@ screen 5
 screen 6
 screen 7
 screen 8
+#screen # command
+
 #screen -t <name> # <command>
 
 select 1
