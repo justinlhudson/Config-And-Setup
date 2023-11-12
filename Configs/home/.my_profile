@@ -196,6 +196,11 @@ speedtest() {
   fi
 }
 
+# scan network
+network (){
+  arp-scan --localnet
+}
+
 # like dos
 pause(){
   read -rsp $'Press any key to continue...\n' -n 1 key
