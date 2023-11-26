@@ -10,6 +10,9 @@ xsetroot -solid grey
 
 vncconfig -iconic &
 
+# sudo apt install xfce4 xfce4-goodies
+startxfce4 &
+
 #gnome-panel &
 #gnome-settings-daemon &
 #metacity &
