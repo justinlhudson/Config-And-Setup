@@ -9,8 +9,12 @@ unset DBUS_SESSION_BUS_ADDRESS
 xsetroot -solid grey
 
 vncconfig -iconic &
-gnome-panel &
-gnome-settings-daemon &
-metacity &
-nautilus &
-gnome-terminal &
+
+#gnome-panel &
+#gnome-settings-daemon &
+#metacity &
+#nautilus &
+#gnome-terminal &
+
+# sudo apt-get install xterm
+/usr/bin/xterm &
