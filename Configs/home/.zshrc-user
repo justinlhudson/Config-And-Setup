@@ -14,4 +14,6 @@ if [ -f ~/.my_profile ]; then
   source ~/.my_profile 2> /dev/null
 fi
 
+source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
 #alias mac="ssh <username>@<host> -L 5902:localhost:5900"
