@@ -364,6 +364,49 @@ if [[ $_my_shell == zsh ]]; then
   bindkey '\e[4~' end-of-line
 fi
 
+# sleep until a 24hr time
+if [[ $_my_os == macOS ]]; then
+  sleepuntil() {
+      local target_time="$1"
+      [ -z "$target_time" ] && return 1
+  
+      local now=$(date +%s)
+      
+      # macOS Specific Parsing:
+      # -j: Do not set the date (just calculate)
+      # -f: Input format (Strictly expects HH:MM in 24-hour format)
+      local target=$(date -j -f "%H:%M" "$target_time" "+%s" 2>/dev/null)
+  
+      # If parsing failed, return error (non-zero exit code)
+      [ -z "$target" ] && return 1
+  
+      # Logic: If target is in the past (e.g. 09:00 when it is 10:00),
+      # add 86400 seconds (24 hours) to schedule for tomorrow.
+      if [ "$target" -le "$now" ]; then
+          target=$((target + 86400))
+      fi
+      sleep $((target - now))
+  }
+else
+  sleepuntil() {
+      local target_time="$1"
+      [ -z "$target_time" ] && return 1
+  
+      local now_epoch=$(date +%s)
+      local target_epoch=$(date -d "$target_time" +%s 2>/dev/null)
+  
+      # If date parsing failed, return error
+      [ -z "$target_epoch" ] && return 1
+  
+      # If target is in the past, assume tomorrow
+      if [ "$target_epoch" -le "$now_epoch" ]; then
+          target_epoch=$(date -d "tomorrow $target_time" +%s)
+      fi
+  
+      sleep $((target_epoch - now_epoch))
+  }
+fi
+
 ### Other ###
 
 if [[ $_my_os == macOS ]]; then
