@@ -6,7 +6,7 @@ DISABLE_AUTO_PROMPT="true"
 
 source $ZSH/oh-my-zsh.sh
 
-plugins=(cake coffee docker gem git github history mercurial node npm python pip screen sublime sudo supervisor tmux tmuxinator virtualenv vi-mode web-search tmuxinator) 
+plugins=(git history screen sudo tmux tmuxinator tmuxinator) 
 
 # run profile script not in zsh mode
 if [ -f ~/.profile ]; then
