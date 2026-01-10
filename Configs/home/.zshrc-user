@@ -22,5 +22,8 @@ if ! command -v direnv &> /dev/null; then
         sudo apt update && sudo apt install direnv -y
     fi
 fi
+if command -v direnv &> /dev/null; then
+    eval "$(direnv hook zsh)"
+fi
 
 #alias mac="ssh <username>@<host> -L 5902:localhost:5900"
