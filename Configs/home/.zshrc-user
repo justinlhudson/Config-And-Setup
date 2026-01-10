@@ -14,4 +14,13 @@ if [ -f ~/.my_profile ]; then
   source ~/.my_profile 2> /dev/null
 fi
 
+if ! command -v direnv &> /dev/null; then
+    echo "direnv not found. Installing..."
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        brew install direnv
+    elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        sudo apt update && sudo apt install direnv -y
+    fi
+fi
+
 #alias mac="ssh <username>@<host> -L 5902:localhost:5900"
