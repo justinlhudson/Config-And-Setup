@@ -26,7 +26,4 @@ if command -v direnv &> /dev/null; then
     eval "$(direnv hook zsh)"
 fi
 
-# move to dot hidden not like starring at me in home directory
-export NLTK_DATA=$HOME/.nltk_data
-
 #alias mac="ssh <username>@<host> -L 5902:localhost:5900"
