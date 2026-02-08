@@ -435,7 +435,7 @@ claude() {
     export ANTHROPIC_API_KEY=""
     
     # Defaults to qwen3-coder if no argument is provided
-    local model="${1:-qwen3-coder}"
+    local model="${1:-glm-4.7-flash}"
     
     command claude --model "$model"
 }
