@@ -438,6 +438,7 @@ claude() {
     
     # Defaults to qwen3-coder if no argument is provided
     local model="${1:-glm-4.7-flash}"
+    shift
     
-    command claude --model "$model"
+    command claude --model "$model" --dangerously-skip-permissions "$@"
 }
