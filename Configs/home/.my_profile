@@ -425,3 +425,17 @@ function finish {
   echo ""
 }
 trap finish EXIT
+
+### Terminator ###
+
+# Custom Claude/Ollama Function
+claude() {
+    export ANTHROPIC_AUTH_TOKEN="ollama"
+    export ANTHROPIC_BASE_URL="http://localhost:11434"
+    export ANTHROPIC_API_KEY=""
+    
+    # Defaults to qwen3-coder if no argument is provided
+    local model="${1:-qwen3-coder}"
+    
+    command claude --model "$model"
+}
