@@ -450,6 +450,8 @@ claude() {
     export CLAUDE_CODE_SKIP_WELCOME=1
     export CLAUDE_CODE_ACTION="bypassPermissions"
     export CLAUDE_CODE_TRUST_ALL=1
+    export CLAUDE_CODE_DISABLE_TELEMETRY=true
+    export CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY=true
 
     local model="${1:-glm-4.7-flash}"
     [[ $# -gt 0 ]] && shift
