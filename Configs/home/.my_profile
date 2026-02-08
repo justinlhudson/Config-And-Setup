@@ -434,6 +434,7 @@ claude() {
     export ANTHROPIC_BASE_URL="http://localhost:11434"
     export ANTHROPIC_API_KEY=""
     export CLAUDE_CODE_SKIP_WELCOME=1
+    export CLAUDE_CODE_TRUST_ALL=1
     
     # Defaults to qwen3-coder if no argument is provided
     local model="${1:-glm-4.7-flash}"
