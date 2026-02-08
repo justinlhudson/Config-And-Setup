@@ -451,7 +451,7 @@ claude() {
     export CLAUDE_CODE_ACTION="bypassPermissions"
     export CLAUDE_CODE_TRUST_ALL=1
 
-    local model="${1:glm-4.7-flash}"
+    local model="${1:-glm-4.7-flash}"
     [[ $# -gt 0 ]] && shift
 
     command claude --model "$model" --dangerously-skip-permissions "$@"
