@@ -147,7 +147,6 @@ fi
 # ISO-8601 compliant date (in mongodb formate)
 alias utc='date -u "+%Y-%m-%dT%H:%M:%S.%3NZ"'
 alias duck='du -cks -- * | sort -rn | head'
-
 # Replace defualt tooling with better similar option
 if type ag > /dev/null 2>&1; then
   alias awk='ag'
@@ -155,7 +154,7 @@ fi
 if type autojump > /dev/null 2>&1; then
   alias j='autojump'
 fi
-
+alias mounts='mount | column -t | grep "/mnt/"'
 alias twitter='sudo rainbowstream -iot'
 alias irc='weechat'
 
