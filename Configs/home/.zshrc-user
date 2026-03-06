@@ -26,4 +26,8 @@ if command -v direnv &> /dev/null; then
     eval "$(direnv hook zsh)"
 fi
 
+# personal executatbles...
+mkdir -p export PATH="$HOME/.bin/
+export PATH="$HOME/.bin/:$PATH"
+
 #alias mac="ssh <username>@<host> -L 5902:localhost:5900"
