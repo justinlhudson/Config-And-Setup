@@ -27,7 +27,7 @@ if command -v direnv &> /dev/null; then
 fi
 
 # personal executatbles...
-mkdir -p export PATH="$HOME/.bin/
-export PATH="$HOME/.bin/:$PATH"
+mkdir -p export PATH="$HOME/.local/bin/"
+export PATH="$HOME/.local/bin/:$PATH"
 
 #alias mac="ssh <username>@<host> -L 5902:localhost:5900"
