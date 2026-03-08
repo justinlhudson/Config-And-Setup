@@ -31,3 +31,7 @@ mkdir -p export PATH="$HOME/.local/bin/"
 export PATH="$HOME/.local/bin/:$PATH"
 
 #alias mac="ssh <username>@<host> -L 5902:localhost:5900"
+
+echo 'export REMOTE_OLLAMA="ip:11434"' >> /Users/jlh/.my_zshrc
+echo 'alias ollama-remote='\''OLLAMA_HOST="http://${REMOTE_OLLAMA}" ollama'\'''
+
