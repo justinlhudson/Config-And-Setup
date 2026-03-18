@@ -4,62 +4,47 @@
 # Done
 
 ### Determine OS being used ###
-_my_os=$(uname)
+_my_os=$(uname -s)
 case $_my_os in
-  'Linux')
-    _my_os='linux'
-    ;;
-  'WindowsNT')
-    _my_os='dos'
-    ;;
-  'Darwin')
-    _my_os='macOS'
-    ;;
-  *) ;;
+  Linux)      _my_os='linux' ;;
+  WindowsNT)  _my_os='dos' ;;
+  Darwin)     _my_os='macOS' ;;
+  *)          ;;
 esac
 
 ### Determine ARCH being used ###
 _my_arch=$(uname -m)
 case $_my_arch in
-  x86_64)
-    _my_arch=x64  # or AMD64 or Intel64 or whatever
-    ;;
-  i*86)
-    _my_arch=x86  # or IA32 or Intel32 or whatever
-    ;;
-  *)
-    ;;
+  x86_64) _my_arch=x64 ;;  # or AMD64 or Intel64
+  i*86)   _my_arch=x86 ;;  # or IA32 or Intel32
+  *)      ;;
 esac
 
 ### Determine DISTRO being used ###
-# by type
-_my_distro=$(uname)f
-case $_my_distro in
-  Linux )
-    # test for distro by command
-    _my_distro=$(cat /proc/version)
-    if [[ "$_my_distro" == *"Ubuntu"* ]]; then
-      _my_distro=debian
-    elif [[ "$_my_distro" == *"Red Hat"* ]]; then
-      _my_distro=rhel
+if [[ "$_my_os" == "linux" ]]; then
+  if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    if [[ "$ID" == "ubuntu" || "$ID_LIKE" == *"debian"* ]]; then
+      _my_distro="debian"
+    elif [[ "$ID" == *"rhel"* || "$ID_LIKE" == *"rhel"* || "$ID" == "fedora" ]]; then
+      _my_distro="rhel"
+    else
+      _my_distro="$ID"
     fi
-    ;;
-  Darwin )
-     _my_distro=darwin
-     ;;
-  * )
-     ;;
-esac
+  else
+    _my_distro="unknown_linux"
+  fi
+elif [[ "$_my_os" == "macOS" ]]; then
+  _my_distro="darwin"
+fi
  
 ### Determine SHELL being used ###
-_my_shell=$(echo $0)
-#_my_shell=$SHELL
-if [[ $_my_shell == *zsh* ]]; then
-  #!/bin/zsh
-  _my_shell=zsh
-elif [[ $_my_shell == *bash* ]]; then
-  #!/bin/bash
-  _my_shell=bash
+if [ -n "$ZSH_VERSION" ]; then
+  _my_shell="zsh"
+elif [ -n "$BASH_VERSION" ]; then
+  _my_shell="bash"
+else
+  _my_shell="unknown"
 fi
 
 ### Determine TERM being used ###
@@ -69,8 +54,8 @@ if [[ $_my_term == *xterm* ]]; then
 fi
 
 ### Verbose ###
-if [[ "$@" == *"-v"* ]]; then
-  echo "$_my_os $_my_distro $_my_arch $_my_term $_my_shell"
+if [[ "$*" == *"-v"* ]]; then
+  echo "$_my_os | $_my_distro | $_my_arch | $_my_term | $_my_shell"
   echo ""
 fi
 
@@ -78,14 +63,15 @@ fi
 # Saving HISTFILESIZE lines to disk and loading the last HISTSIZE lines into memory
 HISTSIZE=10000
 HISTFILESIZE=50000
+
 # Append history from each session, not the last terminal to log out
 if [[ $_my_shell == bash ]]; then
   shopt -s histappend > /dev/null 2>&1
+  # Add commands immediately to history, do not wait for log out
+  export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 elif [[ $_my_shell == zsh ]]; then
   setopt INC_APPEND_HISTORY > /dev/null 2>&1
 fi
-# Add commands immediatley to history, not wait for log out
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 ### Configuration(s) ###
 # expand aliases for non-interactive shell (i.e. scripts)
@@ -95,12 +81,13 @@ elif [[ $_my_shell == zsh ]]; then
   setopt aliases
 fi
 
-### Shared Variables ###
+### Shared Variables & Aliases ###
 export EDITOR='vim'
 
 if type htop > /dev/null 2>&1; then
   alias top='htop'
 fi
+
 alias vi='vim'
 alias curl='noglob curl'
 alias god='sudo'  # not the real God, hence lowercase.
@@ -111,11 +98,18 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias mkdir='mkdir -pv'
+
 if [[ $_my_os == macOS ]]; then
   alias df='df -ha'
+  alias ls='ls -GpF'
+  alias timeout='gtimeout' # gnu util for macOS
+  alias ps='ps aux'
 else
   alias df='df -Tha'
+  alias ls='ls -pF --color=auto'
+  alias ps='ps auxf'
 fi
+
 alias du='du -ach'
 alias free='free -mt'
 alias here='find . -iname'
@@ -126,69 +120,61 @@ alias now='date +"%m-%d-%Y %T.%3N"'  # w/ millisecond
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias random='cat /dev/urandom | tr -cd 'a-f0-9' | head -c 64 | cut -c 1-'
-alias psf='ps -e | grep -v grep | grep -i -e VSZ -e' # search process match (e.g. psf name)
-if [[ $_my_os == macOS ]]; then
-  alias ls='ls -GpF'
-else
-  alias ls='ls -pF --color=auto'
-fi
+alias random="cat /dev/urandom | tr -cd 'a-f0-9' | head -c 64"
+alias psf='ps -e | grep -v grep | grep -i -e VSZ -e' # search process match
 alias l='ls'
 alias ll='ls -lAh'
 alias l.='ls -d .*'
 alias la='ls -lah'
-if [[ $_my_os == macOS ]]; then
-  # gnu util for macOS
-  alias timeout='gtimeout'
-  alias ps='ps aux'
-else
-  alias ps='ps auxf'
-fi
-# ISO-8601 compliant date (in mongodb formate)
+
+# ISO-8601 compliant date (in mongodb format)
 alias utc='date -u "+%Y-%m-%dT%H:%M:%S.%3NZ"'
 alias duck='du -cks -- * | sort -rn | head'
-# Replace defualt tooling with better similar option
+
+# Replace default tooling with better similar option
 if type ag > /dev/null 2>&1; then
   alias awk='ag'
 fi
 if type autojump > /dev/null 2>&1; then
   alias j='autojump'
 fi
+
 alias mounts='mount | column -t | grep "/mnt/"'
 alias twitter='sudo rainbowstream -iot'
 alias irc='weechat'
 
-# system backup (cheap way, but works)
-# Note: rsync used to be able to copy "live" files, but be careful on location this is run and tar still trying to archive itself so moved to /tmp first
+### Functions ###
+
+# system backup
 backup() {
   _backup_file=/tmp/backup_$(date '+%Y_%m_%d-%H_%M_%S').tar.gz
   sudo rsync --recursive --links --hard-links --whole-file --owner --group --devices --specials --times --perms --acls --xattrs --numeric-ids --info=progress2 --exclude='*.ecryptfs/*' --exclude='/proc' --exclude='/sys' --exclude='/mnt' --exclude='/media' --exclude='/run' --exclude='/dev' --exclude='/tmp' --exclude='/ram' --exclude='/scratch' / .
-  sudo touch $_backup_file
-  sudo tar --create --gzip --preserve-permissions --verbose --exclude='./backup_*' --file=$_backup_file .
-  sudo cp $_backup_file .
+  sudo touch "$_backup_file"
+  sudo tar --create --gzip --preserve-permissions --verbose --exclude='./backup_*' --file="$_backup_file" .
+  sudo cp "$_backup_file" .
 }
 
 # usage: retry <command>
 retry() {
   _result=1
-  while [ $_result -ne 0 ] ; do 
+  while [ $_result -ne 0 ]; do 
     "$@" && break 
-    result=$?
+    _result=$?
     sleep 3
   done
 }
 
 # public ip
 ipPub() {
-    curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
+  curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
 }
 
 # speed test
 speedtest() {
   if type speedtest-cli > /dev/null 2>&1; then
-   speedtest-cli
-  elif type ./.local/bin/speedtest-cli > /dev/null 2>&1; then
-    ./.local/bin/speedtest-cli
+    speedtest-cli
+  elif [ -x "$HOME/.local/bin/speedtest-cli" ]; then
+    "$HOME/.local/bin/speedtest-cli"
   else
     ipPub
     curl -o /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip
@@ -196,17 +182,16 @@ speedtest() {
 }
 
 # scan network
-network (){
+network() {
   arp-scan --localnet
 }
 
 # like dos
-pause(){
+pause() {
   read -rsp $'Press any key to continue...\n' -n 1 key
 }
 
 # searches in files for match
-# -s: how or not to show contents
 herein() {
   if [ -n "$1" ] && [[ "$1" == "-s" ]]; then
     shift
@@ -225,36 +210,24 @@ cd() {
   fi
 }
 
-ssh()
-{
+ssh() {
   if type autossh > /dev/null 2>&1; then
-    # disable the built-in AutoSSH monitoring port "-M 0"
-    #
-    #  "ServerAliveInterval" & "ServerAliveCountMax" – they cause the SSH client to send traffic 
-    #  through the encrypted link to the server. This will keep the connection alive when there
-    #  is no other activity and also when it does not receive any alive data, it will tell AutoSSH
-    #  that the connection is broken and AutoSSH will then restart the connection.
-    autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" $@
+    autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" "$@"
   else
     echo "Hint: install 'autossh'"
-    command ssh $@
+    command ssh "$@"
   fi
 }
 
 # makes default session and starts if already running
 screen() {
   local _session="default"
-  # if no option(s), run default
   if [ -z "$1" ]; then
-    # do not allow a screen inside a screen
     if [ -z "$STY" ]; then
-      # if default screen not already running
-      if [[ $(screen -list) != *$_session* ]]; then
-        # create and attach
-        command screen -D -R $_session
+      if [[ $(command screen -list) != *"$_session"* ]]; then
+        command screen -D -R "$_session"
       else
-        # re-attach if session started elsewhere (i.e. shared) or is detached
-        command screen -xr $_session
+        command screen -xr "$_session"
       fi
     fi
   else
@@ -262,11 +235,10 @@ screen() {
   fi
 }
 
-mux()
-{
-  if [ -n "$1" ] && [[ "$1" == "-k" ]]; then
+mux() {
+  if [ "$1" == "-k" ]; then
     if [ -n "$2" ]; then
-      command tmux kill-session -t $2
+      command tmux kill-session -t "$2"
     else
       command tmux kill-session
     fi
@@ -276,13 +248,12 @@ mux()
 }
 
 # kill vnc window(s) option added
-vncserver()
-{
-  if [ -n "$1" ] && [[ "$1" == "-kill" ]] && [ -n "$2" ] && [[ "$2" == "all" ]]; then
-    for v in ~/.vnc/*.pid
-    do
+vncserver() {
+  if [[ "$1" == "-kill" && "$2" == "all" ]]; then
+    for v in ~/.vnc/*.pid; do
+      [ -e "$v" ] || continue
       local _window=$(basename "$v" .pid)
-      command vncserver -kill $_window
+      command vncserver -kill "$_window"
     done
   else
     command vncserver "$@"
@@ -290,23 +261,18 @@ vncserver()
 }
 
 # --split <filename> [size], --join <filename>
-split()
-{
-  _size="214748364" # 2G default
-  if [ -n "$1" ]; then
-    if [[ "$1" == "--join" ]]; then
-      if [ -f "$2" ]; then
-        rm "$2"
-      fi
-      ls *.part* | sort | xargs cat >> "$2"
-    elif [[ "$1" == "--split" ]]; then
-      if [ -n "$3" ]; then
-        _size="$3"
-      fi
-      command split -b "$_size" "$2" "$2".part
-    else
-      command split "$@"
+split() {
+  local _size="214748364" # ~2G default
+  if [[ "$1" == "--join" ]]; then
+    if [ -f "$2" ]; then
+      rm -i "$2"
     fi
+    ls *.part* | sort | xargs cat >> "$2"
+  elif [[ "$1" == "--split" ]]; then
+    if [ -n "$3" ]; then
+      _size="$3"
+    fi
+    command split -b "$_size" "$2" "$2.part"
   else
     command split "$@"
   fi
@@ -318,9 +284,8 @@ s() {
 }
 
 space() {
-  for i in {1..50}
-  do
-   echo ""
+  for i in {1..50}; do
+    echo ""
   done
   clear
 }
@@ -335,52 +300,25 @@ fi
 
 # change priority of interfaces (i.e. to swap priority)
 ifswap() {
-  # ifmetric INTERFACE [METRIC]
   if [ $# -ne 2 ]; then
     ifconfig 
     echo ""
     echo "Pick higher and lower interface priority"
     echo "Example:  ifswap enp0 eno1"
   elif type ifmetric > /dev/null 2>&1; then
-    # highest
-    ifmetric $1 0
-    # lower
-    ifmetric $2 1
+    ifmetric "$1" 0
+    ifmetric "$2" 1
   fi
 }
-
-### Key Bindings ###
-
-if [[ $_my_term == xterm ]]; then
-  # backspace work instead of delete ^H
-  stty erase '^?'
-fi
-
-# bind keys per shell and terminal
-if [[ $_my_shell == zsh ]]; then
-  # home and end keys
-  bindkey '\e[1~' beginning-of-line
-  bindkey '\e[4~' end-of-line
-fi
 
 # sleep until a 24hr time
 if [[ $_my_os == macOS ]]; then
   sleepuntil() {
       local target_time="$1"
       [ -z "$target_time" ] && return 1
-  
       local now=$(date +%s)
-      
-      # macOS Specific Parsing:
-      # -j: Do not set the date (just calculate)
-      # -f: Input format (Strictly expects HH:MM in 24-hour format)
       local target=$(date -j -f "%H:%M" "$target_time" "+%s" 2>/dev/null)
-  
-      # If parsing failed, return error (non-zero exit code)
       [ -z "$target" ] && return 1
-  
-      # Logic: If target is in the past (e.g. 09:00 when it is 10:00),
-      # add 86400 seconds (24 hours) to schedule for tomorrow.
       if [ "$target" -le "$now" ]; then
           target=$((target + 86400))
       fi
@@ -390,33 +328,32 @@ else
   sleepuntil() {
       local target_time="$1"
       [ -z "$target_time" ] && return 1
-  
       local now_epoch=$(date +%s)
       local target_epoch=$(date -d "$target_time" +%s 2>/dev/null)
-  
-      # If date parsing failed, return error
       [ -z "$target_epoch" ] && return 1
-  
-      # If target is in the past, assume tomorrow
       if [ "$target_epoch" -le "$now_epoch" ]; then
           target_epoch=$(date -d "tomorrow $target_time" +%s)
       fi
-  
       sleep $((target_epoch - now_epoch))
   }
 fi
 
-### Other ###
+### Key Bindings ###
+if [[ $_my_term == xterm ]]; then
+  stty erase '^?'
+fi
 
+if [[ $_my_shell == zsh ]]; then
+  bindkey '\e[1~' beginning-of-line
+  bindkey '\e[4~' end-of-line
+fi
+
+### Other macOS Specifics ###
 if [[ $_my_os == macOS ]]; then
   if type archey > /dev/null 2>&1; then
     archey
   fi
-
-  alias afplay='afplay -q 1'.
-
-  # For fun...
-  # play funny sounds from terminal
+  alias afplay='afplay -q 1'
   source ~/.sounds/.sound > /dev/null 2>&1
 fi
 
@@ -425,35 +362,21 @@ function finish {
 }
 trap finish EXIT
 
-### Terminator ###
+### Custom AI Tooling ###
 
 # Custom Claude/Ollama Function
 claude() {
-    export ANTHROPIC_AUTH_TOKEN="ollama"
-    export ANTHROPIC_BASE_URL="http://localhost:11434"
-    export ANTHROPIC_API_KEY=""
-    export CLAUDE_CODE_SKIP_WELCOME=1
-    export CLAUDE_CODE_TRUST_ALL=1
-    
-    # Defaults to qwen3-coder if no argument is provided
-    local model="${1:-glm-4.7-flash}"
-    shift
-    
-    command claude --model "$model" --dangerously-skip-permissions "$@"
-}
-claude() {
-    export ANTHROPIC_AUTH_TOKEN="ollama"
-    export ANTHROPIC_BASE_URL="http://localhost:11434"
-    export ANTHROPIC_API_KEY=""
-
-    export CLAUDE_CODE_SKIP_WELCOME=1
-    export CLAUDE_CODE_ACTION="bypassPermissions"
-    export CLAUDE_CODE_TRUST_ALL=1
-    export CLAUDE_CODE_DISABLE_TELEMETRY=true
-    export CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY=true
-
     local model="${1:-glm-4.7-flash}"
     [[ $# -gt 0 ]] && shift
-
+    
+    # Run Claude with temporary environment variables so they don't leak into the shell
+    ANTHROPIC_AUTH_TOKEN="ollama" \
+    ANTHROPIC_BASE_URL="http://localhost:11434" \
+    ANTHROPIC_API_KEY="" \
+    CLAUDE_CODE_SKIP_WELCOME=1 \
+    CLAUDE_CODE_ACTION="bypassPermissions" \
+    CLAUDE_CODE_TRUST_ALL=1 \
+    CLAUDE_CODE_DISABLE_TELEMETRY=true \
+    CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY=true \
     command claude --model "$model" --dangerously-skip-permissions "$@"
 }
