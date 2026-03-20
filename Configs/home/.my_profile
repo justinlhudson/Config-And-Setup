@@ -364,6 +364,7 @@ trap finish EXIT
 
 ### Custom AI Tooling ###
 
+# openclaw constrain to directory it is started in to edit files
 openclaw() {
   if [[ "$1" == "run" ]]; then
     command openclaw run --sandbox-path="$(pwd)" "${@:2}"
