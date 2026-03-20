@@ -364,6 +364,14 @@ trap finish EXIT
 
 ### Custom AI Tooling ###
 
+openclaw() {
+  if [[ "$1" == "run" ]]; then
+    command openclaw run --sandbox-path="$(pwd)" "${@:2}"
+  else
+    command openclaw "$@"
+  fi
+}
+
 # Custom Claude/Ollama Function
 claude() {
     local model="${1:-glm-4.7-flash}"
