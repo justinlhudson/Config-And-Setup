@@ -364,16 +364,16 @@ trap finish EXIT
 
 ### Custom AI Tooling ###
 
-# openclaw constrain to directory it is started in to edit files
+# openclaw default if nothing
 openclaw() {
-  if [[ "$1" == "run" ]]; then
-    command openclaw run --sandbox-path="$(pwd)" "${@:2}"
+  if [ $# -eq 0 ]; then
+    command openclaw tui
   else
     command openclaw "$@"
   fi
 }
 
-# Custom Claude/Ollama Function
+# claude freedom
 claude() {
     local model="${1:-glm-4.7-flash}"
     [[ $# -gt 0 ]] && shift
