@@ -1,9 +1,9 @@
 export ZSH=~/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
-# auto update no prompting!
-DISABLE_AUTO_PROMPT="true"
 
+DISABLE_AUTO_PROMPT="true"
+zstyle ':omz:update' mode auto
 source $ZSH/oh-my-zsh.sh
 
 plugins=(git zsh-autocomplete  zsh-syntax-highlighting zsh-autosuggestions history screen sudo tmux tmuxinator tmuxinator) 
